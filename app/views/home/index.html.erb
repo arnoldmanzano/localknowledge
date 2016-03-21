@@ -1,5 +1,5 @@
 <div class="container-fluid">
   <div ng-controller="LocationController as location">
-    <h1>{{location.latPosition}}</h1>
+    <h1 ng-bind="location.showPosition()"></h1>
   </div>
 </div>

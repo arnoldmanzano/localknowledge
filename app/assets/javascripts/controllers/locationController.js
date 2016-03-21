@@ -19,9 +19,7 @@ var latPosition = "";
 
   self.showPosition = function(position) {
       console.log(position.coords.latitude);
-      debugger;
-      self.latPosition = position.coords.latitude;
-      debugger;
+    return self.latPosition = position.coords.latitude;
   };
 // method that takes the longitude and latitude and pops them into the google location API
 
