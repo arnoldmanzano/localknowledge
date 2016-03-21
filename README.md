@@ -1,4 +1,5 @@
 # Local-knowledge App - final name TBD
+[![Stories in Ready](https://badge.waffle.io/arnoldmanzano/local-knowledge.png?label=ready&title=Ready)](http://waffle.io/arnoldmanzano/local-knowledge)
 
 ```sh
 User stories
