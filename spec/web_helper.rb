@@ -19,4 +19,12 @@ def add_tour
   fill_in :stopoffs, with: 'city gates, gastropub'
   fill_in :description, with: 'A fun history tour'
   click_button 'Add tour'
-end 
+end
+
+
+def request_tour
+  click_link 'Request a tour'
+  fill_in :'request[location]', with: 'London'
+  fill_in :'request[description]', with: 'great times wanted'
+  click_button 'Submit'
+end

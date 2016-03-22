@@ -7,6 +7,8 @@ Rails.application.routes.draw do
   # root 'welcome#index'
     root 'home#index'
 
+
+
   # Example of regular route:
   #   get 'products/:id' => 'catalog#view'
 
@@ -14,7 +16,7 @@ Rails.application.routes.draw do
   #   get 'products/:id/purchase' => 'catalog#purchase', as: :purchase
 
   # Example resource route (maps HTTP verbs to controller actions automatically):
-  #   resources :products
+  resources :requests
 
   # Example resource route with options:
   #   resources :products do

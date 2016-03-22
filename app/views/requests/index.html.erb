@@ -1,0 +1,7 @@
+<ul>
+  <% @requests.each.with_index(1) do |request, index| %>
+  <h1> Request number <%=index%></h1>
+    <li><%= current_user.username %> has requested a tour in: <%= request.location %></li>
+    <li><%= current_user.username %> has added the following specifications to his/her desired tour: <%= request.description %></li>
+    <% end %>
+</ul>
