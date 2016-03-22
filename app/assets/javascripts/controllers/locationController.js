@@ -1,4 +1,4 @@
-localKnowledgeApp.controller('LocationController', ['$window', '$resource', function($window, $resource) {
+localKnowledgeApp.controller('LocationController', ['$window', '$resource', 'LocationService', function($window, $resource, LocationService) {
 
 var self = this;
 self.x = "BLA";
@@ -21,16 +21,22 @@ var userLocationArea = "";
     self.latPosition = position.coords.latitude;
     self.longPosition = position.coords.longitude;
     console.log(self.latPosition);
-    self.displayLocation();
+    console.log(self.longPosition);
+    // self.displayLocation();
+    LocationService.displayLocation(self.latPosition, self.longPosition)
+      .then(function(data) {
+        self.userLocationArea = data;
+      });
   };
 
+//  self.displayLocation = function(){
+//    var geolocationResource = $resource("https://maps.googleapis.com/maps/api/geocode/json?latlng=" + self.latPosition + "," + self.longPosition + "&key=" + "");
+//    geolocationResource.get().$promise.then(function(data){
+//      self.userLocationArea = data.results[6].formatted_address;
+//      });
+//  };
 
-  self.displayLocation = function(){
-    var geolocationResource = $resource("https://maps.googleapis.com/maps/api/geocode/json?latlng=" + self.latPosition + "," + self.longPosition + "&key=" + "");
-    geolocationResource.get().$promise.then(function(data){
-    self.userLocationArea = data.results[6].formatted_address;
-    });
-  };
+
 
 self.getLocation();
 
