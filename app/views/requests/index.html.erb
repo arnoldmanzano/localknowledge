@@ -4,5 +4,13 @@
     <li><%= current_user.username %> has requested a tour in: <%= request.location %></li>
     <li><%= current_user.username %> has added the following specifications to his/her desired tour: <%= request.description %></li>
     <%= link_to 'Reply', new_request_reply_path(request.id) %>
+  <% request.replies.each.with_index(1) do |reply, index| %>
+  <h2> Reply number <%=index%> from <%= reply.find_user(reply.user_id) %></h2>
+    <li> Duration: <%= reply.duration %> hours</li>
+    <li> Cost: £<%= reply.cost %></li>
+    <li> Description: <%= reply.description %></li>
+    <li> Meeting point: <%= reply.meeting_point %></li>
+    <li> Stopoffs: <%= reply.stopoffs %></li>
     <% end %>
+  <% end %>
 </ul>
