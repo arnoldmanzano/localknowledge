@@ -9,3 +9,14 @@ def signup
   fill_in :'user[password_confirmation]', with: 'password'
   click_button 'Sign up'
 end
+
+def add_tour
+  click_link 'Advertise a tour'
+  fill_in :location, with: 'London'
+  fill_in :theme, with: 'history'
+  fill_in :duration, with: 2
+  fill_in :cost, with: 20
+  fill_in :stopoffs, with: 'city gates, gastropub'
+  fill_in :description, with: 'A fun history tour'
+  click_button 'Add tour'
+end 
