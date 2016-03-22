@@ -1,15 +1,17 @@
 require 'rails_helper'
 
-feature 'Submitting an advertisement for a tour' do
+feature 'Replying to client requests' do
 
   before do
     signup
+    Request.create(location: "London", description: "A fun history tour")
   end
 
-  xit '-> allows the tour guide to advertise a tour' do
-    add_tour
-    expect(page).to have_content('A fun history tour')
-    expect(page).to have_content('Location: London')
-    expect(page).to have_content('Cost: £20')
+  it '-> allows the tour guide to respond to a request' do
+    visit '/requests'
+    click_link 'Reply'
+    reply_to_request
+    expect(current_path).to eq('/requests')
+    expect(page).to have_content('Duration: 2 hours Cost: £20 Description: A fun history tour')
   end
 end

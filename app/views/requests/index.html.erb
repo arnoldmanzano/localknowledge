@@ -3,5 +3,6 @@
   <h1> Request number <%=index%></h1>
     <li><%= current_user.username %> has requested a tour in: <%= request.location %></li>
     <li><%= current_user.username %> has added the following specifications to his/her desired tour: <%= request.description %></li>
+    <%= link_to 'Reply', new_request_reply_path(request.id) %>
     <% end %>
 </ul>

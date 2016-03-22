@@ -11,10 +11,25 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20160322133312) do
+ActiveRecord::Schema.define(version: 20160322153233) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
+
+  create_table "replies", force: :cascade do |t|
+    t.string   "meeting_point"
+    t.integer  "duration"
+    t.integer  "cost"
+    t.text     "stopoffs"
+    t.text     "description"
+    t.integer  "request_id"
+    t.datetime "created_at",    null: false
+    t.datetime "updated_at",    null: false
+    t.integer  "user_id"
+  end
+
+  add_index "replies", ["request_id"], name: "index_replies_on_request_id", using: :btree
+  add_index "replies", ["user_id"], name: "index_replies_on_user_id", using: :btree
 
   create_table "requests", force: :cascade do |t|
     t.string   "location"
@@ -51,5 +66,7 @@ ActiveRecord::Schema.define(version: 20160322133312) do
   add_index "users", ["email"], name: "index_users_on_email", unique: true, using: :btree
   add_index "users", ["reset_password_token"], name: "index_users_on_reset_password_token", unique: true, using: :btree
 
+  add_foreign_key "replies", "requests"
+  add_foreign_key "replies", "users"
   add_foreign_key "requests", "users"
 end
