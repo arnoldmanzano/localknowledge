@@ -13,6 +13,7 @@ describe("service: LocationService", function(){
       formatted_address: 'Hello from the dark side!'
     }]
   };
+  var position = {coords: {longitude: -0.0731683, latitude: 51.5173822}};
 
   describe('#displayLocation', function() {
     beforeEach(inject(function($httpBackend) {
@@ -24,7 +25,7 @@ describe("service: LocationService", function(){
     }));
 
     it("Calls google api and return formatted address", function(){
-      location.displayLocation(51.5173822,-0.0731683)
+      location.displayLocation(position)
         .then(function(response) {
           expect(response).toEqual('Hello from the dark side!');
         });
