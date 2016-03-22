@@ -1,1 +1,1 @@
-var localKnowledgeApp = angular.module('LocalKnowledgeApp', []);
+var localKnowledgeApp = angular.module('LocalKnowledgeApp', ['ngResource']);

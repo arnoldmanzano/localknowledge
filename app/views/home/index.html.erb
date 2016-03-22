@@ -1,5 +1,6 @@
 <div class="container-fluid">
   <div ng-controller="LocationController as location">
-    <h1 ng-bind="location.showPosition()"></h1>
+    <h1 ng-bind="location.userLocationArea"></h1>
+    <%= ENV['API_GEOLOCATION_KEY'].html_safe %>
   </div>
 </div>

@@ -1,28 +1,38 @@
-localKnowledgeApp.controller('LocationController', ['$window', function($window) {
+localKnowledgeApp.controller('LocationController', ['$window', '$resource', function($window, $resource) {
 
 var self = this;
 self.x = "BLA";
 var window = $window;
 var latPosition = "";
-// method that extracts the location from the window element
+var longPosition = "";
+var userLocationArea = "";
 
   self.getLocation = function (){
-    console.log("hello");
-    window.alert("YO");
     if ($window.navigator.geolocation) {
-
-      $window.navigator.geolocation.getCurrentPosition(self.showPosition);
+      $window.navigator.geolocation.getCurrentPosition(self.storePosition);
     } else {
       prompt("Geolocation is not supported by your browser. Enter your postcode");
     }
   };
 
-  self.showPosition = function(position) {
-      console.log(position.coords.latitude);
-    return self.latPosition = position.coords.latitude;
+
+
+  self.storePosition = function(position) {
+    self.latPosition = position.coords.latitude;
+    self.longPosition = position.coords.longitude;
+    console.log(self.latPosition);
+    self.displayLocation();
   };
-// method that takes the longitude and latitude and pops them into the google location API
+
+
+  self.displayLocation = function(){
+    var geolocationResource = $resource("https://maps.googleapis.com/maps/api/geocode/json?latlng=" + self.latPosition + "," + self.longPosition + "&key=" + "");
+    geolocationResource.get().$promise.then(function(data){
+    self.userLocationArea = data.results[6].formatted_address;
+    });
+  };
 
 self.getLocation();
+
 
 }]);
