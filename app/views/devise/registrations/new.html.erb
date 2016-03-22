@@ -4,19 +4,20 @@
   <%= devise_error_messages! %>
 
   <div class="form-group">
-    <%= f.label :avatar, class: 'col-sm-2 control-label'  %>
+    <%= f.label :avatar, class: 'col-sm-2 control-label'  %><br />
     <div class="col-sm-6">
       <%= f.file_field :avatar %>
     </div>
   </div>
+  <br />
 
   <div class="field">
-    <%= f.label :First_name %><br />
+    <%= f.label :f_name, 'First name' %><br />
     <%= f.text_field :f_name, autofocus: true %>
   </div>
 
   <div class="field">
-    <%= f.label :Last_name %><br />
+    <%= f.label :l_name, 'Last name' %><br />
     <%= f.text_field :l_name %>
   </div>
 
