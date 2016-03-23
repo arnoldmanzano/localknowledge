@@ -1,6 +1,7 @@
 source 'https://rubygems.org'
 
-
+# devise for user sign in and sign out etc.
+gem 'devise'
 # Bundle edge Rails instead: gem 'rails', github: 'rails/rails'
 gem 'rails', '4.2.5.1'
 # Use postgresql as the database for Active Record
@@ -14,6 +15,8 @@ gem 'coffee-rails', '~> 4.1.0'
 # See https://github.com/rails/execjs#readme for more supported runtimes
 # gem 'therubyracer', platforms: :ruby
 
+# image uploading
+gem 'paperclip'
 # Use jquery as the JavaScript library
 gem 'jquery-rails'
 # Turbolinks makes following links in your web application faster. Read more: https://github.com/rails/turbolinks
@@ -33,7 +36,6 @@ gem 'sdoc', '~> 0.4.0', group: :doc
 # gem 'capistrano-rails', group: :development
 
 # gem 'sass', '3.2.19'
-# gem 'devise'
 gem 'bower-rails'
 # gem 'angular-rails-templates'
 
@@ -64,10 +66,10 @@ group :production, :staging do
 end
 
 group :test do
-  gem 'rspec-rails'
   gem 'capybara'
   gem 'capybara-angular'
   gem 'rspec-collection_matchers'
   gem 'poltergeist'
   gem 'shoulda'
+  gem 'timecop'
 end

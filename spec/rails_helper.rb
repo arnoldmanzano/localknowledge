@@ -12,7 +12,7 @@ require 'factory_girl_rails'
 require 'support/database_cleaner'
 require 'support/factory_girl'
 
-require_relative 'web_helpers'
+require_relative 'web_helper'
 
 # Add additional requires below this line. Rails is not loaded until this point!
 
