@@ -2,16 +2,16 @@ require 'rails_helper'
 
 feature 'Registration and users' do
 
-  context '-> signing up' do
+  context '- signing up' do
 
     it '-> allows users to add a profile picture when signing up' do
       signup
       expect(current_path).to eq('/')
       expect(page).to have_css("img[src*='marley.jpeg']")
     end
-  end 
+  end
 
-  context '-> updating profile' do
+  context '- updating profile' do
 
     it '-> allows users to edit their profile picture after signing up' do
       signup

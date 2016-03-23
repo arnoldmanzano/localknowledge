@@ -19,9 +19,19 @@ class RequestsController < ApplicationController
     end
   end
 
+  def destroy
+    @request = Request.find(params[:id])
+    if @request.user_id == current_user.id
+      @request.destroy
+      flash[:notice] = 'Request deleted successfully'
+    else
+      flash[:notice] = 'Only owner can delete request'
+    end
+    redirect_to requests_path
+  end
+
   def request_params
     params.require(:request).permit(:location, :description)
   end
-
 
 end

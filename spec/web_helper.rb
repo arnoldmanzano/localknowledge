@@ -1,9 +1,10 @@
-def signup(f_name: "Bob", l_name: "Marley", username: 'Iron_Lion_Zion', email: 'bob@bob.com', password: "password" )
+def signup(f_name: "Bob", l_name: "Marley", username: 'Iron_Lion_Zion', postcode: 'W12 7JQ', email: 'bob@bob.com', password: "password" )
   visit('/users/sign_up')
   attach_file 'user[avatar]', Rails.root.join('spec','fixtures','marley.jpeg')
   fill_in :'user[f_name]', with: f_name
   fill_in :'user[l_name]', with: l_name
   fill_in :'user[username]', with: username
+  fill_in :'user[postcode]', with: postcode
   fill_in :'user[email]', with: email
   fill_in :'user[password]', with: password
   fill_in :'user[password_confirmation]', with: password
@@ -18,7 +19,6 @@ def reply_to_request
   fill_in :reply_description, with: 'A fun history tour'
   click_button 'Reply'
 end
-
 
 def request_tour
   click_link 'Request a tour'

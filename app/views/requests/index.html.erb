@@ -1,16 +1,20 @@
 <ul>
   <% @requests.each.with_index(1) do |request, index| %>
-  <h1> Request number <%=index%></h1>
-    <li><%= current_user.username %> has requested a tour in: <%= request.location %></li>
-    <li><%= current_user.username %> has added the following specifications to his/her desired tour: <%= request.description %></li>
-    <%= link_to 'Reply', new_request_reply_path(request.id) %>
-  <% request.replies.each.with_index(1) do |reply, index| %>
-  <h2> Reply number <%=index%> from <%= reply.find_user(reply.user_id) %></h2>
-    <li> Duration: <%= reply.duration %> hours</li>
-    <li> Cost: £<%= reply.cost %></li>
-    <li> Description: <%= reply.description %></li>
-    <li> Meeting point: <%= reply.meeting_point %></li>
-    <li> Stopoffs: <%= reply.stopoffs %></li>
-    <% end %>
+    <% if Time.now < request.expiration %>
+      <h1> Request number <%=index%></h1>
+        <li><%= request.find_request_user(request.user_id) %> has requested a tour in: <%= request.location %></li>
+        <li><%= request.find_request_user(request.user_id) %> has added the following specifications to his/her desired tour: <%= request.description %></li>
+        <%= link_to 'Reply', new_request_reply_path(request.id) %>
+        <%= link_to 'Delete', request_path(request), method: :delete %>
+
+        <% request.replies.each.with_index(1) do |reply, index| %>
+          <h2> Reply number <%=index%> from <%= reply.find_user(reply.user_id) %></h2>
+            <li> Duration: <%= reply.duration %> hours</li>
+            <li> Cost: £<%= reply.cost %></li>
+            <li> Description: <%= reply.description %></li>
+            <li> Meeting point: <%= reply.meeting_point %></li>
+            <li> Stopoffs: <%= reply.stopoffs %></li>
+        <% end %>
+      <% end %>
   <% end %>
 </ul>
