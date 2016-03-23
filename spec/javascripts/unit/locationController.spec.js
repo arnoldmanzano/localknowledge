@@ -1,4 +1,4 @@
-describe('LocationController', function(){
+xdescribe('LocationController', function(){
   var ctrl, $window, $rootScope, $q, LocationService;
 
   beforeEach(function(){
@@ -12,7 +12,7 @@ describe('LocationController', function(){
     });
   });
 
-  it("retrieves information from the window obj with #navigator", function(){
+  xit("retrieves information from the window obj with #navigator", function(){
     spyOn(LocationService, "displayLocation").andCallFake(function(){
       return $q.when('Place');
     });

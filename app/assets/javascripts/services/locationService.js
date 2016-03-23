@@ -8,7 +8,8 @@
 
     self.getCurrentLocation = function(callback){
       $window.navigator.geolocation.getCurrentPosition(function(position) {
-        var url = "https://maps.googleapis.com/maps/api/geocode/json?latlng=" + position.coords.latitude + "," + position.coords.longitude + "&key=" + "";
+        self.coordinates = {lat: position.coords.latitude, lng: position.coords.longitude};
+        var url = "https://maps.googleapis.com/maps/api/geocode/json?latlng=" + self.coordinates.lat + "," + self.coordinates.lng + "&key=" + "";
         callback($resource(url).get());
       });
     };
