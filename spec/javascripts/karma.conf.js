@@ -19,7 +19,7 @@ module.exports = function(config) {
       '../vendor/assets/bower_components/angular-route/angular-route.js',
       '../vendor/assets/bower_components/angular-resource/angular-resource.js',
       '../vendor/assets/bower_components/angular-mocks/angular-mocks.js',
-      '../vendor/assets/bower_components/angular-mocks/angular-templates.js',
+      '../vendor/assets/bower_components/angular-templates/angular-templates.js',
       '../app/assets/javascripts/**/*.js',
       'javascripts/**/*.spec.js'
     ],
@@ -56,7 +56,8 @@ module.exports = function(config) {
 
     // level of logging
     // possible values: config.LOG_DISABLE || config.LOG_ERROR || config.LOG_WARN || config.LOG_INFO || config.LOG_DEBUG
-    logLevel: config.LOG_INFO,
+    // logLevel: config.LOG_INFO,
+    logLevel: config.LOG_DEBUG,
 
 
     // enable / disable watching file and executing tests whenever any file changes
@@ -65,7 +66,7 @@ module.exports = function(config) {
 
     // start these browsers
     // available browser launchers: https://npmjs.org/browse/keyword/karma-launcher
-    browsers: ['PhantomJS'],
+    browsers: ['Chrome'],
 
 
     // Continuous Integration mode

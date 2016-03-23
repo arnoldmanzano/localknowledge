@@ -1,58 +1,28 @@
-describe("LocationController", function(){
-  var ctrl;
-  var MockLocationService;
-  var mockWindow;
-  var $window;
-
+describe('LocationController', function(){
+  var ctrl, $window, $rootScope, $q, LocationService;
 
   beforeEach(function(){
-    // mockWindow = $window;
-    MockLocationService = jasmine.createSpyObj('LocationService', ['displayLocation']);
-    // mockWindow.navigator.geolocation = {
-    //   getCurrentPosition: function() {
-    //     var position = {coords: {longitude: -0.0731683, latitude: 51.5173822}};
-    //     return position
-    //   }
-    // }
-    //
-    // spyOn(navigator, 'geolocation').and.callThrough();
-    // mockWindow = jasmine.createSpy(window.navigator.geolocation);
-    // spyOn(mockWindow, 'getCurrentPosition').and.callFake(function(){
-    //   var position = {coords: {longitude: -0.0731683, latitude: 51.5173822}};
-    //   arguments[0](position);
-    // });
-
-    module("LocalKnowledgeApp", {LocationService: MockLocationService});
-    inject(function($controller){
+    module('LocalKnowledgeApp');
+    inject(function($controller, _$q_, _$window_, _$rootScope_, _LocationService_){
       ctrl = $controller("LocationController");
+      $rootScope = _$rootScope_;
+      $window = _$window_;
+      LocationService = _LocationService_;
+      $q = _$q_;
     });
-
-
   });
-
-  //
-  // beforeEach(inject([$controller, function ($controller) {
-  //     $window = jasmine.createSpyObj('$window', ['navigator']);
-  //
-  // }]));
-
-  // it('should confirm that the user is trying to clear the custom phone number', function() {
-  //   $window.confirm();
-  //     expect($window.confirm).toHaveBeenCalled();
-  // });
 
   it("retrieves information from the window obj with #navigator", function(){
-    spyOn(mockWindow, 'navigator').and.callThrough();
-
-    expect(mockWindow.navigator).toHaveBeenCalled();
-    ctrl.getLocation();
-  });
-
-
-  it("Pulls the users latitude from the window object", function(){
-    ctrl.getLocation(function(){
-      expect(ctrl.userLocationArea).toEqual(10);
+    spyOn(LocationService, "displayLocation").andCallFake(function(){
+      return $q.when('Place');
     });
+    spyOn($window.navigator.geolocation,"getCurrentPosition").andCallFake(function() {
+        var position = { coords: { latitude: 32, longitude: -96 } };
+        arguments[0](position);
+    });
+    ctrl.getLocation();
+    $rootScope.$apply();
+    expect(ctrl.userLocationArea).toEqual('Place');
   });
 
 });
