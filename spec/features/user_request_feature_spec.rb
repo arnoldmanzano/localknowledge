@@ -9,17 +9,25 @@ feature 'Making a request for a tour' do
 
   it '-> allows the user to make a tour request' do
     visit('/requests')
-    expect(page).to have_content('Iron_Lion_Zion has requested a tour in: London')
-    expect(page).to have_content('Iron_Lion_Zion has added the following specifications to his/her desired tour: great times wanted')
-    p Time.now
+    expect(page).to have_content('Request for a tour in: London')
+    expect(page).to have_content('Details: great times wanted')
   end
 
   it '-> a user\'s request will expire after 5 days' do
     Timecop.travel(5.days.from_now)
-    p Time.now
     visit('/requests')
-    expect(page).to_not have_content('Iron_Lion_Zion has requested a tour in: London')
-    expect(page).to_not have_content('Iron_Lion_Zion has added the following specifications to his/her desired tour: great times wanted')
+    expect(page).to_not have_content('Requested for a tour in: London')
+    expect(page).to_not have_content('Details: great times wanted')
+  end
+
+  it '-> users can update their requests' do
+    visit('/requests')
+    click_link 'Update'
+    fill_in :'request[location]', with: 'Essex'
+    fill_in :'request[description]', with: 'bad times wanted'
+    expect(page).to have_content('Request for a tour in: Essex')
+    expect(page).to have_content('Details: bad times wanted')
+
   end
 
 

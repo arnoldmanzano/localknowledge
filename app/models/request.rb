@@ -13,8 +13,4 @@ class Request < ActiveRecord::Base
     self.expiration =  Date.today + 5.days
   end
 
-  def find_request_user(user_id)
-    @username = User.find(user_id).username
-  end
-
 end
