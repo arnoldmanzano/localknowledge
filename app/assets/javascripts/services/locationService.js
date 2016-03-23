@@ -3,17 +3,21 @@
 
   angular
     .module('LocalKnowledgeApp')
-    .service('LocationService', ['$resource', function($resource) {
+    .service('LocationService', ['$resource', '$window', function($resource, $window) {
     var self = this;
 
-    self.displayLocation = function(position){
-      var latPosition = position.coords.latitude;
-      var longPosition = position.coords.longitude;
-      var url = "https://maps.googleapis.com/maps/api/geocode/json?latlng=" + latPosition + "," + longPosition + "&key=" + "";
-      var geolocationResource = $resource(url);
-      return geolocationResource.get().$promise.then(function(data){
-        return data.results[6].formatted_address;
-        });
+    self.getCurrentLocation = function(callback){
+      $window.navigator.geolocation.getCurrentPosition(function(position) {
+        var url = "https://maps.googleapis.com/maps/api/geocode/json?latlng=" + position.coords.latitude + "," + position.coords.longitude + "&key=" + "";
+        callback($resource(url).get());
+      });
     };
+
+    // self.getCurrentLocation = function(){
+    //   var latitude = 51;
+    //   var longitude = 0;
+    //   var url = "https://maps.googleapis.com/maps/api/geocode/json?latlng=" + latitude + "," + longitude + "&key=" + "";
+    //   return $resource(url).get();
+    // };
   }]);
 }());

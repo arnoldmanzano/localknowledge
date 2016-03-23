@@ -25,10 +25,13 @@ describe("service: LocationService", function(){
     }));
 
     it("Calls google api and return formatted address", function(){
-      location.displayLocation(position)
-        .then(function(response) {
+      // location.displayLocation(position)
+      //   .then(function(response) {
+      //     expect(response).toEqual('Hello from the dark side!');
+      //   });
+      var response = location.displayLocation(position);
           expect(response).toEqual('Hello from the dark side!');
-        });
+
       httpBackend.flush();
     });
   });
