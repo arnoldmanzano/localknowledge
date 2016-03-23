@@ -2,6 +2,8 @@
   <div ng-controller="LocationController as location">
     <h1>{{location.userLocationArea.results[0].formatted_address}}</h1>
 
+    <button ng-click="location.getRequests()">Pin me</button>
+
     <div id="myModal" class="modal fade" role="dialog">
       <div class="modal-dialog">
 

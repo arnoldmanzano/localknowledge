@@ -1,8 +1,8 @@
 class RequestsController < ApplicationController
 
   def index
-    @requests = Request.all
-
+    requests = Request.all
+    render json: requests.to_json
   end
 
   def new

@@ -3,15 +3,11 @@
 
   angular
     .module('LocalKnowledgeApp')
-    .controller('RequestController', ['LocationService', function(LocationService) {
+    .controller('RequestController', ['LocationService', '$http', function(LocationService, $http) {
 
     var self = this;
-    self.formClass = 'hidden';
 
-    self.showForm = function () {
-        self.formClass = 'col-lg-12';
-    };
 
   }]);
-  
+
 }());
