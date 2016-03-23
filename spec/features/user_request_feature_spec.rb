@@ -15,8 +15,7 @@ feature 'Making a request for a tour' do
   end
 
   it '-> a user\'s request will expire after 5 days' do
-    five_days_from_now = Time.local(2016, 3, 30, 13, 0, 0)
-    Timecop.travel(five_days_from_now)
+    Timecop.travel(5.days.from_now)
     p Time.now
     visit('/requests')
     expect(page).to_not have_content('Iron_Lion_Zion has requested a tour in: London')

@@ -21,11 +21,11 @@ class RequestsController < ApplicationController
 
   def destroy
     @request = Request.find(params[:id])
-    if @request.id == current_user.id
-      @resquest.destroy
+    if @request.user_id == current_user.id
+      @request.destroy
       flash[:notice] = 'Request deleted successfully'
     else
-      redirect_to requests_path, alert: 'Only owner can delete request'
+      flash[:notice] = 'Only owner can delete request'
     end
     redirect_to requests_path
   end

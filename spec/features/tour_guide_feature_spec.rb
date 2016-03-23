@@ -4,11 +4,13 @@ feature 'Replying to client requests' do
 
   before do
     signup
-    Request.create(location: "London", description: "A fun history tour")
+    request_tour
   end
 
   it '-> allows the tour guide to respond to a request' do
-    visit '/requests'
+    click_link 'Logout'
+    signup(f_name: "Jimmy", l_name: "Hendrix", username: 'hendrix_fan', postcode: 'SW1 8AP', email: 'bobbybrown@aol.com', password: "password")
+    visit('/requests')
     click_link 'Reply'
     reply_to_request
     expect(current_path).to eq('/requests')

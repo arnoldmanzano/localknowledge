@@ -1,7 +1,7 @@
 class Request < ActiveRecord::Base
 
   belongs_to :user
-  has_many :replies
+  has_many :replies, dependent: :destroy
   before_create :set_expiration_date
 
   def build_request(attributes = {}, user)

@@ -11,6 +11,19 @@ def signup(f_name: "Bob", l_name: "Marley", username: 'Iron_Lion_Zion', postcode
   click_button 'Sign up'
 end
 
+def signup2
+  visit('/users/sign_up')
+  attach_file 'user_avatar', Rails.root.join('spec','fixtures','marley.jpeg')
+  fill_in :'user[f_name]', with: 'Sally'
+  fill_in :'user[l_name]', with: 'McSalls'
+  fill_in :'user[username]', with: 'Sally_1'
+  fill_in :'user[postcode]', with: 'SW1 9LT'
+  fill_in :'user[email]', with: 'salazar@sally.com'
+  fill_in :'user[password]', with: 'password'
+  fill_in :'user[password_confirmation]', with: 'password'
+  click_button 'Sign up'
+end
+
 def reply_to_request
   fill_in :reply_meeting_point, with: 'London'
   fill_in :reply_duration, with: 2
