@@ -73,4 +73,5 @@ group :test do
   gem 'rspec-collection_matchers'
   gem 'poltergeist'
   gem 'shoulda'
+  gem 'timecop'
 end
