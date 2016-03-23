@@ -25,11 +25,31 @@ feature 'Making a request for a tour' do
     click_link 'Update'
     fill_in :'request[location]', with: 'Essex'
     fill_in :'request[description]', with: 'bad times wanted'
+    click_button 'Submit'
     expect(page).to have_content('Request for a tour in: Essex')
     expect(page).to have_content('Details: bad times wanted')
-
+    expect(page).to have_content('Request updated successfully')
   end
 
+  it ('-> only a user can update their own request') do
+    click_link "Logout"
+    signup(f_name: "Jimmy", l_name: "Hendrix", username: 'hendrix_fan', postcode: 'SW1 8AP', email: 'bobbybrown@aol.com', password: "password")
+    visit('/requests')
+    expect(page).to_not have_content('Update')
+  end
 
+  it '-> users can delete their requests' do
+    visit('/requests')
+    click_link 'Delete'
+    expect(page).to_not have_content('good times wanted')
+    expect(page).to have_content('Request deleted successfully')
+  end
+
+  it ('-> only a user can delete their own request') do
+    click_link "Logout"
+    signup(f_name: "Jimmy", l_name: "Hendrix", username: 'hendrix_fan', postcode: 'SW1 8AP', email: 'bobbybrown@aol.com', password: "password")
+    visit('/requests')
+    expect(page).to_not have_content('Delete')
+  end
 
 end

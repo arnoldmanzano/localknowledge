@@ -1,14 +1,17 @@
 <ul>
   <% @requests.each.with_index(1) do |request, index| %>
-    <% if Time.now < request.expiration %>
+    <% if Time.now < request.expiration%>
       <h1> Request number <%=index%></h1>
         <li> Request for a tour in: <%= request.location %></li>
         <li> Details: <%= request.description %></li>
         <%= link_to 'Reply', new_request_reply_path(request.id) %>
-        <%= link_to 'Delete', request_path(request), method: :delete %>
-        <%= link_to 'Update', edit_request_path(request) %>
+        <% if request.user_id == current_user.id %>
+          <%= link_to 'Delete', request_path(request), method: :delete %>
+          <%= link_to 'Update', edit_request_path(request) %>
+        <% end %>
+
         <% request.replies.each.with_index(1) do |reply, index| %>
-          <h2> Reply number <%=index%> from <%= reply.find_user(reply.user_id) %></h2>
+          <h3> Reply number <%=index%> from <%= reply.find_user(reply.user_id) %></h3>
             <li> Duration: <%= reply.duration %> hours</li>
             <li> Cost: £<%= reply.cost %></li>
             <li> Description: <%= reply.description %></li>
