@@ -10,6 +10,7 @@
     self.getLocation = function() {
       LocationService.getCurrentLocation(function(resource) {
         self.userLocationArea = resource;
+        self.initMap();
       });
     };
 
@@ -19,8 +20,7 @@
       });
     };
 
-    // self.getLocation();
-    // self.initMap();
+    self.getLocation();
 
   }]);
 }());
