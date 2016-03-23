@@ -3,6 +3,10 @@ require 'rails_helper'
 
 RSpec.describe User, type: :model do
 
+  it { should have_many(:requests).dependent(:destroy) }
+  it { should have_many(:replies).dependent(:destroy) }
+  it { should have_many :replied_requests }
+
   it "-> is valid with a firstname, lastname, username and email" do
     user = User.new(
          f_name: 'bob',

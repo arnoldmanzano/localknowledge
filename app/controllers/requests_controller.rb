@@ -1,7 +1,8 @@
 class RequestsController < ApplicationController
 
   def index
-    @requests = current_user.requests.all
+    @requests = Request.all
+
   end
 
   def new
@@ -21,4 +22,6 @@ class RequestsController < ApplicationController
   def request_params
     params.require(:request).permit(:location, :description)
   end
+
+
 end
