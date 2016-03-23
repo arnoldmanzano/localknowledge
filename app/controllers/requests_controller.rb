@@ -23,5 +23,4 @@ class RequestsController < ApplicationController
     params.require(:request).permit(:location, :description)
   end
 
-
 end
