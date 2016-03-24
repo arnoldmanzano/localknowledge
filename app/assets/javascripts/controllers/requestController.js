@@ -12,13 +12,15 @@
     self.update = function(request) {
       LocationService.centerMapOnAddress(request.location);
       LocationService.lookupCoords(request.location).then(function(coords) {
-        request.coords = coords;
+        request.lat = coords.lat;
+        request.lng = coords.lng;
+        self.master = angular.copy(request);
+        self.postRequests(self.master);
       });
-      self.master = angular.copy(request);
-      self.postRequests(self.master);
     };
 
     self.postRequests = function(data) {
+      console.log(data);
       $http.post('/requests', data).success(function(data, status) {
         console.log('success');
       });

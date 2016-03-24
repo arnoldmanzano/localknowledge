@@ -11,12 +11,9 @@ class RequestsController < ApplicationController
   end
 
   def create
-
     @request = Request.new(request_params)
-
     flash[:notice] = 'User was successfully created.' if @request.save
     respond_with(@request)
-
   end
 
   def edit
@@ -48,7 +45,7 @@ class RequestsController < ApplicationController
   private
 
   def request_params
-    params.require(:request).permit(:location, :description, :budget, :request_date)
+    params.require(:request).permit(:location, :description, :budget, :request_date, :lat, :lng)
   end
 
 end
