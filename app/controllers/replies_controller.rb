@@ -22,8 +22,6 @@ class RepliesController < ApplicationController
     end
   end
 
-  private
-
   def reply_params
     params.require(:reply).permit(:meeting_point, :duration, :cost, :stopoffs, :description)
   end

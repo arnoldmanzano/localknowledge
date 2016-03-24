@@ -45,6 +45,8 @@ class RequestsController < ApplicationController
     redirect_to requests_path
   end
 
+  private
+
   def request_params
     params.require(:request).permit(:location, :description)
   end

@@ -1,6 +1,6 @@
 <ul>
   <% @requests.each.with_index(1) do |request, index| %>
-    <% if Time.now < request.expiration%>
+    <% if Time.now < request.expiration || request.replies.any? %>
       <h1> Request number <%=index%></h1>
         <li> Request for a tour in: <%= request.location %></li>
         <li> Details: <%= request.description %></li>
