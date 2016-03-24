@@ -12,6 +12,7 @@ def signup(f_name: "Bob", l_name: "Marley", username: 'Iron_Lion_Zion', postcode
 end
 
 def reply_to_request
+  click_link 'Reply'
   fill_in :reply_meeting_point, with: 'London'
   fill_in :reply_duration, with: 2
   fill_in :reply_cost, with: 20
