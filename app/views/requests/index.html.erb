@@ -22,7 +22,6 @@
             <%= link_to 'Update', edit_request_reply_path(request, reply) %>
             <%= link_to 'Delete', request_reply_path(request, reply), method: :delete %>
           <% end %>
-          <% byebug %>
           <% if request.user == current_user && request.resolved == false %>
               <%= link_to 'Choose', choose_request_reply_path(request, reply), method: :post %>
           <% end %>

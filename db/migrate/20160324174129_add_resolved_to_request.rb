@@ -1,5 +1,5 @@
 class AddResolvedToRequest < ActiveRecord::Migration
   def change
-    add_column :requests, :resolved, :boolean, :default => false
+    add_column :requests, :resolved, :boolean, default:false
   end
 end

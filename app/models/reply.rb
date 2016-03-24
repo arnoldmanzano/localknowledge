@@ -9,9 +9,9 @@ class Reply < ActiveRecord::Base
 
   def set_chosen
     self.chosen = true
-    self.request.resolved = true;
+    self.save
+    self.request.resolved = true
+    self.request.save
   end
-
-
 
 end
