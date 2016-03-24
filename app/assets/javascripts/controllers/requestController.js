@@ -7,6 +7,13 @@
 
     var self = this;
 
+    self.master = {};
+
+    self.update = function(request) {
+      // self.master = angular.copy(request);
+      // console.log(request);
+      LocationService.geocodeAddress(request.location);
+    };
 
   }]);
 
