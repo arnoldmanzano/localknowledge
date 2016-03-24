@@ -14,10 +14,10 @@ describe('MapController', function(){
     spyOn(LocationService, "getCurrentLocation").and.callFake(function(callback){
       callback('Place');
     });
-    spyOn(ctrl, "initMap");
+    spyOn(LocationService, "initMap");
 
     ctrl.getLocation();
-    expect(ctrl.initMap).toHaveBeenCalled();
+    expect(LocationService.initMap).toHaveBeenCalled();
     expect(ctrl.userLocationArea).toEqual('Place');
   });
 

@@ -1,22 +1,22 @@
 class RequestsController < ApplicationController
+  respond_to :html, :json
 
   def index
+    @requests = Request.where(["expiration > ?", Time.now])
+  end
+
+  def api_requests
     requests = Request.where(["expiration > ?", Time.now])
     render json: requests.to_json
   end
 
-  def new
-    @request = Request.new
-  end
-
   def create
-    @request = current_user.requests.create(request_params)
-    if @request.valid?
-      redirect_to('/')
-      flash[:notice] = 'Request submitted successfully'
-    else
-      flash[:alert] = 'Oops something went wrong!'
-    end
+
+    @request = Request.new(request_params)
+
+    flash[:notice] = 'User was successfully created.' if @request.save
+    respond_with(@request)
+
   end
 
   def edit

@@ -14,22 +14,6 @@
       });
     };
 
-    // TO BE DELETED
-    // self.getRequests = function() {
-    //   $http.get('/requests').then(function(response) {
-    //     self.requests = response.data;
-    //     var url = 'http://maps.google.com/maps/api/geocode/json?address=' + self.requests[0].location + '&sensor=false';
-    //
-    //     $http.get(url).then(function(response) {
-    //       var marker = new google.maps.Marker({
-    //         position: response.data.results[0].geometry.location,
-    //         map: map,
-    //         title: 'Hello'
-    //       });
-    //     });
-    //   });
-    // };
-
     self.getLocation();
 
   }]);

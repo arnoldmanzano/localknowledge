@@ -15,9 +15,14 @@
         request.coords = coords;
       });
       self.master = angular.copy(request);
-      console.log(self.master);
+      self.postRequests(self.master);
     };
 
+    self.postRequests = function(data) {
+      $http.post('/requests', data).success(function(data, status) {
+        console.log('success');
+      });
+    };
 
 
   }]);
