@@ -10,10 +10,15 @@
     self.master = {};
 
     self.update = function(request) {
-      // self.master = angular.copy(request);
-      // console.log(request);
-      LocationService.geocodeAddress(request.location);
+      LocationService.centerMapOnAddress(request.location);
+      LocationService.lookupCoords(request.location).then(function(coords) {
+        request.coords = coords;
+      });
+      self.master = angular.copy(request);
+      console.log(self.master);
     };
+
+
 
   }]);
 

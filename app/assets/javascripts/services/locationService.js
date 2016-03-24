@@ -25,21 +25,22 @@
       geocoder = new google.maps.Geocoder();
     };
 
-    self.geocodeAddress = function(location) {
-      //  var address = document.getElementById('address').value;
+    self.lookupCoords = function(location) {
+        var url = "https://maps.googleapis.com/maps/api/geocode/json?address=" + location + "&key=" + "";
+        return $resource(url).get().$promise.then(function(response){
+           return response.results[0].geometry.location;
+        });
+    };
+
+    self.centerMapOnAddress = function(location) {
        geocoder.geocode({'address': location}, function(results, status) {
-         console.log(results[0].geometry.location.lat);
          if (status === google.maps.GeocoderStatus.OK) {
            map.setCenter(results[0].geometry.location);
-          //  var marker = new google.maps.Marker({
-          //    map: resultsMap,
-          //    position: results[0].geometry.location
-          //  });
          } else {
            alert('Geocode was not successful for the following reason: ' + status);
          }
        });
-     };
+    };
 
   }]);
 }());
