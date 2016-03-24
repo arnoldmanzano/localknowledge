@@ -21,23 +21,22 @@ self.retrieveAllRequests = function (callback) {
         title: request.description,
         animation: google.maps.Animation.DROP
       });
-    //   self.addRequestInfo();
-    //
-    //   marker.addListener('click', function() {
-    //   infowindow.open(map, marker);
-    // });
+      self.addRequestInfo(map, marker, request);
   }
   console.log("Retrieve all requests finished");
 });
 };
 
-// self.addRequestInfo = function(){
-//   //this should be in a service that you can use to convert user requests from json from rails into a display form?
-//   // this can also be a 'for each' function?
-//   infowindow = new google.maps.InfoWindow({
-//         content: "this will be a html partial with the details of the request embedded into it?"
-//       });
-// };
+self.addRequestInfo = function(map, marker, request){
+  var infowindow = new google.maps.InfoWindow({
+        content: request.description
+      });
+      marker.addListener('click', function() {
+        infowindow.open(map, marker);
+      });
+};
+
+
 }]);
 
 }());
