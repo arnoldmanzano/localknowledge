@@ -39,7 +39,6 @@ gem 'sdoc', '~> 0.4.0', group: :doc
 # gem 'capistrano-rails', group: :development
 
 # gem 'sass', '3.2.19'
-# gem 'devise'
 gem 'bower-rails'
 # gem 'angular-rails-templates'
 
@@ -70,7 +69,6 @@ group :production, :staging do
 end
 
 group :test do
-  gem 'rspec-rails'
   gem 'capybara'
   gem 'capybara-angular'
   gem 'rspec-collection_matchers'
