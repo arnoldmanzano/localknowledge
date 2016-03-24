@@ -1,9 +1,9 @@
 class RequestsController < ApplicationController
 
   def index
-    @requests = Request.all
-
+    @requests = Request.where(["expiration > ?", Time.now])
   end
+
 
   def new
     @request = Request.new
@@ -48,7 +48,7 @@ class RequestsController < ApplicationController
   private
 
   def request_params
-    params.require(:request).permit(:location, :description)
+    params.require(:request).permit(:location, :description, :budget, :request_date)
   end
 
 end
