@@ -26,7 +26,21 @@
       });
     };
 
-
+    self.retrieveAllRequests= function() {
+      $http.get('/api_requests').then(function(response){
+        var requests = response.data;
+        console.log(requests);
+        for (var i = 0; i < requests.length; i++) {
+          var marker = new google.maps.Marker({
+            position: {lat: parseFloat(requests.lat), lng: parseFloat(requests.lng)},
+            map: LocationService.map,
+            title: requests.description,
+            animation: google.maps.Animation.DROP
+          });
+          console.log(marker);
+        }
+      });
+    };
   }]);
 
 }());
