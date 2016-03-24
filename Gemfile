@@ -15,6 +15,9 @@ gem 'coffee-rails', '~> 4.1.0'
 # See https://github.com/rails/execjs#readme for more supported runtimes
 # gem 'therubyracer', platforms: :ruby
 
+# Deletes expired posts through time-scheduled rake tasks
+gem 'whenever', :require => false
+
 # image uploading
 gem 'paperclip'
 # Use jquery as the JavaScript library
@@ -46,6 +49,7 @@ group :development, :test do
   gem 'rspec-rails'
   gem 'factory_girl_rails'
   gem 'capybara'
+  gem 'capybara-angular'
   gem 'database_cleaner'
   gem 'selenium-webdriver'
 end
@@ -66,8 +70,6 @@ group :production, :staging do
 end
 
 group :test do
-  gem 'capybara'
-  gem 'capybara-angular'
   gem 'rspec-collection_matchers'
   gem 'poltergeist'
   gem 'shoulda'

@@ -1,9 +1,9 @@
 class RequestsController < ApplicationController
 
   def index
-    requests = Request.all
-    render json: requests.to_json
+    @requests = Request.where(["expiration > ?", Time.now])
   end
+
 
   def new
     @request = Request.new
@@ -19,19 +19,36 @@ class RequestsController < ApplicationController
     end
   end
 
+  def edit
+    @request = Request.find(params[:id])
+  end
+
+  def update
+    @request = Request.find(params[:id])
+    if @request.user_id == current_user.id
+      @request.update(request_params)
+      flash[:notice] = 'Request updated successfully'
+    else
+      flash[:alert] = 'Only owner can update request'
+    end
+    redirect_to requests_path
+  end
+
   def destroy
     @request = Request.find(params[:id])
     if @request.user_id == current_user.id
       @request.destroy
       flash[:notice] = 'Request deleted successfully'
     else
-      flash[:notice] = 'Only owner can delete request'
+      flash[:alert] = 'Only owner can delete request'
     end
     redirect_to requests_path
   end
 
+  private
+
   def request_params
-    params.require(:request).permit(:location, :description)
+    params.require(:request).permit(:location, :description, :budget, :request_date)
   end
 
 end

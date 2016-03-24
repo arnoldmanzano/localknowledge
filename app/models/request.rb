@@ -10,11 +10,11 @@ class Request < ActiveRecord::Base
   end
 
   def set_expiration_date
-    self.expiration =  Date.today + 5.days
-  end
-
-  def find_request_user(user_id)
-    @username = User.find(user_id).username
+    if self.replies.any?
+      self.expiration =  Date.today + 1000.days
+    else
+      self.expiration =  Date.today + 5.days
+    end
   end
 
 end
