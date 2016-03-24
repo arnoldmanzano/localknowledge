@@ -23,6 +23,14 @@ class RepliesController < ApplicationController
     end
   end
 
+  def choose
+    @request = Request.find(params[:request_id])
+    @reply = Reply.find(params[:id])
+    @reply.set_chosen
+    redirect_to requests_path
+    flash[:notice] = 'Reply chosen'
+  end
+
   def edit
     @request = Request.find(params[:request_id])
     @reply = Reply.find(params[:id])
