@@ -3,10 +3,10 @@
   <%= f.text_field :meeting_point %>
   <br></br>
   <%= f.label :duration %>
-  <%= f.text_field :duration %>
+  <%= f.number_field :duration, min: 0 %> hrs
   <br></br>
   <%= f.label :cost %>
-  <%= f.text_field :cost %>
+  £<%= f.number_field :cost, min: 0 %>
   <br></br>
   <%= f.label :stopoffs %>
   <%= f.text_area :stopoffs %>

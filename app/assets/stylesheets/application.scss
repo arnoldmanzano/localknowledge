@@ -26,7 +26,24 @@
   img {
     width: 50px;
     height: 50px;
+    border-radius: 100%;
   }
+}
+
+.request-block {
+  border: 1px solid #e5e5e5;
+  border-radius: .25rem;
+  // background-color: #333;
+  // color: #fff;
+  margin: 20px 10px;
+  display: flex;
+  li {
+    list-style-type: none;
+  }
+}
+
+.reply-block {
+  @extend .request-block;
 }
 
 .alert {
