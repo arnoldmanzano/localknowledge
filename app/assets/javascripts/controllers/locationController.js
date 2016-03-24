@@ -28,9 +28,6 @@
         var url = 'http://maps.google.com/maps/api/geocode/json?address=' + self.requests[0].location + '&sensor=false';
 
         $http.get(url).then(function(response) {
-          // console.log(response);
-          // console.log(response.data.results[0].geometry.location);
-          // console.log(LocationService.coordinates);
           var marker = new google.maps.Marker({
             position: response.data.results[0].geometry.location,
             map: map,
