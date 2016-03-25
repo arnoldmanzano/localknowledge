@@ -3,10 +3,11 @@
 
   angular
     .module('LocalKnowledgeApp')
-    .service('MarkersService', ['LocationService', '$http', function(LocationService, $http) {
+    .service('MarkersService', ['LocationService', '$http', '$rootScope', '$q', function(LocationService, $http, $rootScope, $q) {
 
     var self = this;
     var map;
+
 
     self.placeCurrentRequestMarker = function(request){
       map = LocationService.map;
@@ -62,13 +63,14 @@
                       '<p>e-mail:'+ user.email+'</p>'+
                     '</div>' +
                   '</div>';
-
-
       var infowindow = new google.maps.InfoWindow({
             content: contentString
           });
           marker.addListener('click', function() {
             infowindow.open(map, marker);
+            $rootScope.$broadcast("requestMarkerClicked", {
+              data: request
+            });
           });
         };
 
