@@ -2,11 +2,10 @@
   <div class="row">
     <div class="col-sm-4">
       <div class="card">
-        <img class="card-img-top img-responsive" src="https://maps.googleapis.com/maps/api/staticmap?zoom=13&size=300x200&maptype=roadmap&center=london" alt="Card image cap">
+        <img class="card-img-top img-responsive" src="https://maps.googleapis.com/maps/api/staticmap?zoom=13&size=300x200&maptype=roadmap&center=<%=request.location%>" alt="Card image cap">
         <div class='card-block'>
           <h3 class='card-title'><%= request.location %></h4>
-          <div class="round-image-50"><%= image_tag(request.user.avatar.url(:thumb)) %></div>
-          <h5 class='card-title'><%= request.user.username %></h5>
+          <h5 class='card-title'><%= request.user.username %><span class="round-image-50"> <%= image_tag(request.user.avatar.url(:thumb)) %></span></h5>
           <p class="card-text">Details: <%= request.description %></p>
           <p class="card-text">Budget: <%= request.budget %></p>
           <p class="card-text">Requested date: <%= request.request_date %></p>
@@ -24,15 +23,13 @@
     <% request.replies.each.with_index(1) do |reply, index| %>
       <div class="col-sm-8">
         <div class="card">
-          <img class="card-img-top img-responsive" src="https://maps.googleapis.com/maps/api/staticmap?zoom=13&size=300x200&maptype=roadmap&center=london" alt="Card image cap">
           <div class='card-block'>
-            <div class="round-image-50"><%= image_tag(reply.user.avatar.url(:thumb)) %></div>
-            <%= reply.user.username %>
-            <li> Duration: <%= reply.duration %> hours</li>
-            <li> Cost: £<%= reply.cost %></li>
-            <li> Description: <%= reply.description %></li>
-            <li> Meeting point: <%= reply.meeting_point %></li>
-            <li> Stopoffs: <%= reply.stopoffs %></li>
+            <h5 class='card-title'><span class="round-image-50"><%= image_tag(reply.user.avatar.url(:thumb)) %></span> <%= reply.user.username %></h5>
+            <p class='card-text'>Duration: <%= reply.duration %> hours</p>
+            <p class='card-text'>Cost: £<%= reply.cost %></p>
+            <p class='card-text'>Description: <%= reply.description %></p>
+            <p class='card-text'>Meeting point: <%= reply.meeting_point %></p>
+            <p class='card-text'>Stopoffs: <%= reply.stopoffs %></p>
             <% if reply.user == current_user %>
               <%= link_to 'Update', edit_request_reply_path(request, reply) %>
               <%= link_to 'Delete', request_reply_path(request, reply), method: :delete %>
