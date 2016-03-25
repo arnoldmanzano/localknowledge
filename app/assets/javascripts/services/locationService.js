@@ -25,7 +25,7 @@
       });
       geocoder = new google.maps.Geocoder();
       self.map = map;
-      console.log("init map completed");
+      // console.log("init map completed");
     };
 
     self.lookupCoords = function(location) {

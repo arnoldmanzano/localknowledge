@@ -3,7 +3,7 @@
 
   angular
     .module('LocalKnowledgeApp')
-    .controller('MapController', ['LocationService', '$http', 'RequestService', function(LocationService, $http, RequestService) {
+    .controller('MapController', ['LocationService', '$http', 'MarkersService', function(LocationService, $http, MarkersService) {
 
     var self = this;
 
@@ -12,7 +12,7 @@
       LocationService.getCurrentLocation(function(resource) {
         self.userLocationArea = resource;
         LocationService.initMap();
-        RequestService.retrieveAllRequests();
+        MarkersService.retrieveAllRequests();
       });
       console.log("get location finished");
     };

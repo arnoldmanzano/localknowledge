@@ -2,7 +2,7 @@
   <div class="modal-dialog">
 
     <!-- Modal content-->
-    <div class="modal-content">
+    <div class="modal-content" >
       <div class="modal-header">
         <button type="button" class="close" data-dismiss="modal">&times;</button>
         <h4 class="modal-title">Request a tour from a local</h4>
@@ -25,12 +25,12 @@
             <label for="description">Description</label>
             <textarea class="form-control" rows="4" id="description" ng-model="request.description" placeholder="What do you want to do?"></textarea>
           </div>
-          <input type="submit" ng-click="r.update(request)" class="btn btn-default" value="Submit">
+          <input type="submit" ng-click="r.update(request)" class="btn btn-default" value="Submit" data-dismiss="modal">
         </form>
       </div>
-      <div class="modal-footer">
-        <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
-      </div>
+      <!-- <div class="modal-footer">
+        <button type="button" class="btn btn-default" >Close</button>
+      </div> -->
     </div>
 
   </div>

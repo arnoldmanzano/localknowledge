@@ -6,7 +6,6 @@
     .controller('RequestController', ['LocationService', '$http', function(LocationService, $http) {
 
     var self = this;
-    // var map = LocationService.map;
 
     self.master = {};
 
@@ -16,11 +15,11 @@
         request.lat = coords.lat;
         request.lng = coords.lng;
         self.master = angular.copy(request);
-        self.postRequests(self.master);
+        self.postRequest(self.master);
       });
     };
 
-    self.postRequests = function(data) {
+    self.postRequest = function(data) {
       console.log(data);
       $http.post('/requests', data).success(function(data, status) {
         console.log('success');
