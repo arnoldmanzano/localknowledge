@@ -11,11 +11,9 @@ class RequestsController < ApplicationController
   end
 
   def create
-
-    @request = Request.new(request_params)
-    flash[:notice] = 'User was successfully created.' if @request.save
+    @request = current_user.requests.new(request_params)
+    flash[:notice] = 'Your request has been successfully submitted.' if @request.save
     respond_with(@request)
-
   end
 
   def edit
