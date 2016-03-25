@@ -44,9 +44,7 @@
 
     self.addRequestMarkerInfo = function(map, marker, request){
       var infowindow = new google.maps.InfoWindow({
-            content: request.description + '</br>' +
-            '<a href="https://localhost:3000/1/replies/new">' +
-            'Hardcoded example</a>'
+            content: request.description
           });
           marker.addListener('click', function() {
             infowindow.open(map, marker);

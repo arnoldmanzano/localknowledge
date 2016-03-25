@@ -31,7 +31,9 @@
     self.openClickedRequestInfo = function(requestData){
       self.clickedRequest = requestData.data;
       self.isInfoOpen = true;
+      debugger;
       $scope.$digest();
+      LocationService.centerMapOnAddress(self.clickedRequest.location)
     };
 
     $scope.$on("requestMarkerClicked", function(event, data){
