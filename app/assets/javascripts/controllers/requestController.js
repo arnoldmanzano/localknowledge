@@ -8,6 +8,7 @@
     var self = this;
     var isInfoOpen = false;
     var clickedRequest = {};
+    var requestUser = {};
 
     self.master = {};
 
@@ -29,11 +30,17 @@
     };
 
     self.openClickedRequestInfo = function(requestData){
-      self.clickedRequest = requestData.data;
       self.isInfoOpen = true;
-      debugger;
+      self.clickedRequest = requestData.data.request;
+      self.requestUser = requestData.data.user;
+      console.log(requestData);
       $scope.$digest();
-      LocationService.centerMapOnAddress(self.clickedRequest.location)
+      LocationService.centerMapOnAddress(self.clickedRequest.location);
+    };
+
+    self.closeClickedRequestInfo = function(){
+      self.isInfoOpen = false;
+      console.log(self.isInfoOpen);
     };
 
     $scope.$on("requestMarkerClicked", function(event, data){

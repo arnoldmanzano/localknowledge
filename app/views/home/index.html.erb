@@ -4,12 +4,13 @@
 
     <section ng-controller="RequestController as r">
         <%= render "modal_request.html.erb" %>
-      <aside class="request-info-box" ng-show="r.isInfoOpen">
-        <%= render "single_request_info.html.erb" %>
-      </aside>
-    </section>
+        <aside class="request-info-box" ng-show="r.isInfoOpen" ng-click="r.closeClickedRequestInfo">
+          <%= render "single_request_info.html.erb" %>
+        </aside></div>
+      </section>
 
-    <div id="map"></div>
+
+    <div id="map">
 
   </div>
 </div>
