@@ -3,7 +3,7 @@
 
   angular
     .module('LocalKnowledgeApp')
-    .service('LocationService', ['$resource', '$window', function($resource, $window) {
+    .service('LocationService', ['$resource', '$window', 'MapsStylesService', function($resource, $window, MapsStylesService) {
 
     var self = this;
     var geolocation = $window.navigator.geolocation;
@@ -20,10 +20,17 @@
 
     self.initMap = function() {
       map = new google.maps.Map(document.getElementById('map'), {
-        center: self.coordinates, zoom: 10
+        center: self.coordinates,
+        zoom: 15,
+        mapTypeControlOptions: {
+          mapTypeIds: [google.maps.MapTypeId.ROADMAP, 'map_style']
+        }
       });
       geocoder = new google.maps.Geocoder();
       self.map = map;
+      MapsStylesService.createStyledMap();
+      map.mapTypes.set('map_style', MapsStylesService.madColorsMapStyle);
+      map.setMapTypeId('map_style');
     };
 
     self.lookupCoords = function(location) {
