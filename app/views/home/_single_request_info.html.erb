@@ -1,7 +1,13 @@
+<img class="img-circle" src="{{r.requestUser.avatar_url}}" alt="Profile picture">
+<h3> <b>{{r.requestUser.f_name}}</b><br>
+  is looking to do something in <br>
+  <b> {{ r.clickedRequest.location }} </b>
+  on <br>
+  <b> WIll have data binding for requested date {{r.clickedRequest.requested_date}}</b>
+</h3></br>
 
-<h1> {{ r.clickedRequest.description}}</h1>
-  <li> Request for a tour in: {{ r.clickedRequest.location }}</li>
-  <li> Budget: {{r.clickedRequest.budget}}</li>
-  <li> Requested date: {{r.clickedRequest.requested_date}}</li>
-  <li> Duration: Still needs to be added into rails and angular form</li>
+<h4> Other details to bear in mind: </h4>
+  <li> {{r.requestUser.f_name}} has <b> £{{r.clickedRequest.budget}}</b> to spend</li>
+  <li> {{r.requestUser.f_name}} only has X amount of time (Still needs to be added into rails and angular form)</li>
+<h3> Think you can help <b>{{r.requestUser.f_name}}</b> ? </h3>
   <a href="https://localhost:3000/{{r.clickedRequest.id}}/replies/new"> Reply </a>

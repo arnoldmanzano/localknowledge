@@ -69,7 +69,7 @@
           marker.addListener('click', function() {
             infowindow.open(map, marker);
             $rootScope.$broadcast("requestMarkerClicked", {
-              data: request
+              data: {request: request, user: user}
             });
           });
         };
