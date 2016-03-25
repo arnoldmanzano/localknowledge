@@ -10,4 +10,10 @@
   <li> {{r.requestUser.f_name}} has <b> £{{r.clickedRequest.budget}}</b> to spend</li>
   <li> {{r.requestUser.f_name}} only has X amount of time (Still needs to be added into rails and angular form)</li>
 <h3> Think you can help <b>{{r.requestUser.f_name}}</b> ? </h3>
-  <a href="https://localhost:3000/{{r.clickedRequest.id}}/replies/new"> Reply </a>
+<form class="button-dashboard">
+  <span class="shadow">
+    <input class="btn btn-default" type="submit" ng-click="r.toggleResponseForm" value="Reply to {{r.requestUser.f_name}}'s request"></input>
+    <input class="btn btn-default" type="submit" ng-click="r.toggleUserInfo" value="Find out more about {{r.requestUser.f_name}}"></input>
+    </span>
+</form>
+<aside ng-show="r.isUserInfoOpen" class="requested-user-info"> Some stuff </aside>

@@ -43,6 +43,10 @@
       console.log(self.isInfoOpen);
     };
 
+    self.toggleUserInfo = function(){
+      self.isUserInfoOpen = !self.isUserInfoOpen;
+    };
+
     $scope.$on("requestMarkerClicked", function(event, data){
       self.openClickedRequestInfo(data);
     });
