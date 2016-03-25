@@ -1,14 +1,10 @@
-<div class="container-fluid" ng-app="LocalKnowledgeApp">
-  <div class="panel panel-success">
-    <div class="panel-heading">
-      <h1 ng-if="name">Hello, {{name}}</h1>
-    </div>
-    <div class="panel-body">
-      <form class="form-inline">
-        <div class="form-group">
-          <input class="form-control" type="text" placeholder="Enter your name" autofocus ng-model="name">
-        </div>
-      </form>
-    </div>
+<div class="container-fluid">
+  <div ng-controller="MapController as map">
+    <h1>{{map.userLocationArea.results[0].formatted_address}}</h1>
+
+    <%= render "modal_request.html.erb" %>
+
+    <div id="map"></div>
+
   </div>
 </div>

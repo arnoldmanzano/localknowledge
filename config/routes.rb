@@ -8,7 +8,7 @@ Rails.application.routes.draw do
     root 'home#index'
 
 
-
+  get 'api_requests' => 'requests#api_requests'
   # Example of regular route:
   #   get 'products/:id' => 'catalog#view'
 
@@ -19,6 +19,7 @@ Rails.application.routes.draw do
   resources :requests do
     resources :replies
   end
+
 
   # Example resource route with options:
   #   resources :products do

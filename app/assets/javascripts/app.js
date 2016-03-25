@@ -1,1 +1,7 @@
-var LocalKnowledgeApp = angular.module('LocalKnowledgeApp',[]);
+(function() {
+  'use strict';
+
+  angular
+    .module('LocalKnowledgeApp', ['ngResource']);
+
+}());
