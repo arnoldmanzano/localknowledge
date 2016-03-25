@@ -2,7 +2,13 @@
   <div ng-controller="MapController as map">
     <h1>{{map.userLocationArea.results[0].formatted_address}}</h1>
 
-    <%= render "modal_request.html.erb" %>
+    <section ng-controller="RequestController as r">
+        <%= render "modal_request.html.erb" %>
+        <aside class="request-info-box" ng-show="r.isInfoOpen" ng-click="r.closeClickedRequestInfo">
+          <%= render "single_request_info.html.erb" %>
+        </aside>
+      </section>
+
 
     <div id="map"></div>
 

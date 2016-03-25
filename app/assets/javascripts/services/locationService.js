@@ -50,5 +50,9 @@
        });
     };
 
+    // self.centerMapOnCoords = function(lat, lng) {
+    //   map.setCenter({lat: lat, lng: lng});
+    // };
+
   }]);
 }());
