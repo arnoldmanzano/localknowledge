@@ -3,10 +3,11 @@
 
   angular
     .module('LocalKnowledgeApp')
-    .controller('RequestController', ['LocationService', 'MarkersService', '$http', function(LocationService, MarkersService, $http) {
+    .controller('RequestController', ['LocationService', 'MarkersService', '$http', '$scope', function(LocationService, MarkersService, $http, $scope) {
 
     var self = this;
-    var isInfoOpen = MarkersService.isRequestInfoOpen;
+    var isInfoOpen;
+    var clickedRequest;
 
     self.master = {};
 
@@ -26,6 +27,17 @@
         console.log('success');
       });
     };
+
+    self.openClickedRequestInfo = function(requestData){
+      self.clickedRequest = requestData.data;
+      self.isInfoOpen = true;
+      console.log(self.clickedRequest);
+    };
+
+    $scope.$on("requestMarkerClicked", function(event, data){
+      self.openClickedRequestInfo(data);
+    });
+
 
   }]);
 
