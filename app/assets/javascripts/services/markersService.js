@@ -10,12 +10,16 @@
 
     self.placeCurrentRequestMarker = function(request){
       map = LocationService.map;
-      var marker = new google.maps.Marker({
-        position: {lat: parseFloat(request.lat), lng: parseFloat(request.lng)},
-        map: map,
-        animation: google.maps.Animation.DROP
+      var current_user;
+      $http.get('/api/c_user').then(function(response){
+        current_user = response.data;
+        var marker = new google.maps.Marker({
+          position: {lat: parseFloat(request.lat), lng: parseFloat(request.lng)},
+          map: map,
+          animation: google.maps.Animation.DROP
+        });
+        self.addRequestMarkerInfo(map, marker, request, current_user);
       });
-      self.addRequestMarkerInfo(map, marker, request);
     };
 
 
@@ -46,10 +50,12 @@
 
     self.addRequestMarkerInfo = function(map, marker, request, user){
 
+
       var contentString = '<div id="content">'+
      '<div id="siteNotice">'+
      '</div>'+
-     '<h1 id="firstHeading" class="firstHeading">'+ user.email +'</h1>'+
+     '<h1 id="firstHeading" class="firstHeading">'+
+     '<img class="img-circle pull-left" src='+ user.avatar_url +'/></h1>'+
      '<div id="bodyContent">'+
      '<p>' + request.description + '</p>'+
      '<p><a href="">'+ 'Reply'+ '</a> '+ '</p>'+

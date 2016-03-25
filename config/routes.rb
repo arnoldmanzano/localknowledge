@@ -8,6 +8,7 @@ Rails.application.routes.draw do
   root 'home#index'
 
   get 'api/users' => 'users#index'
+  get 'api/c_user' => 'users#c_user'
   get 'api/requests' => 'requests#api_requests'
   # Example of regular route:
   #   get 'products/:id' => 'catalog#view'
