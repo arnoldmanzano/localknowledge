@@ -6,8 +6,8 @@
     .controller('RequestController', ['LocationService', 'MarkersService', '$http', '$scope', function(LocationService, MarkersService, $http, $scope) {
 
     var self = this;
-    var isInfoOpen;
-    var clickedRequest;
+    var isInfoOpen = false;
+    var clickedRequest = {};
 
     self.master = {};
 
@@ -32,6 +32,7 @@
       self.clickedRequest = requestData.data;
       self.isInfoOpen = true;
       console.log(self.clickedRequest);
+      $scope.$digest();
     };
 
     $scope.$on("requestMarkerClicked", function(event, data){
