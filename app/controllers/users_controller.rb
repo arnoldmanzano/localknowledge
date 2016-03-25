@@ -7,7 +7,7 @@ class UsersController < ApplicationController
   def c_user
     if current_user
       c_user = User.find(current_user.id)
-      render json: c_user.to_json(only: [:id,:fname,:lname,:username], methods: [:avatar_url])
+      render json: c_user.to_json(methods: [:avatar_url])
     else
       flash[:alert] = 'Please sign in '
       redirect_to '/'
