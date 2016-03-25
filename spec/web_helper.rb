@@ -23,7 +23,7 @@ end
 
 def request_tour
   click_link 'Request a tour'
-  fill_in :'request[location]', with: 'London'
-  fill_in :'request[description]', with: 'great times wanted'
+  fill_in :location, with: 'London'
+  fill_in :description, with: 'great times wanted'
   click_button 'Submit'
 end

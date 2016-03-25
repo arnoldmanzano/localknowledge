@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20160324151947) do
+ActiveRecord::Schema.define(version: 20160324181211) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -40,6 +40,8 @@ ActiveRecord::Schema.define(version: 20160324151947) do
     t.date     "expiration"
     t.integer  "budget"
     t.datetime "request_date"
+    t.string   "lat"
+    t.string   "lng"
   end
 
   add_index "requests", ["user_id"], name: "index_requests_on_user_id", using: :btree
