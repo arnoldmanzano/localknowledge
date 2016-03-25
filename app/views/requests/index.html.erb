@@ -1,8 +1,10 @@
+<div class="container comment-list">
+
 <% @requests.each do |request| %>
   <div class="row">
     <div class="col-sm-4">
       <div class="card">
-        <img class="card-img-top img-responsive" src="https://maps.googleapis.com/maps/api/staticmap?zoom=13&size=300x200&maptype=roadmap&center=<%=request.location%>" alt="Card image cap">
+        <img class="card-img-top img-responsive" src="https://maps.googleapis.com/maps/api/staticmap?zoom=13&size=300x125&maptype=roadmap&center=<%=request.location%>" alt="Card image cap">
         <div class='card-block'>
           <h3 class='card-title'><%= request.location %></h4>
           <h5 class='card-title'><%= request.user.username %><span class="round-image-50"> <%= image_tag(request.user.avatar.url(:thumb)) %></span></h5>
@@ -21,9 +23,9 @@
     </div>
 
     <% request.replies.each.with_index(1) do |reply, index| %>
-      <div class="col-sm-8">
-        <div class="card">
-          <div class='card-block'>
+      <div class="col-md-8 col-sm-8">
+        <div class="panel panel-default arrow left">
+          <div class='panel-body'>
             <h5 class='card-title'><span class="round-image-50"><%= image_tag(reply.user.avatar.url(:thumb)) %></span> <%= reply.user.username %></h5>
             <p class='card-text'>Duration: <%= reply.duration %> hours</p>
             <p class='card-text'>Cost: £<%= reply.cost %></p>
@@ -41,3 +43,5 @@
 
   </div>
 <% end %>
+
+</div>

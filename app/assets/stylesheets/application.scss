@@ -16,6 +16,7 @@
  @import "bootstrap-sass-official/assets/stylesheets/bootstrap-sprockets";
  @import "bootstrap-sass-official/assets/stylesheets/bootstrap";
  @import "cards";
+ @import "arrows";
  // @import "bootstrap/dist/css/bootstrap";
 
 #map {
@@ -55,6 +56,24 @@
   padding: 7px 9px;
 }
 
-.navbar-collapse {
-  background-color: rgb(224, 230, 255);
+$header-color: rgb(18, 86, 136);
+$header-text: rgb(250, 250, 250);
+
+@mixin navlinks {
+  background-color: $header-text;
+  color: $header-color;
+}
+
+.navbar {
+  background-color: $header-color;
+  margin-bottom: 0;
+}
+
+.navbar .navbar-nav li a, .navbar-default .navbar-brand {
+  color: $header-text;
+}
+.navbar .navbar-nav li, .navbar-default .navbar-brand {
+  &:hover, &:focus {
+    @include navlinks;
+  }
 }

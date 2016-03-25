@@ -9,13 +9,11 @@
 </head>
 <body ng-app="LocalKnowledgeApp">
 
-  <%= render "layouts/header" %>
+  <%= render "layouts/header" if controller_name != 'home' %>
 
   <%= flash_messages %>
 
-  <div class="container">
     <%= yield %>
-  </div>
 
 </body>
 </html>
