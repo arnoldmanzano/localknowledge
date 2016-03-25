@@ -31,7 +31,6 @@
     self.openClickedRequestInfo = function(requestData){
       self.clickedRequest = requestData.data;
       self.isInfoOpen = true;
-      console.log(self.clickedRequest);
       $scope.$digest();
     };
 

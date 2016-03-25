@@ -47,17 +47,12 @@
             content: request.description + '</br>' +
             '<a href="https://localhost:3000/1/replies/new">' +
             'Hardcoded example</a>'
-
           });
           marker.addListener('click', function() {
             infowindow.open(map, marker);
-            // self.clickedRequest = request;
             $rootScope.$broadcast("requestMarkerClicked", {
               data: request
             });
-            console.log(request);
-            // self.isRequestInfoOpen = true;
-            // console.log(self.isRequestInfoOpen);
           });
         };
 
