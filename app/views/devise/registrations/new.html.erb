@@ -3,49 +3,8 @@
 <div class="col-md-6">
 <h2>Sign up</h2>
 
-<%= form_for(resource, as: resource_name, url: registration_path(resource_name)) do |f| %>
-  <%= devise_error_messages! %>
+<%= render "form" %>
 
-  <div class="form-group">
-    <%= f.label :avatar, class: 'col-sm-2 control-label'  %><br />
-    <div class="col-sm-6">
-      <%= f.file_field :avatar %>
-    </div>
-  </div>
-  <br />
-
-  <fieldset class="form-group">
-    <%= f.text_field :f_name, autofocus: true, class: 'form-control', placeholder: 'First name' %>
-  </fieldset>
-
-  <fieldset class="form-group">
-    <%= f.text_field :l_name, class: 'form-control', placeholder: 'Last name' %>
-  </fieldset>
-
-  <fieldset class="form-group">
-    <%= f.text_field :username, class: 'form-control', placeholder: 'Username' %>
-  </fieldset>
-
-  <fieldset class="form-group">
-    <%= f.text_field :postcode, class: 'form-control', placeholder: 'Postcode' %>
-  </fieldset>
-
-  <fieldset class="form-group">
-    <%= f.email_field :email, class: 'form-control', placeholder: 'Email address' %>
-  </fieldset>
-  <fieldset class="form-group">
-    <%= f.password_field :password, autocomplete: "off", class: 'form-control', placeholder: 'Password' %>
-  </fieldset>
-
-  <fieldset class="form-group">
-    <%= f.password_field :password_confirmation, autocomplete: "off", class: 'form-control', placeholder: 'Confirm Password' %>
-  </fieldset>
-
-  <div class="actions">
-    <%= f.submit "Sign up", class: 'btn btn-primary' %>
-  </div>
-<% end %>
-<%= render "devise/shared/links" %>
 </div>
 
 <div class="col-md-3"></div>

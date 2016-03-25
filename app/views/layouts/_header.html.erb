@@ -11,6 +11,10 @@
      <% else %>
       <li><a href="#" data-toggle="modal" data-target="#loginModal">Login</a></li>
       <li><a href="#" data-toggle="modal" data-target="#signUpModal">Sign Up</a></li>
+
+      <%= render "devise/sessions/login" %>
+      <%= render "devise/registrations/signup" if controller_name != 'registrations' %>
+
      <% end %>
   </ul>
 </div>

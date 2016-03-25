@@ -10,12 +10,13 @@
  * defined in the other CSS/SCSS files in this directory. It is generally better to create a new
  * file per style scope.
  *
- *= require_tree .
- *= require_self
  */
 
+ @import "cover";
  @import "bootstrap-sass-official/assets/stylesheets/bootstrap-sprockets";
  @import "bootstrap-sass-official/assets/stylesheets/bootstrap";
+ @import "cards";
+ // @import "bootstrap/dist/css/bootstrap";
 
 #map {
   width: 100%;
@@ -31,11 +32,6 @@
 }
 
 .request-block {
-  border: 1px solid #e5e5e5;
-  border-radius: .25rem;
-  // background-color: #333;
-  // color: #fff;
-  margin: 20px 10px;
   display: flex;
   li {
     list-style-type: none;

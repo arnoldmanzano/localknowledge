@@ -9,7 +9,7 @@ feature 'Making a request for a tour' do
 
   it '-> allows the user to make a tour request' do
     visit('/requests')
-    expect(page).to have_content('Request for a tour in: London')
+    expect(page).to have_content('London')
     expect(page).to have_content('Details: great times wanted')
   end
 
@@ -37,7 +37,7 @@ feature 'Making a request for a tour' do
     fill_in :'request[location]', with: 'Essex'
     fill_in :'request[description]', with: 'bad times wanted'
     click_button 'Submit'
-    expect(page).to have_content('Request for a tour in: Essex')
+    expect(page).to have_content('Essex')
     expect(page).to have_content('Details: bad times wanted')
     expect(page).to have_content('Request updated successfully')
   end

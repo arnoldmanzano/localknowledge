@@ -37,7 +37,7 @@
       });
     };
 
-    self.getLocation();
+    // self.getLocation();
 
   }]);
 }());
