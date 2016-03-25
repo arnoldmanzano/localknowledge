@@ -3,7 +3,7 @@
 
   angular
     .module('LocalKnowledgeApp')
-    .controller('RequestController', ['LocationService', '$http', function(LocationService, $http) {
+    .controller('RequestController', ['LocationService', 'MarkersService', '$http', function(LocationService, MarkersService, $http) {
 
     var self = this;
 
@@ -16,6 +16,7 @@
         request.lng = coords.lng;
         self.master = angular.copy(request);
         self.postRequest(self.master);
+        MarkersService.placeCurrentRequestMarker(request);
       });
     };
 

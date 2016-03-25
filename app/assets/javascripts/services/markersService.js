@@ -8,9 +8,16 @@
 var self = this;
 var map;
 
-// self.placeCurrentRequestMarker = function(){
-//
-// }
+self.placeCurrentRequestMarker = function(request){
+  map = LocationService.map;
+  var marker = new google.maps.Marker({
+    position: {lat: parseFloat(request.lat), lng: parseFloat(request.lng)},
+    map: map,
+    animation: google.maps.Animation.DROP
+  });
+  self.addRequestMarkerInfo(map, marker, request);
+};
+
 
 self.retrieveAllRequests = function (callback) {
   map = LocationService.map;
