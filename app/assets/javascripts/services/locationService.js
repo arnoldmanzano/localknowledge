@@ -19,13 +19,11 @@
     };
 
     self.initMap = function() {
-      console.log("initMap started");
       map = new google.maps.Map(document.getElementById('map'), {
         center: self.coordinates, zoom: 10
       });
       geocoder = new google.maps.Geocoder();
       self.map = map;
-      // console.log("init map completed");
     };
 
     self.lookupCoords = function(location) {
