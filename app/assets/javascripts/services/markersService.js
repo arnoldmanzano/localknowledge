@@ -7,6 +7,8 @@
 
     var self = this;
     var map;
+    var isRequestInfoOpen = false;
+    var clickedRequest;
 
     self.placeCurrentRequestMarker = function(request){
       map = LocationService.map;
@@ -43,12 +45,16 @@
     self.addRequestMarkerInfo = function(map, marker, request){
       // var template = require('../../views/replies/new.html.erb');
       var infowindow = new google.maps.InfoWindow({
-            content: request.description
+            content: request.description + '</br>' +
+            '<a href="https://localhost:3000/1/replies/new">' +
+            'Hardcoded example</a>'
             // request.description
             // string of .html
           });
           marker.addListener('click', function() {
             infowindow.open(map, marker);
+            clickedRequest = request;
+            isRequestInfoOpen = true;
           });
         };
 
