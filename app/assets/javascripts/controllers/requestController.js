@@ -6,7 +6,6 @@
     .controller('RequestController', ['LocationService', 'MarkersService', '$http', function(LocationService, MarkersService, $http) {
 
     var self = this;
-    var isInfoOpen = MarkersService.isRequestInfoOpen;
 
     self.master = {};
 
