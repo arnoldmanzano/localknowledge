@@ -55,7 +55,7 @@
      '<div id="siteNotice">'+
      '</div>'+
      '<h1 id="firstHeading" class="firstHeading">'+
-     '<img class="img-circle pull-left" src='+ user.avatar_url +'/></h1>'+
+     '<img class="img-circle" src='+ user.avatar_url +'/></h1>'+
      '<div id="bodyContent">'+
      '<p>' + request.description + '</p>'+
      '<p><a href="">'+ 'Reply'+ '</a> '+ '</p>'+
