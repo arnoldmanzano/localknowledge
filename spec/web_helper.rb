@@ -18,11 +18,6 @@ def reply_to_request
   fill_in :'reply[cost]', with: 20
   fill_in :'reply[stopoffs]', with: 'city gates, gastropub'
   fill_in :'reply[description]', with: 'A fun history tour'
-  # fill_in :reply_meeting_point, with: 'London'
-  # fill_in :reply_duration, with: 2
-  # fill_in :reply_cost, with: 20
-  # fill_in :reply_stopoffs, with: 'city gates, gastropub'
-  # fill_in :reply_description, with: 'A fun history tour'
   click_button 'Reply'
 end
 
