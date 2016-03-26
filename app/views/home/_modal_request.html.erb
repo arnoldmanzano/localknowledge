@@ -1,6 +1,5 @@
 <div id="myModal" class="modal fade" role="dialog">
   <div class="modal-dialog">
-
     <!-- Modal content-->
     <div class="modal-content" >
       <div class="modal-header">
@@ -11,7 +10,7 @@
         <form>
           <div class="form-group">
             <label for="location">Location</label>
-            <input type="text" class="form-control" id="location" ng-model="request.location" placeholder="Where do you want to go?">
+            <input type="text" class="form-control" name="location" id="location" ng-model="request.location" placeholder="Where do you want to go?">
           </div>
           <div class="form-group">
             <label for="budget">Budget</label>
@@ -23,9 +22,9 @@
           </div>
           <div class="form-group">
             <label for="description">Description</label>
-            <textarea class="form-control" rows="4" id="description" ng-model="request.description" placeholder="What do you want to do?"></textarea>
+            <textarea class="form-control" rows="4" name="description" id="description" ng-model="request.description" placeholder="What do you want to do?"></textarea>
           </div>
-          <input type="submit" ng-click="r.update(request)" class="btn btn-default" value="Submit" data-dismiss="modal">
+          <button ng-click="r.update(request)" class="btn btn-default" data-dismiss="modal">Submit</button>
         </form>
       </div>
     </div>

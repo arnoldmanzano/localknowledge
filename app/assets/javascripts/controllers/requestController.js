@@ -26,6 +26,7 @@
     self.postRequest = function(data) {
       $http.post('/requests', data).success(function(data, status) {
         console.log('success');
+        self.success = true;
       });
     };
 
