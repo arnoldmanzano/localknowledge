@@ -5,14 +5,9 @@ class RequestsController < ApplicationController
     @requests = Request.where(["expiration > ?", Time.now])
   end
 
-  def api_requests
-    requests = Request.where(["expiration > ?", Time.now])
-    render json: requests.to_json
-  end
-
   def create
     @request = current_user.requests.new(request_params)
-    flash[:notice] = 'Request successfully created.' if @request.save
+    flash[:notice] = 'Your request has been successfully submitted.' if @request.save
     render json: @request.to_json
     # respond_with(@request)
   end
