@@ -25,7 +25,7 @@ feature 'Making a request for a tour', js:true do
 
   it '-> a user\'s request won\'t expire if it\'s been replied to' do
     click_link 'Logout'
-    signup(f_name: "Jimmy", l_name: "Hendrix", username: 'hendrix_fan', postcode: 'SW1 8AP', email: 'bobbybrown@aol.com', password: "password")
+    signup("Jimmy", "Hendrix", 'hendrix_fan', 'SW1 8AP', 'bobbybrown@aol.com', "password")
     visit('/requests')
     reply_to_request
     Timecop.travel(5.days.from_now)
@@ -49,7 +49,7 @@ feature 'Making a request for a tour', js:true do
 
   it ('-> only a user can update their own request') do
     click_link "Logout"
-    signup(f_name: "Jimmy", l_name: "Hendrix", username: 'hendrix_fan', postcode: 'SW1 8AP', email: 'bobbybrown@aol.com', password: "password")
+    signup("Jimmy",  "Hendrix", 'hendrix_fan', 'SW1 8AP', 'bobbybrown@aol.com', "password")
     visit('/requests')
     expect(page).to have_content('Request for a tour in: London')
     expect(page).to_not have_content('Update')
@@ -64,7 +64,7 @@ feature 'Making a request for a tour', js:true do
 
   it ('-> only a user can delete their own request') do
     click_link "Logout"
-    signup(f_name: "Jimmy", l_name: "Hendrix", username: 'hendrix_fan', postcode: 'SW1 8AP', email: 'bobbybrown@aol.com', password: "password")
+    signup("Jimmy", "Hendrix", 'hendrix_fan', 'SW1 8AP', 'bobbybrown@aol.com', "password")
     visit('/requests')
     expect(page).to_not have_content('Delete')
   end
