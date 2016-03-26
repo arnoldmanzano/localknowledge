@@ -13,6 +13,7 @@ class RepliesController < ApplicationController
     @reply = @request.build_request(reply_params, current_user)
     if @reply.save
       @request.set_expiration_date
+      @request.save
       redirect_to requests_path
     else
       if @reply.errors[:user]
