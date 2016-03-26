@@ -1,97 +1,19 @@
 require 'rails_helper'
 include Capybara::Angular::DSL
 
-# feature 'Making a request for a tour', js:true do
-#
-#   before(:each) do
-#     signup
-#     expect(page).to have_css('.gm-style')
-#     request_tour
-#     expect(page).to have_content('Request submitted')
-#   end
-#
-#   it '-> allows the user to make a tour request' do
-#     visit('/requests')
-#     expect(page).to have_content('Request for a tour in: London')
-#     expect(page).to have_content('Details: great times wanted')
-#   end
-#
-#   it '-> a user\'s request will expire after 5 days' do
-#     Timecop.travel(5.days.from_now)
-#     visit('/requests')
-#     expect(page).to_not have_content('Requested for a tour in: London')
-#     expect(page).to_not have_content('Details: great times wanted')
-#   end
-#
-#   it '-> a user\'s request won\'t expire if it\'s been replied to' do
-#     click_link 'Logout'
-#     signup("Jimmy", "Hendrix", 'hendrix_fan', 'SW1 8AP', 'bobbybrown@aol.com', "password")
-#     visit('/requests')
-#     reply_to_request
-#     Timecop.travel(5.days.from_now)
-#     visit('/requests')
-#     expect(page).to have_content('Duration: 2 hours')
-#     expect(page).to have_content('Cost: £20')
-#     expect(page).to have_content('Meeting point: London')
-#   end
-#
-#   it '-> users can update their requests' do
-#     visit('/requests')
-#     expect(page).to have_content('Request for a tour in: London')
-#     click_link 'Update'
-#     fill_in :'request[location]', with: 'Essex'
-#     fill_in :'request[description]', with: 'bad times wanted'
-#     click_button 'Submit'
-#     expect(page).to have_content('Request for a tour in: Essex')
-#     expect(page).to have_content('Details: bad times wanted')
-#     expect(page).to have_content('Request updated successfully')
-#   end
-#
-#   it ('-> only a user can update their own request') do
-#     click_link "Logout"
-#     signup("Jimmy",  "Hendrix", 'hendrix_fan', 'SW1 8AP', 'bobbybrown@aol.com', "password")
-#     visit('/requests')
-#     expect(page).to have_content('Request for a tour in: London')
-#     expect(page).to_not have_content('Update')
-#   end
-#
-#   it '-> users can delete their requests' do
-#     visit('/requests')
-#     click_link 'Delete'
-#     expect(page).to_not have_content('good times wanted')
-#     expect(page).to have_content('Request deleted successfully')
-#   end
-#
-#   it ('-> only a user can delete their own request') do
-#     click_link "Logout"
-#     signup("Jimmy", "Hendrix", 'hendrix_fan', 'SW1 8AP', 'bobbybrown@aol.com', "password")
-#     visit('/requests')
-#     expect(page).to_not have_content('Delete')
-#   end
-#
-# end
-
 feature 'Making a request for a tour', js:true do
 
-  # before(:each) do
-  #   signup
-  #   expect(page).to have_css('.gm-style')
-  #   request_tour
-  #   expect(page).to have_content('Request submitted')
-  #   click_link "Logout"
-  # end
+  context '===> accessing the form ' do
 
-  xcontext '===> accessing the form ' do
+    xcontext '===> when not logged in' do
 
-    context '===> when not logged in' do
-
-      it 'does not allow you to request a tour when not logged in' do
+      it ' -> does not allow you to request a tour when not logged in' do
         #CAN YOU REQUEST TOURS IF YOU HAVENT SIGNED UP?
         visit('/')
         expect(page).not_to have_content('Request a tour from a local')
       end
 
-      it 'does not allow you to see your requests when not logged in' do
+      it ' -> does not allow you to see your requests when not logged in' do
         visit('/')
         expect(page).not_to have_content('My requests')
       end
@@ -127,7 +49,7 @@ feature 'Making a request for a tour', js:true do
 
   end
 
-  context '===> filling in the form with validations' do
+  xcontext '===> filling in the form with validations' do
 
     before(:each) do
       signup
@@ -227,7 +149,7 @@ feature 'Making a request for a tour', js:true do
       expect(page).to have_content('Request deleted successfully')
     end
 
-    it ('-> only a user can delete their own request') do
+    it '-> only a user can delete their own request' do
       click_link "Logout"
       signup("Jimmy", "Hendrix", "hendrix_fan", "SW1 8AP", "bobbybrown@aol.com", "password")
       visit('/requests')

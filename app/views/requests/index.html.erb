@@ -4,7 +4,7 @@
       <li> Request for a tour in: <%= request.location %></li>
       <li> Details: <%= request.description %></li>
       <li> Budget: <%= request.budget %></li>
-      <li> Requested date: <%= request.request_date %></li>
+      <li> Requested date: <%= request.request_date.strftime("%b %d %Y") %></li>
       <%= link_to 'Reply', new_request_reply_path(request.id) %>
       <% if request.user_id == current_user.id %>
         <%= link_to 'Delete', request_path(request), method: :delete %>

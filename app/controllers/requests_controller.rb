@@ -2,7 +2,11 @@ class RequestsController < ApplicationController
   respond_to :html, :json
 
   def index
-    @requests = Request.where(["expiration > ?", Time.now])
+    @requests = Request.where("user_id = ? AND expiration > ?", current_user, Time.now)
+    require 'pry'; binding.pry
+
+    # @requests = Request.where(["expiration > ?", Time.now])
+    # Request.where(:user_id => current_user, :expiration => "expiration > Time.now")
   end
 
   def create
