@@ -10,13 +10,13 @@ feature 'Making a request for a tour', js:true do
     expect(page).to have_content('Request submitted')
   end
 
-  xit '-> allows the user to make a tour request' do
+  it '-> allows the user to make a tour request' do
     visit('/requests')
     expect(page).to have_content('Request for a tour in: London')
     expect(page).to have_content('Details: great times wanted')
   end
 
-  xit '-> a user\'s request will expire after 5 days' do
+  it '-> a user\'s request will expire after 5 days' do
     Timecop.travel(5.days.from_now)
     visit('/requests')
     expect(page).to_not have_content('Requested for a tour in: London')
@@ -47,7 +47,7 @@ feature 'Making a request for a tour', js:true do
     expect(page).to have_content('Request updated successfully')
   end
 
-  xit ('-> only a user can update their own request') do
+  it ('-> only a user can update their own request') do
     click_link "Logout"
     signup(f_name: "Jimmy", l_name: "Hendrix", username: 'hendrix_fan', postcode: 'SW1 8AP', email: 'bobbybrown@aol.com', password: "password")
     visit('/requests')

@@ -11,7 +11,7 @@ class RequestsController < ApplicationController
   end
 
   def create
-    @request = Request.new(request_params)
+    @request = current_user.requests.new(request_params)
     flash[:notice] = 'Request successfully created.' if @request.save
     render json: @request.to_json
     # respond_with(@request)

@@ -4,10 +4,7 @@ class Request < ActiveRecord::Base
   has_many :replies, dependent: :destroy
   before_create :set_expiration_date
 
-  def build_request(attributes = {}, user)
-    attributes[:user] ||= user
-    replies.build(attributes)
-  end
+  validates_presence_of :user
 
   def set_expiration_date
     if self.replies.any?
@@ -15,6 +12,11 @@ class Request < ActiveRecord::Base
     else
       self.expiration =  Date.today + 5.days
     end
+  end
+
+  def build_reply(attributes = {}, user)
+    attributes[:user] ||= user
+    replies.build(attributes)
   end
 
 end
