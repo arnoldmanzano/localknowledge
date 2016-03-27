@@ -5,10 +5,10 @@ Rails.application.routes.draw do
 
   # You can have the root of your site routed with "root"
   # root 'welcome#index'
-    root 'home#index'
+  root 'home#index'
 
-
-
+  get 'api/users' => 'users#index'
+  get 'api/c_user' => 'users#c_user'
   # Example of regular route:
   #   get 'products/:id' => 'catalog#view'
 
@@ -21,6 +21,7 @@ Rails.application.routes.draw do
       post :choose, on: :member
     end
   end
+
 
   # Example resource route with options:
   #   resources :products do

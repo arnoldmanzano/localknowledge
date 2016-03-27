@@ -1,22 +1,15 @@
 class RequestsController < ApplicationController
+  respond_to :html, :json
 
   def index
     @requests = Request.where(["expiration > ?", Time.now])
   end
 
-
-  def new
-    @request = Request.new
-  end
-
   def create
-    @request = current_user.requests.create(request_params)
-    if @request.valid?
-      redirect_to('/')
-      flash[:notice] = 'Request submitted successfully'
-    else
-      flash[:alert] = 'Oops something went wrong!'
-    end
+    @request = current_user.requests.new(request_params)
+    flash[:notice] = 'Your request has been successfully submitted.' if @request.save
+    render json: @request.to_json
+    # respond_with(@request)
   end
 
   def edit
@@ -48,7 +41,7 @@ class RequestsController < ApplicationController
   private
 
   def request_params
-    params.require(:request).permit(:location, :description, :budget, :request_date)
+    params.require(:request).permit(:location, :description, :budget, :request_date, :lat, :lng)
   end
 
 end

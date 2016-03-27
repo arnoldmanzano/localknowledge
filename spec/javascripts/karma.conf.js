@@ -5,7 +5,7 @@ module.exports = function(config) {
   config.set({
 
     // base path that will be used to resolve all patterns (eg. files, exclude)
-    basePath: '../..',
+    basePath: '../',
 
 
     // frameworks to use
@@ -15,12 +15,13 @@ module.exports = function(config) {
 
     // list of files / patterns to load in the browser
     files: [
-      'vendor/assets/bower_components/angular/angular.js',
-      'vendor/assets/bower_components/angular-route/angular-route.js',
-      'vendor/assets/bower_components/angular-resource/angular-resource.js',
-      'vendor/assets/bower_components/angular-mocks/angular-mocks.js',
-      'vendor/assets/bower_components/angular-mocks/angular-templates.js',
-      'app/assets/javascripts/**/*.js',
+      '../vendor/assets/bower_components/angular/angular.js',
+      '../vendor/assets/bower_components/angular-route/angular-route.js',
+      '../vendor/assets/bower_components/angular-resource/angular-resource.js',
+      '../vendor/assets/bower_components/angular-mocks/angular-mocks.js',
+      '../vendor/assets/bower_components/angular-templates/angular-templates.js',
+      '../vendor/assets/bower_components/jquery/dist/jquery.js',
+      '../app/assets/javascripts/**/*.js',
       'javascripts/**/*.spec.js'
     ],
 
@@ -56,7 +57,8 @@ module.exports = function(config) {
 
     // level of logging
     // possible values: config.LOG_DISABLE || config.LOG_ERROR || config.LOG_WARN || config.LOG_INFO || config.LOG_DEBUG
-    logLevel: config.LOG_INFO,
+    // logLevel: config.LOG_INFO,
+    logLevel: config.LOG_DEBUG,
 
 
     // enable / disable watching file and executing tests whenever any file changes
@@ -65,7 +67,7 @@ module.exports = function(config) {
 
     // start these browsers
     // available browser launchers: https://npmjs.org/browse/keyword/karma-launcher
-    browsers: ['PhantomJS'],
+    browsers: ['Chrome'],
 
 
     // Continuous Integration mode
