@@ -34,7 +34,7 @@ feature 'Making a request for a tour', js:true do
       end
 
       xit '-> has a \'Request a tour link that opens a form on the REQUESTS page' do
-        visit('/requests')
+        click_link 'My requests'
         click_link 'Request a tour'
         expect(page).to have_content('Request a tour from a local')
       end
@@ -49,7 +49,7 @@ feature 'Making a request for a tour', js:true do
 
   end
 
-  context '===> filling in the form with validations' do
+  xcontext '===> filling in the form with validations' do
 
     before(:each) do
       signup
@@ -82,7 +82,6 @@ feature 'Making a request for a tour', js:true do
     end
 
   end
-
   context '==> after submitting a request' do
 
     context '===> user access to their own requests' do
@@ -165,6 +164,7 @@ feature 'Making a request for a tour', js:true do
       end
 
     end
+
   end
 
   context '==> interacting with replied requests' do
