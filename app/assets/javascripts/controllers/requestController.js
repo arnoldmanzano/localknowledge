@@ -25,7 +25,6 @@
 
     self.postRequest = function(data) {
       $http.post('/requests', data).success(function(data, status) {
-        console.log('success');
         self.success = true;
       });
     };
@@ -34,14 +33,12 @@
       self.isInfoOpen = true;
       self.clickedRequest = requestData.data.request;
       self.requestUser = requestData.data.user;
-      console.log(requestData);
       $scope.$digest();
       LocationService.centerMapOnAddress(self.clickedRequest.location);
     };
 
     self.closeClickedRequestInfo = function(){
       self.isInfoOpen = false;
-      console.log(self.isInfoOpen);
     };
 
     self.toggleUserInfo = function(){

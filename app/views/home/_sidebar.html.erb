@@ -10,7 +10,7 @@
             <hr>
         <ul class="list-inline">
           <li> <p><%= image_tag(current_user.avatar.url(:thumb), { class: 'img-circle'})%><p> </li>
-          <li> <%= current_user.f_name %> <%= current_user.l_name %> </li>
+          <li> <h4><%= current_user.f_name %> <%= current_user.l_name %></h4> </li>
         </ul>
         <ul class="list-inline">
           <li> <%= link_to 'Edit Profile',edit_user_registration_path %> </li>
