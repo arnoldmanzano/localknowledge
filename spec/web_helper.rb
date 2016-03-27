@@ -24,6 +24,8 @@ end
 def request_tour
   click_link 'Request a tour'
   fill_in :location, with: 'London'
+  fill_in :budget, with: 10
+  fill_in :request_date, with: 10
   fill_in :description, with: 'great times wanted'
   click_button 'Submit'
 end

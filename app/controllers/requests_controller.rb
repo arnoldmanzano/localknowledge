@@ -3,7 +3,7 @@ class RequestsController < ApplicationController
 
   def index
     @requests = Request.where("user_id = ? AND expiration > ?", current_user, Time.now)
-    @expired_requests = Request.where("user_id = ? AND expiration < ?", current_user, Time.now)
+    # @expired_requests = Request.where("user_id = ? AND expiration < ?", current_user, Time.now)
   end
 
   def create
