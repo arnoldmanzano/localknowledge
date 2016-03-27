@@ -1,18 +1,16 @@
-<div class="container-fluid">
-  <div ng-controller="MapController as map">
-    <h1>{{map.userLocationArea.results[0].formatted_address}}</h1>
+<div id="wrapper" ng-controller="MapController as map">
 
-    <section ng-controller="RequestController as r">
-        <%= render "modal_request.html.erb" %>
-        <aside class="request-info-box" ng-show="r.isInfoOpen" ng-click="r.closeClickedRequestInfo">
-          <%= render "single_request_info.html.erb" %>
-        </aside>
-        <div ng-show="r.success">
-          Request submitted
-        </div>
-      </section>
+  <%= render 'sidebar' %>
 
-    <div id="map"></div>
+  <section ng-controller="RequestController as r">
+    <%= render "modal_request.html.erb" %>
+    <aside class="request-info-box" ng-show="r.isInfoOpen" ng-click="r.closeClickedRequestInfo">
+      <%= render "single_request_info.html.erb" %>
+    </aside>
+    <div ng-show="r.success">
+      Request submitted
+    </div>
+  </section>
+  <div id="map"></div>
 
-  </div>
 </div>

@@ -24,44 +24,16 @@ div.container-fluid{
 
 #map {
   width: 100%;
-  height: 800px;
+  min-height: 800px;
 }
 
-.controls {
-  margin-top: 10px;
-  border: 1px solid transparent;
-  border-radius: 2px 0 0 2px;
-  box-sizing: border-box;
-  -moz-box-sizing: border-box;
-  height: 32px;
-  outline: none;
-  box-shadow: 0 2px 6px rgba(0, 0, 0, 0.3);
- }
-
- #pac-input {
-   background-color: #fff;
-   font-family: Roboto;
-   font-size: 15px;
-   font-weight: 300;
-   margin-left: 12px;
-   padding: 0 11px 0 13px;
-   text-overflow: ellipsis;
-   width: 300px;
- }
-
- #pac-input:focus {
-   border-color: #4d90fe;
- }
-
- .pac-container {
-   font-family: Roboto;
- }
-
- .gm-style-iw {
-    width: 350px;
-    top: 15px;
-    left: 0px;
+.gm-style-iw {
+  width: 350px;
+  top: 15px;
+  left: 0px;
 }
+
+// maps infoBox
 #iw-container {
     margin-bottom: 10px;
     width: 350px;
@@ -71,10 +43,9 @@ div.container-fluid{
     font-size: 22px;
     font-weight: 400;
     padding: 10px;
-    background-color: #48b5e9;
+    background-color: #729f98;
     color: white;
     margin: 0;
-    border-radius: 2px 2px 0 0;
 }
 #iw-container .iw-content {
     font-size: 13px;
@@ -86,8 +57,9 @@ div.container-fluid{
     overflow-y: auto;
     overflow-x: hidden;
 }
-.iw-content img {
-    float: right;
+.iw-title img {
+    width: 50px;
+    height: 50px;
     margin: 0 5px 5px 10px;
 }
 .iw-subTitle {
@@ -140,7 +112,7 @@ div.container-fluid{
 	display: inline-block;
 	line-height: 56px;
 	text-align: center;
-	background-color: rgba(190, 131, 42, 0.85);
+	background-color: #ba9077;
   z-index: 2;
   color: white;
 	font-family: Helvetica, Arial, Sans-Serif;
@@ -169,8 +141,8 @@ div.container-fluid{
   padding: 15px 5px 20px 15px;
   text-align: center;
   font-size: 16px;
-   background-color: rgba(154, 235, 191, 0.78);
-   font-family: Roboto;
+  background-color: rgba(154, 235, 191, 0.78);
+  font-family: Roboto;
  }
 
 .request-info-box img {
@@ -180,3 +152,78 @@ div.container-fluid{
  li {
    text-align: left;
  }
+
+// sidebar
+#sidebar-wrapper {
+  z-index: 1000;
+  position: fixed;
+  left: 250px;
+  width: 0;
+  height: 100%;
+  margin-left: -250px;
+  overflow-y: auto;
+  background: #1d2120;
+}
+
+.sidebar-nav {
+  position: absolute;
+  top: 0;
+  width: 250px;
+  margin: 0;
+  padding: 0;
+  list-style: none;
+}
+
+.sidebar-nav li {
+  text-indent: 20px;
+  line-height: 40px;
+}
+
+.sidebar-nav li a {
+  display: block;
+  font-size: 1.3em;
+  text-decoration: none;
+  color: white;
+}
+
+.sidebar-nav li a:hover {
+  text-decoration: none;
+  color: #fff;
+  background: rgba(255,255,255,0.2);
+}
+
+.sidebar-nav li a:active,
+.sidebar-nav li a:focus {
+  text-decoration: none;
+}
+
+.sidebar-nav > .sidebar-brand {
+  height: 65px;
+  font-size: 18px;
+  line-height: 60px;
+}
+
+.sidebar-nav > .sidebar-brand a {
+  color: #999999;
+}
+
+.sidebar-nav > .sidebar-brand a:hover {
+  color: #fff;
+  background: none;
+}
+
+.sidebar-nav > .top-section{
+  background-color: #729f98;
+}
+
+.sidebar-nav > .top-section li a{
+  display: inline;
+}
+
+@media(min-width:768px) {
+
+  #sidebar-wrapper {
+    width: 250px;
+  }
+
+}
