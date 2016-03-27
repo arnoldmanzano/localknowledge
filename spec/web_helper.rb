@@ -11,6 +11,14 @@ def signup(f_name: "Bob", l_name: "Marley", username: 'Iron_Lion_Zion', postcode
   click_button 'Sign up'
 end
 
+def signin
+  click_link 'Login'
+  fill_in :'user[email]', with: 'bob@bob.com'
+  fill_in :'user[password]', with: 'password'
+  click_button 'Log in'
+end
+
+
 def reply_to_request
   click_link 'Reply'
   fill_in :'reply[meeting_point]', with: 'London'

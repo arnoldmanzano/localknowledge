@@ -47,7 +47,7 @@ feature 'Making a request for a tour', js:true do
     expect(page).to have_content('Request updated successfully')
   end
 
-  it ('-> only a user can update their own request') do
+  it '-> only a user can update their own request' do
     click_link "Logout"
     signup(f_name: "Jimmy", l_name: "Hendrix", username: 'hendrix_fan', postcode: 'SW1 8AP', email: 'bobbybrown@aol.com', password: "password")
     visit('/requests')
@@ -62,11 +62,25 @@ feature 'Making a request for a tour', js:true do
     expect(page).to have_content('Request deleted successfully')
   end
 
-  it ('-> only a user can delete their own request') do
+  it '-> only a user can delete their own request' do
     click_link "Logout"
     signup(f_name: "Jimmy", l_name: "Hendrix", username: 'hendrix_fan', postcode: 'SW1 8AP', email: 'bobbybrown@aol.com', password: "password")
     visit('/requests')
     expect(page).to_not have_content('Delete')
+  end
+
+  it '-> user can choose only one reply' do
+    click_link "Logout"
+    signup(f_name: "Jimmy", l_name: "Hendrix", username: 'hendrix_fan', postcode: 'SW1 8AP', email: 'bobbybrown@aol.com', password: "password")
+    visit('/requests')
+    reply_to_request
+    click_link "Logout"
+    signin
+    visit('/requests')
+    click_link 'Choose'
+    expect(page).to have_content('Reply chosen')
+    expect(page).to_not have_content('Choose')
+    # expect(page).to have_css [x]
   end
 
 end
