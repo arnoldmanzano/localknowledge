@@ -1,4 +1,10 @@
 $( document ).ready(function () {
+  $(function(){
+   $('.datepicker').datepicker({
+      format: 'mm-dd-yyyy'
+    });
+  });
+
     $(".btn").hover(function(){
   	$(this).stop().animate({
   		top: "5",

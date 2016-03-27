@@ -1,6 +1,7 @@
 require 'rails_helper'
 include Capybara::Angular::DSL
 
+
 feature 'Making a request for a tour', js:true do
 
   context '===> accessing the form ' do
@@ -17,6 +18,7 @@ feature 'Making a request for a tour', js:true do
         visit('/')
         expect(page).not_to have_content('My requests')
       end
+
 
     end
 
@@ -45,11 +47,16 @@ feature 'Making a request for a tour', js:true do
         expect(page).to have_content('Request a tour from a local')
       end
 
+      it '-> no longer crashes when you try to access \'My requests\' when you have not made any.' do
+        click_link 'My requests'
+        expect(page).to have_content('You have not made any requests yet.')
+      end
+
     end
 
   end
 
-  xcontext '===> filling in the form with validations' do
+  context '===> filling in the form with validations' do
 
     before(:each) do
       signup
@@ -171,7 +178,7 @@ feature 'Making a request for a tour', js:true do
 
     xit '-> user can choose only one reply' do
       click_link "Logout"
-      signup(f_name: "Jimmy", l_name: "Hendrix", username: 'hendrix_fan', postcode: 'SW1 8AP', email: 'bobbybrown@aol.com', password: "password")
+      signup
       # cannot find them in '/requests' they are now on the map.
       reply_to_request
       click_link "Logout"

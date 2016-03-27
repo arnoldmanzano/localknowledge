@@ -1,3 +1,6 @@
+include SelectDateHelper
+
+
 def signup(f_name = "Bob", l_name = "Marley", username = 'Iron_Lion_Zion', postcode = 'W12 7JQ', email = 'bob@bob.com', password ="password" )
   visit('/users/sign_up')
   attach_file 'user[avatar]', Rails.root.join('spec','fixtures','marley.jpeg')
@@ -21,9 +24,11 @@ def reply_to_request
   click_button 'Reply'
 end
 
-def request_tour
+def request_tour(location="London", budget=10, description="great times wanted", request_date=12122016)
   click_link 'Request a tour'
-  fill_in :location, with: 'London'
-  fill_in :description, with: 'great times wanted'
+  fill_in :location, with: location
+  fill_in :request_date, with: request_date
+  fill_in :budget, with: budget
+  fill_in :description, with: description
   click_button 'Submit'
 end

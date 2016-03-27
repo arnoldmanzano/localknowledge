@@ -2,6 +2,7 @@ FactoryGirl.define do
   factory :request do
     location "MyString"
     description "MyText"
+    request_date "23/6/2016"
     user
 
     #A factory to build a request with a reply.
