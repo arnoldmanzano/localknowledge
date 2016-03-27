@@ -4,12 +4,16 @@ RSpec.describe Request, type: :model do
   let(:pending_request) {described_class}
 
   it { should belong_to :user }
+  it { should validate_presence_of(:user) }
   it { should have_many(:replies).dependent(:destroy) }
 
   it { is_expected.to respond_to(:set_expiration_date, :build_reply) }
 
 
   describe '#set_expiration_date' do
+
+    it { is_expected.to callback(:set_expiration_date).before(:create) }
+
 
     it 'sets the expiration date for unreplied requests to 5 days' do
       expires_on = Date.today + 5
@@ -42,8 +46,6 @@ RSpec.describe Request, type: :model do
       reply = request.build_reply(user)
       expect(user.id).to eq(reply.user_id)
     end
-
-
 
   end
 end
