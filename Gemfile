@@ -75,5 +75,6 @@ group :test do
   gem 'rspec-collection_matchers'
   gem 'poltergeist'
   gem 'shoulda'
+  gem 'shoulda-callback-matchers', '~> 1.1.1'
   gem 'timecop'
 end
