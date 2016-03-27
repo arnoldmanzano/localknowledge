@@ -25,3 +25,10 @@
       <% end %>
   <% end %>
 </ul>
+<ul>
+  <h1> Expired Requests </h1>
+  <% @expired_requests.each.with_index(1) do |expired_request, index| %>
+  <li> Request for a tour in: <%= expired_request.location %></li>
+  <li> Details: <%= expired_request.description %></li>
+  <li> Expired on: <%= expired_request.expiration.strftime("%b %d %Y") %></li>
+</ul>
