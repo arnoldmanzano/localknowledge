@@ -3,14 +3,30 @@
 
   angular
     .module('LocalKnowledgeApp')
-    .controller('RequestController', ['LocationService', 'MarkersService', '$http', '$scope', function(LocationService, MarkersService, $http, $scope) {
+    .controller('RequestController', ['LocationService', 'MarkersService', 'AutocompleteService', '$http', '$scope',
+        function(LocationService, MarkersService, AutocompleteService, $http, $scope) {
 
     var self = this;
     var isInfoOpen = false;
     var clickedRequest = {};
     var requestUser = {};
+    var autocompleteStarted;
 
     self.master = {};
+    var autocompleteSuggestions = [];
+
+
+    self.autoCompleteSearch = function(searchInput){
+      if (searchInput.length < 3) {
+        self.autocompleteStarted = false;
+      } else {
+        AutocompleteService.initAutocomplete(searchInput);
+        self.autocompleteStarted = true;
+        self.autocompleteSuggestions = AutocompleteService.makeSuggestions();
+      }
+      console.log(self.autocompleteSuggestions);
+      //refactor to ternary
+    };
 
     self.update = function(request) {
       LocationService.centerMapOnAddress(request.location);
@@ -41,7 +57,6 @@
 
     self.closeClickedRequestInfo = function(){
       self.isInfoOpen = false;
-      console.log(self.isInfoOpen);
     };
 
     self.toggleUserInfo = function(){
