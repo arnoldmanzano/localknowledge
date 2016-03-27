@@ -19,7 +19,6 @@ feature 'Making a request for a tour', js:true do
         expect(page).not_to have_content('My requests')
       end
 
-
     end
 
     context '===> when logged in' do
@@ -171,7 +170,6 @@ feature 'Making a request for a tour', js:true do
       end
 
     end
-
   end
 
   context '==> interacting with replied requests' do
@@ -191,4 +189,5 @@ feature 'Making a request for a tour', js:true do
       # expect(page).to have_css [x]
     end
   end
+
 end
