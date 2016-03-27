@@ -24,8 +24,6 @@
         self.autocompleteStarted = true;
         self.autocompleteSuggestions = AutocompleteService.makeSuggestions();
       }
-      console.log(self.autocompleteSuggestions);
-      //refactor to ternary
     };
 
     self.update = function(request) {

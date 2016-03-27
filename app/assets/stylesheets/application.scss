@@ -96,6 +96,12 @@ div.container-fluid{
     padding: 5px 0;
 }
 
+aside#autocompleteSuggestions ul{
+  width: 200px;
+  height: 100px;
+  z-index: 10;
+  font-size: 20px;
+}
 
 // Nice hover and shake snippet
 // .request-info-box:hover {
@@ -179,10 +185,4 @@ div.container-fluid{
 
  li {
    text-align: left;
- }
-
- li#suggestion{
-   z-index:2;
-   color: black;
-   font-size: 20px;
  }
