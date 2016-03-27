@@ -1,12 +1,16 @@
 require 'rails_helper'
+include Capybara::Angular::DSL
 
-feature 'Replying to client requests' do
+feature 'Replying to client requests', js:true do
 
   before do
     signup(f_name: "Bob", l_name: "Marley", username: 'Iron_Lion_Zion', postcode: 'W12 7JQ', email: 'bob@bob.com', password: "password")
+    expect(page).to have_css('.gm-style')
     request_tour
+    expect(page).to have_content('Request submitted')
     click_link 'Logout'
     signup(f_name: "Jimmy", l_name: "Hendrix", username: 'hendrix_fan', postcode: 'SW1 8AP', email: 'b@aol.com', password: "password")
+    expect(page).to have_css('.gm-style')
     visit('/requests')
     reply_to_request
   end
