@@ -47,6 +47,7 @@ ActiveRecord::Migration.maintain_test_schema!
 
 RSpec.configure do |config|
   config.include Capybara::Angular::DSL
+  config.include ActiveSupport::Testing::TimeHelpers
 
   config.include Devise::TestHelpers, :type => :controller
   config.include ControllerMacros, :type => :controller
