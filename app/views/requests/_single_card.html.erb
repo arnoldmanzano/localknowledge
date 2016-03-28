@@ -1,0 +1,16 @@
+<div class="col-sm-4">
+  <div class="card">
+    <img class="card-img-top img-responsive" src="https://maps.googleapis.com/maps/api/staticmap?zoom=13&size=300x125&maptype=roadmap&center=<%=request.location%>" alt="Card image cap">
+    <div class='card-block'>
+      <h3 class='card-title'><%= request.location %></h4>
+      <h5 class='card-title'><%= request.user.username %><span class="round-image-50"> <%= image_tag(request.user.avatar.url(:thumb)) %></span></h5>
+      <p class="card-text">Details: <%= request.description %></p>
+      <p class="card-text">Budget: <%= request.budget %></p>
+      <p class="card-text">Requested date: <%= request.request_date %></p>
+      <% if request.user == current_user %>
+        <%= link_to 'Delete', request_path(request), method: :delete, class: 'card-link' %>
+        <%= link_to 'Update', edit_request_path(request), class: 'card-link' %>
+      <% end %>
+    </div>
+  </div>
+</div>
