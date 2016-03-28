@@ -25,22 +25,27 @@ feature 'Making a request for a tour', js:true do
 
       before(:each) do
         signup
-        expect(page).to have_css('.gm-style')
       end
 
       it '-> has a \'Request a tour link that opens a form on the INDEX page' do
+        expect(page).to have_css('.gm-style')
+
         visit('/')
         click_link 'Request a tour'
         expect(page).to have_content('Request a tour from a local')
       end
 
       xit '-> has a \'Request a tour link that opens a form on the REQUESTS page' do
+
+        expect(page).to have_css('.gm-style')
+
         click_link 'My requests'
         click_link 'Request a tour'
         expect(page).to have_content('Request a tour from a local')
       end
 
       xit '-> has a \'Request a tour link that opens a form on the EDIT PROFILE page' do
+        expect(page).to have_css('.gm-style')
         visit('/users/edit')
         click_link 'Request a tour'
         expect(page).to have_content('Request a tour from a local')
@@ -181,6 +186,6 @@ feature 'Making a request for a tour', js:true do
       expect(page).to_not have_content('Choose')
       # expect(page).to have_css [x]
     end
-  end
 
+  end
 end
