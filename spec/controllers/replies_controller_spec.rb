@@ -1,15 +1,15 @@
 require 'rails_helper'
+include Devise::TestHelpers
 
 RSpec.describe RepliesController, type: :controller do
-  # login_admin
 
-  describe "POST #create" do
+
+  describe "#create" do
 
     it "-> creates a new reply" do
-      reply = FactoryGirl.create(:reply)
-      expect{
-        post :create, reply: FactoryGirl.attributes_for(:reply)
-      }.to change(Reply,:count).by(1)
+      login_user
+      post :create, reply: attributes_for(:reply)
+      expect(Reply.count).to eq(1)
     end
   end
 

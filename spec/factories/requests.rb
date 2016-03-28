@@ -1,14 +1,8 @@
 FactoryGirl.define do
   factory :request do
-    trait :location do
-      trait "MyString"
-    end
-    trait :description do
-      trait "MyText"
-    end
-    trait :request_date do
-      trait "23/6/2016"
-    end
+    location "MyString"
+    description "MyText"
+    request_date "23/6/2016"
     user
 
     #A factory to build a request with a reply.
