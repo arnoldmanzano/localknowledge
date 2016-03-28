@@ -52,17 +52,17 @@
     self.addRequestMarkerInfo = function(map, marker, request, user){
 
       var contentString = '<div id="iw-container">' +
-                    '<div class="iw-title">'+ user.f_name +' '+ user.l_name +'</div>' +
+                    '<div class="iw-title"> <img class="img-circle" src='+ user.avatar_url +' alt="Profile picture"/>'+ user.f_name +' '+ user.l_name +'</div>' +
                     '<div class="iw-content">' +
                       '<div class="iw-subTitle">Description</div>' +
                       '<p><b>Location: </b>'+ request.location +'</p>' +
-                      '<img class="img-circle" src='+ user.avatar_url +' alt="Profile picture"' +
                       '<p>'+ request.description +'</p>' +
                       '<div class="iw-subTitle">Reply to this request</div>' +
                       '<a href="#">Reply</a>'+
-                      '<p>e-mail:'+ user.email+'</p>'+
+                      '<p><b>Email:</b> '+ user.email+'</p>'+
                     '</div>' +
                   '</div>';
+
       var infowindow = new google.maps.InfoWindow({
             content: contentString
           });

@@ -41,9 +41,9 @@ ActiveRecord::Schema.define(version: 20160324181211) do
     t.date     "expiration"
     t.integer  "budget"
     t.datetime "request_date"
-    t.boolean  "resolved",     default: false
     t.string   "lat"
     t.string   "lng"
+    t.boolean  "resolved",     default: false
   end
 
   add_index "requests", ["user_id"], name: "index_requests_on_user_id", using: :btree

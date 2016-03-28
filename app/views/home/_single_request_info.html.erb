@@ -1,0 +1,24 @@
+<div class="card hovercard">
+    <div class="cardheader">
+
+    </div>
+    <div class="avatar">
+      <img class="img-circle" ng-src="{{r.requestUser.avatar_url}}" alt="Profile picture">
+    </div>
+    <div class="info">
+        <div class="title">
+          <h1> {{r.requestUser.f_name}} {{r.requestUser.l_name}}</h1>
+        </div>
+        <div class="desc">Is looking to do something in<b> {{ r.clickedRequest.location }} </b></div>
+        <div class="desc">On <b>(date to be included) {{r.clickedRequest.requested_date}}</b></div>
+        <h4> Other details to bear in mind: </h4>
+        <div class="desc">{{r.requestUser.f_name}} has <b> £{{r.clickedRequest.budget}}</b> to spend</div>
+        <div class="desc">{{r.requestUser.f_name}} only has X amount of time (to be included)</div>
+        <h3> Think you can help <b>{{r.requestUser.f_name}}</b> ? </h3>
+    </div>
+    <div class="bottom">
+      <input class="action-button shadow animate brown" type="submit" ng-click="r.toggleResponseForm" value="Reply to {{r.requestUser.f_name}}'s request"></input>
+      <input class="action-button shadow animate brown" type="submit" ng-click="r.toggleUserInfo" value="Find out more about {{r.requestUser.f_name}}"></input>
+    </div>
+    <aside ng-show="r.isUserInfoOpen" class="requested-user-info"></aside>
+</div>

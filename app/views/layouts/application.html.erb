@@ -8,14 +8,10 @@
   <script src="https://maps.googleapis.com/maps/api/js?libraries=places,geometry" async defer></script>
 </head>
 <body>
-  <header>
-    <nav>
-    <%= render template: "layouts/_nav_bar.html.erb" %>
-    <nav>
-  <header>
-    <p class="notice"><%= notice %></p>
-    <p class="alert"><%= alert %></p>
-    <%= yield %>
+
+  <span class="notice hidden"><%= notice %></span>
+  <span class="alert hidden"><%= alert %></span>
+  <%= yield %>
 
 </body>
 </html>
