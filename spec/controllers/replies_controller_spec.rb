@@ -3,7 +3,7 @@ require 'rails_helper'
 RSpec.describe RepliesController, type: :controller do
   # login_admin
 
-  describe "POST #create" do
+  xdescribe "POST #create" do
 
     it "-> creates a new reply" do
       reply = FactoryGirl.create(:reply)
@@ -13,7 +13,7 @@ RSpec.describe RepliesController, type: :controller do
     end
   end
 
-  describe "POST #choose" do
+  xdescribe "POST #choose" do
 
     before :each do
       @myreply = FactoryGirl.create(:reply)
@@ -25,7 +25,7 @@ RSpec.describe RepliesController, type: :controller do
     end
   end
 
-  describe "PUT #update" do
+  xdescribe "PUT #update" do
 
     before :each do
       @thisreply = create(:reply)
@@ -45,7 +45,7 @@ RSpec.describe RepliesController, type: :controller do
     end
   end
 
-  describe 'DELETE #destroy' do
+  xdescribe 'DELETE #destroy' do
     before :each do
       @a_reply = create(:reply)
     end

@@ -1,5 +1,5 @@
 <ul>
-  <% if @requests %>
+  <% if @requests.any? %>
   <% @requests.each.with_index(1) do |request, index| %>
     <h1> Request number <%=index%></h1>
       <li> Request for a tour in: <%= request.location %></li>
@@ -29,6 +29,6 @@
       <% end %>
   <% end %>
   <% else %>
-  <h3> You have not yet made any requests </h3>
+  <h3> You have not made any requests yet. </h3>
 <% end %>
 </ul>
