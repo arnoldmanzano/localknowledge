@@ -14,11 +14,12 @@
         <h4> Other details to bear in mind: </h4>
         <div class="desc">{{r.requestUser.f_name}} has <b> £{{r.clickedRequest.budget}}</b> to spend</div>
         <div class="desc">{{r.requestUser.f_name}} only has X amount of time (to be included)</div>
-        <h3> Think you can help <b>{{r.requestUser.f_name}}</b> ? </h3>
     </div>
-    <div class="bottom">
-      <input class="btn-for-request" type="submit" ng-click="r.toggleResponseForm" value="Reply to {{r.requestUser.f_name}}'s request"></input>
-      <input class="btn-for-request" type="submit" ng-click="r.toggleUserInfo" value="Find out more about {{r.requestUser.f_name}}"></input>
+    <div class="bottom" ng-hide="r.requestUser.id == <%= current_user.id %>">
+      <%= link_to "/requests/{{r.clickedRequest.id}}/replies/new" do %>
+        <button class="btn-for-request" type="submit" ng-click="r.toggleResponseForm">Reply to {{r.requestUser.f_name}}'s request</button>
+      <% end %>
+      <button class="btn-for-request" type="submit" ng-click="r.toggleUserInfo">Find out more about {{r.requestUser.f_name}}</button>
     </div>
     <aside ng-show="r.isUserInfoOpen" class="requested-user-info"></aside>
 </div>
