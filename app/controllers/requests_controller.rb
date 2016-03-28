@@ -1,6 +1,7 @@
 class RequestsController < ApplicationController
   respond_to :html, :json
   before_filter :authenticate_user!
+  serialize :budget
 
   def index
     @requests = Request.where(["expiration > ?", Time.now])
@@ -42,7 +43,11 @@ class RequestsController < ApplicationController
   private
 
   def request_params
-    params.require(:request).permit(:location, :description, :budget, :request_date, :lat, :lng)
+    params.require(:request).permit(:location, :lat, :lng,
+      :description, :budget, :special_considerations,
+      :request_date, :tour_duration,
+      :time_of_day, :tour_time_start,
+      :tour_duration, :tour_time_end)
   end
 
 end

@@ -3,12 +3,17 @@
 
   angular
     .module('LocalKnowledgeApp')
-    .controller('RequestController', ['LocationService', 'MarkersService', '$http', '$scope', function(LocationService, MarkersService, $http, $scope) {
+    .controller('RequestController', ['LocationService', 'MarkersService',
+    '$http', '$scope', '$filter', function(LocationService, MarkersService, $http, $scope, $filter) {
 
     var self = this;
     var isInfoOpen = false;
+    var isMoreOptions = true;
     var clickedRequest = {};
     var requestUser = {};
+    var endTime;
+    var timeLimiter;
+    var isMoreTimeOptions;
 
     self.master = {};
 
@@ -49,6 +54,26 @@
       self.openClickedRequestInfo(data);
     });
 
+    self.calculateEndTime = function(requestDuration, requestStartTime){
+      console.log(requestDuration);
+      var endHours = requestStartTime.getHours() + requestDuration;
+      var startMinutes = console.log(requestStartTime.getMinutes());
+      var stringTime = String(endHours) + ":" + String(startMinutes);
+      self.timeLimiter = 24 - requestStartTime.getHours();
+      self.endTime = new Date(stringTime);
+    };
+
+    self.openMoreOptions = function(){
+      self.isMoreOptions = true;
+    };
+
+    self.openMoreTimeOptions = function(){
+      self.isMoreOptions = true;
+    };
+
+    self.outputUpdate = function(hours){
+	     document.querySelector('#request_duration').value = hours;
+     };
 
   }]);
 

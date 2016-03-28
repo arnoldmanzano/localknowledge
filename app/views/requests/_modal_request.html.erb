@@ -2,29 +2,93 @@
   <div class="modal-dialog">
     <!-- Modal content-->
     <div class="modal-content" >
+
       <div class="modal-header">
         <button type="button" class="close" data-dismiss="modal">&times;</button>
         <h4 class="modal-title">Request a tour from a local</h4>
       </div>
+
       <div class="modal-body">
         <form>
+
           <div class="form-group">
-            <label for="location">Location</label>
-            <input type="text" class="form-control" name="location" id="location" ng-model="request.location" placeholder="Where do you want to go?">
+            <label for="location"><h4>Where I'm going: {{request.location}}</h4></label>
+            <input type="text" class="form-control" name="location" id="location" ng-model="request.location" placeholder="Where do you want to go?" required>
           </div>
+
           <div class="form-group">
-            <label for="budget">Budget</label>
-            <input type="text" class="form-control" id="budget" ng-model="request.budget" placeholder="How much do have to spend?">
+            <label for="description"><h4>Why I want to go there:  </h4></label>
+            <textarea class="form-control" rows="4" name="description" id="description" ng-model="request.description" placeholder="What do you want to do?" required></textarea>
+            <button type="button" class="btn btn-default" ng-click="r.openMoreOptions()" ng-click="r.openMoreOptions()" ng-hide="r.isMoreOptions"> More Options <button>
+            <button type="button" class="btn btn-default" ng-click="r.openMoreOptions()" ng-click="r.openMoreOptions()" ng-show="r.isMoreOptions"> Fewer Options <button>
           </div>
+
+          <!-- <div class= "form-group"> -->
+          <!-- </div> -->
+
+          <div class="form-group" ng-show="r.isMoreOptions">
+            <label for=special_considerations> <h6> Special Considerations: </h6></label><br>
+              <input type="radio" name="special_considerations"  ng-model="request.special_considerations" value="Disabled" checked> Disabled access required <br>
+              <input type="radio" name="special_considerations"   ng-model="request.special_considerations" value="Children" checked> Young children in tow <br>
+              <input type="radio" name="special_considerations"  ng-model="request.special_considerations" value="Luggage" checked> Heavy luggage in tow <br>
+              <input type="radio" name="special_considerations"   ng-model="request.special_considerations" value="FlightsThatDay" checked> Flying on the same day <br>
+          </div>
+
           <div class="form-group">
-            <label for="request_date">Tour date</label>
+            <label for="request_date"><h4>When I'll be there: {{request.request_date | date:'fullDate'}}</h4></label>
             <input type="date" class="form-control" id="request_date" ng-model="request.request_date" placeholder="When do you want to go?">
           </div>
+
           <div class="form-group">
-            <label for="description">Description</label>
-            <textarea class="form-control" rows="4" name="description" id="description" ng-model="request.description" placeholder="What do you want to do?"></textarea>
+            <label for="budget"><h4> Budget: </h4></label>
+              <!-- (could we put a currency thing in that chooses currency accoring to where you are?) -->
+            <input type="range"
+                    min="0" max="1000" step="5"
+                    value="10"
+                    class="form-control"
+                    id="budget"
+                    ng-model="request.budget">
+            <output for="budget" id="request_budget">
+              <h4> I've got (currency detector?)£{{request.budget}} to spend </h4>
+            </output>
           </div>
-          <button ng-click="r.update(request)" class="btn btn-default" data-dismiss="modal">Submit</button>
+
+          <div class="form-group">
+            <label><h4>When will you be free on {{request.request_date | date:'fullDate'}}?</h4></label>
+              <input type="radio" name="request_time_of_day"  ng-model="request.time_of_day" value="All Day" checked> All day<br>
+              <input type="radio" name="request_time_of_day"  ng-model="request.time_of_day" value="Morning" checked> Morning <br>
+              <input type="radio" name="request_time_of_day"  ng-model="request.time_of_day" value="Afternoon" checked> Afternoon <br>
+              <input type="radio" name="request_time_of_day"  ng-model="request.time_of_day" value="Evening" checked> Evening <br>
+              <h4> When I'm free: {{request.time_of_day}} </h4>
+          </div>
+
+          <button type="button" ng-click="r.openMoreTimeOptions()" class="btn btn-default"> More Timings Options <button>
+
+          <div class="form-group" ng-show=r.isMoreTimeOptions>
+              <label for=request_timing_start> From:
+              <input type="time" class="form-control" id="request_timing_start" ng-model="request.request_timing_start">
+                <output for="duration" id="request_duration">
+                  <h4> I'm free for {{request.request_duration}} hours </h4>
+                </output>
+              </label>
+          <div class="form-group">
+              <label for="duration"> Duration </label>
+              <input  type="range"
+                      name="time"
+                      value="2"
+                      class="form-control"
+                      id="request_duration"
+                      ng-model="request.request_duration"
+                      ng-change="r.calculateEndTime(request.request_duration, request.request_timing_start)"
+                      min="0" max="{{r.timeLimiter}}" step="0.5"
+                      oninput="r.outputUpdate(value)">
+          </div>
+          <div class="form-group">
+            <label> or until: </label>
+                <input type="time" class="form-control" id="request_timing_end" placeholder="{{r.calculateEndTime | date:'HH:mm'}}" ng-model="request.request_timing_end">
+          </div>
+
+          <button type="button" ng-click="r.update(request)" class="btn btn-default" data-dismiss="modal">Submit</button>
         </form>
       </div>
     </div>
