@@ -8,6 +8,7 @@ require 'rspec/rails'
 require 'capybara/rails'
 require 'capybara/poltergeist'
 require 'factory_girl_rails'
+require 'devise'
 
 require 'support/database_cleaner'
 require 'support/factory_girl'
@@ -43,6 +44,10 @@ Capybara.default_max_wait_time = 7
 ActiveRecord::Migration.maintain_test_schema!
 
 RSpec.configure do |config|
+
+  config.include Devise::TestHelpers, :type => :controller
+  
+
   # Remove this line if you're not using ActiveRecord or ActiveRecord fixtures
   config.fixture_path = "#{::Rails.root}/spec/fixtures"
 
