@@ -152,19 +152,37 @@ $header-text: rgb(250, 250, 250);
 	position: relative;
 }
 
-// .btn {
-// 	display: inline-block;
-// 	line-height: 56px;
-// 	text-align: center;
-// 	background-color: rgba(190, 131, 42, 0.85);
-//   z-index: 2;
-//   color: white;
-// 	font-family: Helvetica, Arial, Sans-Serif;
-// 	font-size: 14px;
-// 	text-decoration:none;
-// 	// text-shadow: -1px -1px 1px #616161;
-// 	position: relative;
-// }
+.button-dashboard {
+  text-align: center;
+    display: inline-block;
+    width: 100%;
+    height: 100%;
+    position: relative;
+}
+
+.btn-for-request {
+    display: inline-block;
+    line-height: 56px;
+    text-align: center;
+    background-color: rgba(#603311, 0.89);
+  z-index: 2;
+  color: white;
+    font-family: Helvetica, Arial, Sans-Serif;
+    font-size: 14px;
+    text-decoration:none;
+    // text-shadow: -1px -1px 1px #616161;
+    position: relative;
+}
+
+.shadow {
+    position: absolute;
+    top:5px;
+    left: 5px;
+    background: #666;
+    z-index: 1;
+    width: 100%;
+    height: 100%;
+}
 // sidebar
 
 #sidebar-wrapper {
