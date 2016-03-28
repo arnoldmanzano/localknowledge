@@ -11,22 +11,17 @@
     var clickedRequest = {};
     var requestUser = {};
     var autocompleteStarted;
-
     self.master = {};
     var autocompleteSuggestions = [];
-
     // var search = autoCompleteSearch;
 
 
     self.autoCompleteSearch = function(searchInput){
-      if (searchInput.length < 2) {
+        if (searchInput.length < 2) {
         self.autocompleteStarted = false;
       } else {
-        console.log(searchInput);
         AutocompleteService.initPredict(searchInput);
-        // AutocompleteService.initAutocomplete();
         self.autocompleteStarted = true;
-
         self.autocompleteSuggestions = AutocompleteService.makeSuggestions();
         return self.autocompleteSuggestions;
       }
