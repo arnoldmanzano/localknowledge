@@ -15,14 +15,19 @@
     self.master = {};
     var autocompleteSuggestions = [];
 
+    // var search = autoCompleteSearch;
+
 
     self.autoCompleteSearch = function(searchInput){
-      if (searchInput.length < 3) {
+      if (searchInput.length < 2) {
         self.autocompleteStarted = false;
       } else {
-        AutocompleteService.initAutocomplete(searchInput);
+        AutocompleteService.initPredict(searchInput);
+        // AutocompleteService.initAutocomplete();
         self.autocompleteStarted = true;
+
         self.autocompleteSuggestions = AutocompleteService.makeSuggestions();
+        console.log(self.autocompleteSuggestions);
       }
     };
 

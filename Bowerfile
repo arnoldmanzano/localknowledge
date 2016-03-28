@@ -5,3 +5,7 @@ asset 'angular', '^1.5.0'
 asset 'angular-resource', '^1.5.0'
 asset 'angular-mocks', "^1.5.0"
 asset 'angular-route', "^1.5.0"
+asset 'angular-aria'
+asset 'angular-animate'
+asset 'angular-material'
+asset 'angular-messages'

@@ -10,7 +10,20 @@
         <form>
           <div class="form-group">
             <label for="location">Location</label>
-            <input ng-change="r.autoCompleteSearch(request.location)" type="text" class="form-control" name="location" id="location" ng-model="request.location" placeholder="Where do you want to go?" >
+            <md-autocomplete
+                class="form-control"
+                md-selected-item="request.location"
+                md-search-text-change="r.autoCompleteSearch(searchInput)"
+                md-no-cache="true"
+                md-search-text="searchInput"
+                md-items="item in r.autocompleteSuggestions"
+                md-item-text="item"
+                md-input-minlength="4"
+                placeholder="Type your address">
+              <md-item-template>
+                <span>{{item}}</span>
+              </md-item-template>
+            </md-autocomplete>
             <aside ng-show="r.autocompleteStarted" id="autocompleteSuggestions">
               <ul ng-repeat="suggestion in r.autocompleteSuggestions track by $index"> {{suggestion}} </ul>
             <aside>
