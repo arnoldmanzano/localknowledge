@@ -1,4 +1,5 @@
 <ul>
+  <% if @requests.any? %>
   <% @requests.each.with_index(1) do |request, index| %>
     <h1> Request number <%=index%></h1>
       <li> Request for a tour in: <%= request.location %></li>
@@ -22,6 +23,12 @@
             <%= link_to 'Update', edit_request_reply_path(request, reply) %>
             <%= link_to 'Delete', request_reply_path(request, reply), method: :delete %>
           <% end %>
+          <% if request.user == current_user && request.resolved == false %>
+              <%= link_to 'Choose', choose_request_reply_path(request, reply), method: :post %>
+          <% end %>
       <% end %>
   <% end %>
+  <% else %>
+  <h3> You have not made any requests yet. </h3>
+<% end %>
 </ul>
