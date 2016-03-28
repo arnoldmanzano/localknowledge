@@ -15,6 +15,5 @@
 //= require angular
 //= require angular-resource
 //= require bootstrap-sass-official
-//= require turbolinks
 //= require_tree .
 //= require_self
