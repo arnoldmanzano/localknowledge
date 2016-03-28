@@ -8,22 +8,24 @@
 
     var self = this;
     var isInfoOpen = false;
-    var isMoreOptions = true;
+    var isMoreOptions = false;
     var clickedRequest = {};
     var requestUser = {};
     var endTime;
     var timeLimiter;
-    var isMoreTimeOptions;
+    var isMoreTimeOptions = false;
 
     self.master = {};
 
     self.update = function(request) {
+      console.log(request);
       LocationService.centerMapOnAddress(request.location);
       LocationService.lookupCoords(request.location).then(function(coords) {
         request.lat = coords.lat;
         request.lng = coords.lng;
         self.master = angular.copy(request);
         self.postRequest(self.master);
+        modal.modal('hide');
         MarkersService.placeCurrentRequestMarker(request);
       });
     };
@@ -63,12 +65,12 @@
       self.endTime = new Date(stringTime);
     };
 
-    self.openMoreOptions = function(){
-      self.isMoreOptions = true;
+    self.toggleMoreOptions = function(){
+      self.isMoreOptions = !self.isMoreOptions;
     };
 
-    self.openMoreTimeOptions = function(){
-      self.isMoreOptions = true;
+    self.toggleMoreTimeOptions = function(){
+      self.isMoreTimeOptions = !self.isMoreTimeOptions;
     };
 
     self.outputUpdate = function(hours){
