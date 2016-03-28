@@ -6,7 +6,9 @@ class User < ActiveRecord::Base
 
   has_many :requests, dependent: :destroy
   has_many :replies, dependent: :destroy
+  has_many :reviews, dependent: :destroy
   has_many :replied_requests, through: :replies, source: :request
+  has_many :reviewed_replies, through: :reviews, source: :replies
 
   validates :f_name, :l_name, :username, presence: true
 
