@@ -13,7 +13,7 @@ feature 'Making a request for a tour', js:true do
     visit('/')
     request_tour
     expect(page).to_not have_content('Request a tour from a local')
-    expect(page).to have_content('Request submitted') # do we need this?
+    expect(page).to have_content('Request submitted')
     click_link 'My requests'
     expect(page).to have_content('London')
     expect(page).to have_content('Details: great times wanted')
@@ -27,17 +27,21 @@ feature 'Making a request for a tour', js:true do
     expect(page).to_not have_content('Details: bad times wanted')
     expect(page).to have_content('Request deleted successfully')
 
+    # Expiration
     visit('/')
     expect(page).to have_css('.gm-style')
     request_tour
-    expect(page).to have_content('Request submitted') # do we need this?
-
-    Timecop.travel(5.days.from_now)
+    expect(page).to have_content('Request submitted')
+    travel 5.days
     click_link('My requests')
     expect(page).to_not have_content('London')
-    Timecop.travel(Time.now)
-    click_link 'Logout'
 
+    # To test another user
+    visit('/')
+    expect(page).to have_css('.gm-style')
+    request_tour
+    expect(page).to have_content('Request submitted')
+    click_link 'Logout'
     # another user
     signup("Jex", "Corbyn", "CorbynistaCommie", "E8 2BB", 'corbyn@labout.com', "littleredbook" )
     expect(page).to have_css('.gm-style')

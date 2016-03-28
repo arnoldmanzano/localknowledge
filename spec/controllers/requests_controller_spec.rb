@@ -6,58 +6,49 @@ RSpec.describe RequestsController, type: :controller do
 
   render_views
 
-  describe "#index" do
+  before :each do
+    _user = FactoryGirl.create(:user)
+    sign_in _user
+    @thisrequest = create(:request, user: _user)
+  end
 
+  describe "#index" do
 
     it "-> populates an array of requests" do
       @myrequest = create(:request, location: "Here", budget: 20, description: "There", request_date: "23/6/2016")
       @requests = Request.where(["expiration > ?", Time.now])
-      expect(@requests.length).to eq(1)
+      expect(@requests.length).to eq(2)
     end
   end
 
   describe  "#create" do
 
-
     it "-> creates a new request" do
-      login_user
-      post :create, request: attributes_for(:request)
-      expect(Request.count).to eq(1)
+      expect{
+        post :create, request: attributes_for(:request)
+      }.to change{Request.count}.by 1
     end
   end
 
   describe "#update" do
-
-
-    before :each do
-      @myrequest = create(:request, location: "Here", budget: 20, description: "There", request_date: "23/6/2016")
-    end
-
     it "-> changes request attributes" do
-      put :update, id: @myrequest,
+      put :update, id: @thisrequest,
         request: FactoryGirl.attributes_for(:request, location: "Here", description: "There", budget: 20, request_date: "23/6/2016")
-      @myrequest.reload
-      @myrequest.location.should eq("Here")
-      @myrequest.description.should eq("There")
+      @thisrequest.reload
+      expect(@thisrequest.location).to eq("Here")
+      expect(@thisrequest.description).to eq("There")
     end
 
     it '-> redirects to requests path after updating' do
       login_user
-      put :update, id: @myrequest
+      put :update, id: @thisrequest
       expect(response).to redirect_to requests_path
     end
   end
 
   describe '#destroy' do
-
-
-    before :each do
-      login_user
-      @thisrequest = create(:request)
-    end
-
     it "-> deletes the request" do
-      expect { delete request_path(@thisrequest) }.not_to change(Request, :count)
+      expect { delete :destroy, id: @thisrequest }.to change{Request.count}.by(-1)
     end
 
     it "-> redirects to requests post-delete" do
