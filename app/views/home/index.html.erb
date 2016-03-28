@@ -1,13 +1,12 @@
 <% if user_signed_in? %>
   <div class="container-fluid">
     <div ng-controller="MapController as map">
-      <h1>{{map.userLocationArea.results[0].formatted_address}}</h1>
       <section ng-controller="RequestController as r">
-          <%= render template: "requests/_modal_request.html.erb" %>
+          <%= render "requests/modal_request" %>
           <aside class="request-info-box" ng-show="r.isInfoOpen" ng-click="r.closeClickedRequestInfo">
-            <%= render template: "requests/_single_request_info.html.erb" %>
+            <%= render "requests/single_request_info" %>
           </aside>
-          <div ng-show="r.success">
+          <div ng-show="r.success"> 
             Request submitted
           </div>
         </section>

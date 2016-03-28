@@ -1,0 +1,27 @@
+<div id="sidebar-wrapper">
+  <ul class="sidebar-nav">
+    <li class="sidebar-brand">
+      <a href="/">
+        Local Knowledge
+      </a>
+    </li>
+    <% if current_user %>
+      <section class="top-section">
+            <hr>
+        <ul class="list-inline">
+          <li> <p><%= image_tag(current_user.avatar.url(:thumb), { class: 'img-circle'})%><p> </li>
+          <li> <h4><%= current_user.f_name %> <%= current_user.l_name %></h4> </li>
+        </ul>
+        <ul class="list-inline">
+          <li> <%= link_to 'Edit Profile',edit_user_registration_path %> </li>
+          <li> <%= link_to 'Logout', destroy_user_session_path, method: :delete %> </li>
+        </ul>
+        <hr>
+      </section>
+      <li><a href="#" data-toggle="modal" data-target="#myModal">Request a tour</a></li>
+      <li><%= link_to 'My requests', requests_path %></li>
+    <% else %>
+      <li><%= link_to 'Login', new_user_session_path %></li>
+    <% end %>
+  </ul>
+</div>
