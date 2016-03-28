@@ -1,4 +1,4 @@
-<%= form_for [@request, @reply] do |f| %>
+<%= form_for [@request, @reply], html: { class: 'form-horizontal', multipart: true } do |f| %>
   <div class="col-md-3">
     <div class="form-group">
       <%= f.label :meeting_point  %>
@@ -20,6 +20,12 @@
       <%= f.label :description %>
       <%= f.text_area :description, class: 'form-control', placeholder: "Any extra information..." %>
     </div>
+    <div class="control-group">
+       <%= f.label :pictures, class: 'control-label' %>
+       <div class="controls">
+         <%= file_field_tag "images[]", type: :file, multiple: true %>
+       </div>
+     </div>
     <%= f.submit 'Reply', class: 'btn btn-default' %>
   </div>
 <% end %>

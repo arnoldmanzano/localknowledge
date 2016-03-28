@@ -3,14 +3,13 @@ class RequestsController < ApplicationController
   before_filter :authenticate_user!
 
   def index
-    @requests = Request.where(["expiration > ?", Time.now])
+    @requests = Request.where("user_id = ? AND expiration > ?", current_user, Time.now)
   end
 
   def create
     @request = current_user.requests.new(request_params)
     flash[:notice] = 'Your request has been successfully submitted.' if @request.save
     render json: @request.to_json
-    # respond_with(@request)
   end
 
   def edit

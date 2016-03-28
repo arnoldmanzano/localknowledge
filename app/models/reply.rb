@@ -1,6 +1,7 @@
 class Reply < ActiveRecord::Base
   belongs_to :request
   belongs_to :user
+  has_many :pictures, dependent: :destroy
 
 
   def find_user(user_id)

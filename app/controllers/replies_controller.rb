@@ -13,10 +13,16 @@ class RepliesController < ApplicationController
   def create
     @request = Request.find(params[:request_id])
     @reply = @request.build_reply(reply_params, current_user)
+
     if @reply.save
+      if params[:images]
+        params[:images].each do |image|
+          @reply.pictures.create(image: image)
+        end
+      end
       @request.set_expiration_date
       @request.save
-      redirect_to requests_path
+      redirect_to '/'
     else
       if @reply.errors[:user]
         redirect_to requests_path
