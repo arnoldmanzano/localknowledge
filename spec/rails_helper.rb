@@ -46,6 +46,7 @@ Capybara.default_max_wait_time = 15
 ActiveRecord::Migration.maintain_test_schema!
 
 RSpec.configure do |config|
+  config.include Capybara::Angular::DSL
 
   config.include Devise::TestHelpers, :type => :controller
   config.include ControllerMacros, :type => :controller
