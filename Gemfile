@@ -49,6 +49,7 @@ group :development, :test do
   gem 'rspec-rails'
   gem 'factory_girl_rails'
   gem 'capybara'
+  gem 'capybara-angular'
   gem 'database_cleaner'
   gem 'selenium-webdriver'
   gem "chromedriver-helper"
@@ -70,8 +71,6 @@ group :production, :staging do
 end
 
 group :test do
-  gem 'capybara'
-  gem 'capybara-angular'
   gem 'rspec-collection_matchers'
   gem 'poltergeist'
   gem 'shoulda'

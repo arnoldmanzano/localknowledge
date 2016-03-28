@@ -10,12 +10,14 @@
  * defined in the other CSS/SCSS files in this directory. It is generally better to create a new
  * file per style scope.
  *
- *= require_tree .
- *= require_self
  */
 
+ @import "cover";
  @import "bootstrap-sass-official/assets/stylesheets/bootstrap-sprockets";
  @import "bootstrap-sass-official/assets/stylesheets/bootstrap";
+ // @import "cards";
+ @import "arrows";
+ // @import "bootstrap/dist/css/bootstrap";
 
 
 #map {
@@ -24,48 +26,92 @@
   min-height: 100%;
 }
 
+.round-image-50 {
+  // img-circle
+  img {
+    width: 50px;
+    height: 50px;
+    border-radius: 100%;
+  }
+}
+
+.request-block {
+  display: flex;
+  li {
+    list-style-type: none;
+  }
+}
+
+.reply-block {
+  @extend .request-block;
+}
+
+.alert {
+  margin-bottom: 0;
+}
+
+.border-form-div input[type="text"],
+.border-form-div input[type="email"],
+.border-form-div input[type="password"] {
+  font-size: 16px;
+  height: auto;
+  margin-bottom: 15px;
+  padding: 7px 9px;
+}
+
+$header-color: rgb(18, 86, 136);
+$header-text: rgb(250, 250, 250);
+
+@mixin navlinks {
+  background-color: $header-text;
+  color: $header-color;
+}
+
+.navbar {
+  background-color: $header-color;
+  margin-bottom: 0;
+}
+
+.navbar .navbar-nav li a, .navbar-default .navbar-brand {
+  color: $header-text;
+}
+.navbar .navbar-nav li, .navbar-default .navbar-brand {
+  &:hover, &:focus {
+    @include navlinks;
+  }
+}
+
+.controls {
+  margin-top: 10px;
+  border: 1px solid transparent;
+  border-radius: 2px 0 0 2px;
+  box-sizing: border-box;
+  -moz-box-sizing: border-box;
+  height: 32px;
+  outline: none;
+  box-shadow: 0 2px 6px rgba(0, 0, 0, 0.3);
+ }
+
+ #pac-input {
+   background-color: #fff;
+   font-family: Roboto;
+   font-size: 15px;
+   font-weight: 300;
+   margin-left: 12px;
+   padding: 0 11px 0 13px;
+   text-overflow: ellipsis;
+   width: 300px;
+ }
+
+ #pac-input:focus {
+   border-color: #4d90fe;
+ }
+
 .gm-style-iw {
   width: 350px;
   top: 15px;
   left: 0px;
 }
-
-// maps infoBox
-
-#iw-container {
-    margin-bottom: 10px;
-    width: 350px;
-}
-#iw-container .iw-title {
-    font-family: 'Open Sans Condensed', sans-serif;
-    font-size: 22px;
-    font-weight: 400;
-    padding: 10px;
-    background-color: #729f98;
-    color: white;
-    margin: 0;
-}
-#iw-container .iw-content {
-    font-size: 13px;
-    line-height: 18px;
-    font-weight: 400;
-    margin-right: 1px;
-    padding: 15px 5px 20px 15px;
-    max-height: 140px;
-    overflow-y: auto;
-    overflow-x: hidden;
-}
-.iw-title img {
-    width: 50px;
-    height: 50px;
-    margin: 0 5px 5px 10px;
-}
-.iw-subTitle {
-    font-size: 16px;
-    font-weight: 700;
-    padding: 5px 0;
-}
-
 
 // Nice hover and shake snippet
 // .request-info-box:hover {
@@ -98,8 +144,29 @@
 // .request-info-box.grow:hover {
 //   transform: scale(1.1);
 // }
+.button-dashboard {
+  text-align: center;
+	display: inline-block;
+	width: 100%;
+	height: 100%;
+	position: relative;
+}
 
+// .btn {
+// 	display: inline-block;
+// 	line-height: 56px;
+// 	text-align: center;
+// 	background-color: rgba(190, 131, 42, 0.85);
+//   z-index: 2;
+//   color: white;
+// 	font-family: Helvetica, Arial, Sans-Serif;
+// 	font-size: 14px;
+// 	text-decoration:none;
+// 	// text-shadow: -1px -1px 1px #616161;
+// 	position: relative;
+// }
 // sidebar
+
 #sidebar-wrapper {
   z-index: 1000;
   position: fixed;
@@ -182,7 +249,7 @@
   border-radius: 20%;
   width: 500px;
   max-height: 100%;
-  margin-left: 60%;
+  margin-left: 30%;
   text-align: center;
   font-size: 16px;
   font-family: Roboto;

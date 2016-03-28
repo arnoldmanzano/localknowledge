@@ -1,16 +1,18 @@
-<div id="wrapper" ng-controller="MapController as map">
-
-  <%= render 'sidebar' %>
-
-  <div ng-controller="RequestController as r">
-    <%= render "modal_request.html.erb" %>
-    <div class="request-info-box" ng-show="r.isInfoOpen" ng-click="r.closeClickedRequestInfo">
-      <%= render "single_request_info.html.erb" %>
-    </div>
-    <div ng-show="r.success">
-      Request submitted
+<% if user_signed_in? %>
+  <div class="container-fluid">
+    <div ng-controller="MapController as map">
+      <section ng-controller="RequestController as r">
+          <%= render "requests/modal_request" %>
+          <aside class="request-info-box" ng-show="r.isInfoOpen" ng-click="r.closeClickedRequestInfo">
+            <%= render "requests/single_request_info" %>
+          </aside>
+          <div ng-show="r.success"> 
+            Request submitted
+          </div>
+        </section>
+      <div id="map"></div>
     </div>
   </div>
-  <div id="map"></div>
-
-</div>
+<% else %>
+  <%= render "cover" %>
+<% end %>

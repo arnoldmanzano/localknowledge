@@ -101,7 +101,7 @@ feature 'Making a request for a tour', js:true do
 
       it '-> allows the user to see their tour request' do
         click_link 'My requests'
-        expect(page).to have_content('Request for a tour in: London')
+        expect(page).to have_content('London')
         expect(page).to have_content('Details: great times wanted')
       end
 
@@ -129,7 +129,7 @@ feature 'Making a request for a tour', js:true do
         fill_in :'request[location]', with: 'Essex'
         fill_in :'request[description]', with: 'bad times wanted'
         click_button 'Submit'
-        expect(page).to have_content('Request for a tour in: Essex')
+        expect(page).to have_content('Essex')
         expect(page).to have_content('Details: bad times wanted')
         expect(page).to have_content('Request updated successfully')
       end
@@ -149,26 +149,19 @@ feature 'Making a request for a tour', js:true do
         signup
         expect(page).to have_css('.gm-style')
         request_tour
+        expect(page).to have_css('.gm-style')
         click_link 'Logout'
         signup("Jex", "Corbyn", "CorbynistaCommie", "E8 2BB", 'corbyn@labout.com', "littleredbook" )
         expect(page).to have_css('.gm-style')
         click_link('My requests')
       end
 
-      it '-> does not show requests from other users' do
-        expect(page).not_to have_content('Request for a tour in: London')
+      it '-> does not show requests from other users, only a user can update/delete their own request' do
+        expect(page).not_to have_content('London')
         expect(page).not_to have_content('Details: great times wanted')
-      end
-
-
-      it '-> only a user can update their own request' do
         expect(page).to_not have_content('Update')
-      end
-
-      it '-> only a user can delete their own request' do
         expect(page).to_not have_content('Delete')
       end
-
     end
   end
 

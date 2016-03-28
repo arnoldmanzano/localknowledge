@@ -8,10 +8,16 @@
   <script src="https://maps.googleapis.com/maps/api/js?libraries=places,geometry" async defer></script>
 </head>
 <body>
+    <%= flash_messages %>
 
-  <span class="notice hidden"><%= notice %></span>
-  <span class="alert hidden"><%= alert %></span>
-  <%= yield %>
+    <%= render "layouts/sidebar" if user_signed_in? %>
+    <% if !current_user %>
+      <%= render "devise/sessions/login" %>
+      <%= render "devise/registrations/signup" if controller_name != 'registrations' %>
+    <% end %>
 
+    <div style="margin-left: 250px;">
+      <%= yield %>
+    </div>
 </body>
 </html>
