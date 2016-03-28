@@ -28,7 +28,7 @@ RSpec.describe RepliesController, type: :controller do
     end
   end
 
-  describe "PUT #update" do
+  xdescribe "PUT #update" do
 
     before :each do
       @thisreply = FactoryGirl.create(:reply)
@@ -49,7 +49,8 @@ RSpec.describe RepliesController, type: :controller do
     end
   end
 
-  xdescribe '#destroy' do
+  describe '#destroy' do
+
 
     before :each do
       login_user
