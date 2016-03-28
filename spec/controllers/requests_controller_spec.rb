@@ -38,10 +38,10 @@ RSpec.describe RequestsController, type: :controller do
       @myrequest.description.should eq("There")
     end
 
-    it 'redirects to requests path after updating' do
+    it '-> redirects to requests path after updating' do
       login_user
       put :update, id: @myrequest
-      response.should redirect_to requests_path
+      expect(response).to redirect_to requests_path
     end
   end
 
@@ -58,7 +58,7 @@ RSpec.describe RequestsController, type: :controller do
 
     it "-> redirects to requests post-delete" do
       delete :destroy, id: @thisrequest
-      response.should redirect_to requests_path
+      expect(response).to redirect_to requests_path
     end
   end
 end
