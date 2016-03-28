@@ -1,64 +1,71 @@
 require 'rails_helper'
+include Devise::TestHelpers
 
 RSpec.describe RepliesController, type: :controller do
-  # login_admin
 
-  xdescribe "POST #create" do
+
+  before(:each) do
+    _user = FactoryGirl.create(:user)
+    @_request = FactoryGirl.create(:request)
+    sign_in _user
+  end
+
+  describe "#create" do
+
 
     it "-> creates a new reply" do
-      reply = FactoryGirl.create(:reply)
-      expect{
-        post :create, reply: FactoryGirl.attributes_for(:reply)
-      }.to change(Reply,:count).by(1)
+      post :create, request_id: @_request.id, reply: attributes_for(:reply)
+      expect(Reply.count).to eq(1)
     end
   end
 
-  xdescribe "POST #choose" do
-
-    before :each do
-      @myreply = FactoryGirl.create(:reply)
-    end
+  describe "#choose" do
 
     it '-> redirects back to requests after successfully choosing' do
-      post :choose, id: @myreply
-      response.should redirect_to requests_path
+      myreply = FactoryGirl.create(:reply)
+      post :choose, request_id: @_request.id, id: myreply
+      expect(response).to redirect_to requests_path
     end
   end
 
   xdescribe "PUT #update" do
 
     before :each do
-      @thisreply = create(:reply)
-    end
-
-    it "-> locates the specified reply" do
-      put :update, id: @thisreply, reply: FactoryGirl.attributes_for(:reply)
-      assigns(:reply).should eq(@thisreply)
+      @thisreply = FactoryGirl.create(:reply)
     end
 
     it "-> changes reply attributes" do
-      put :update, id: @thisreply,
-        request: FactoryGirl.attributes_for(:reply)
+      put :update, request_id: @_request.id, id: @thisreply,
+        reply: FactoryGirl.attributes_for(:reply)
       @thisreply.reload
       @thisreply.meeting_point.should eq("MyString")
       @thisreply.description.should eq("MyText")
     end
+
+    it '-> redirects to requests path after updating reply' do
+      login_user
+      put :update, request_id: @_request.id, id: @thisreply
+      expect(response).to redirect_to requests_path
+    end
   end
 
-  xdescribe 'DELETE #destroy' do
+  describe '#destroy' do
+
+
     before :each do
-      @a_reply = create(:reply)
+      login_user
+      @thisreply = FactoryGirl.create(:reply)
     end
 
     it "-> deletes the reply" do
       expect{
-        delete :destroy, id: @a_reply
-      }.to change(Request,:count).by(-1)
+        delete :destroy, request_id: @_request.id, id: @thisreply
+      }.to change(Reply, :count).by(-1)
     end
 
     it "-> redirects to requests after deletion" do
-      delete :destroy, id: @a_reply
-      response.should redirect_to requests_path
+      delete :destroy, request_id: @_request.id, id: @thisreply
+      expect(response).to redirect_to requests_path
     end
   end
 end
