@@ -7,10 +7,11 @@
 
     var self = this;
 
+
     self.getLocation = function() {
       LocationService.getCurrentLocation(function(resource) {
-        self.userLocationArea = resource;
         LocationService.initMap();
+        self.userLocationArea = resource;
         MarkersService.retrieveAllRequests();
       });
     };

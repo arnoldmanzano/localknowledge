@@ -2,15 +2,15 @@
 
   <%= render 'sidebar' %>
 
-  <section ng-controller="RequestController as r">
+  <div ng-controller="RequestController as r">
     <%= render "modal_request.html.erb" %>
-    <aside class="request-info-box" ng-show="r.isInfoOpen" ng-click="r.closeClickedRequestInfo">
+    <div class="request-info-box" ng-show="r.isInfoOpen" ng-click="r.closeClickedRequestInfo">
       <%= render "single_request_info.html.erb" %>
-    </aside>
+    </div>
     <div ng-show="r.success">
       Request submitted
     </div>
-  </section>
+  </div>
   <div id="map"></div>
 
 </div>
