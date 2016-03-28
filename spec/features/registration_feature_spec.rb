@@ -17,11 +17,9 @@ feature 'Registration and users', js:true do
     it '-> allows users to edit their profile picture after signing up' do
       signup
       click_link 'Edit Profile'
-      within('#editUser') do
-        attach_file 'user[avatar]', Rails.root.join('spec','fixtures', 'obama-best.png')
-        fill_in :'user[current_password]', with: 'password'
-        click_button 'Update'
-      end
+      attach_file 'user[avatar]', Rails.root.join('spec','fixtures', 'obama-best.png')
+      fill_in :'user[current_password]', with: 'password'
+      click_button 'Update'
       expect(current_path).to eq('/')
       expect(page).to have_css("img[src*='obama-best.png']")
     end
