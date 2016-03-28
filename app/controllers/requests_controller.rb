@@ -44,7 +44,8 @@ class RequestsController < ApplicationController
 
   def request_params
     params.require(:request).permit(:location, :lat, :lng,
-      :description, :budget, :special_considerations,
+      :description, :budget,
+      :disability, :children, :luggage, :airport_access,
       :request_date, :tour_duration,
       :time_of_day, :tour_time_start,
       :tour_duration, :tour_time_end)

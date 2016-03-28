@@ -74,7 +74,7 @@
     };
 
     self.outputUpdate = function(hours){
-	     document.querySelector('#request_duration').value = hours;
+	     document.querySelector('#tour_duration').value = hours;
      };
 
   }]);

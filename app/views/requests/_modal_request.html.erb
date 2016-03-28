@@ -76,10 +76,10 @@
 
             <div class="form-group" ng-show=r.isMoreTimeOptions>
               <h4>When I'll be there: {{request.request_date | date:'fullDate'}}</h4><br>
-              <label for=request_timing_start> From:</label>
+              <label for=tour_time_end> From:</label>
               <input class="form-control" type="time" class="form-control" id="tour_time_start" ng-model="request.tour_time_start">
-                <output for="duration" id="request_duration">
-                  <h4> I'm free for {{request.request_duration}} hours </h4>
+                <output for="duration" id="tour_duration">
+                  <h4> I'm free for {{request.tour_duration}} hours </h4>
                 </output>
           </div>
           <div class="form-group" ng-show=r.isMoreTimeOptions>
@@ -88,16 +88,16 @@
                       name="time"
                       value="2"
                       class="form-control"
-                      id="request_duration"
-                      ng-model="request.request_duration"
-                      ng-change="r.calculateEndTime(request.request_duration, request.tour_time_start)"
+                      id="tour_duration"
+                      ng-model="request.tour_duration"
+                      ng-change="r.calculateEndTime(request.tour_duration, request.tour_time_start)"
                       min="0" max="{{r.timeLimiter}}" step="0.5"
                       oninput="r.outputUpdate(value)">
           </div>
 
           <div class="form-group" ng-show=r.isMoreTimeOptions>
             <label> or until: </label>
-                <input type="time" class="form-control" id="request_timing_end" placeholder="{{r.calculateEndTime | date:'HH:mm'}}" ng-model="request.request_timing_end">
+                <input type="time" class="form-control" id="tour_time_end" placeholder="{{r.calculateEndTime | date:'HH:mm'}}" ng-model="request.tour_time_end">
           </div>
 
           <div class="form-group">
