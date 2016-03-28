@@ -2,6 +2,6 @@
   'use strict';
 
   angular
-    .module('LocalKnowledgeApp', ['ngResource']);
+    .module('LocalKnowledgeApp', ['ngResource', 'ngMaterial']);
 
 }());

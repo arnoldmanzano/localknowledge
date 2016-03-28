@@ -11,8 +11,30 @@
       <div class="modal-body">
         <form>
           <div class="form-group">
+<<<<<<< HEAD
             <label for="location"><h4>Where I'm going: {{request.location}}  </h4>*required</label>
             <input type="text" class="form-control" name="location" id="location" ng-model="request.location" placeholder="Where do you want to go?" required>
+=======
+            <label for="location">Location</label>
+            <div>
+            <md-autocomplete
+                md-search-text-change="r.autoCompleteSearch(searchText)"
+                md-input-name="request.location"
+                md-selected-item="selectedItem"
+                md-search-text="searchText"
+                md-items="item in r.autocompleteSearch(searchText)"
+                md-item-text="item.display"
+                md-input-minlength="0">
+              <md-item-template md-highlight-text="searchText">
+                {{item.display}}
+              </md-item-template>
+            </div>
+            </md-autocomplete>
+
+            <aside ng-show="r.autocompleteStarted" id="autocompleteSuggestions">
+              <ul ng-repeat="suggestion in r.autocompleteSuggestions track by $index"> {{suggestion}} </ul>
+            <aside>
+>>>>>>> 925a0d71396dc7227982e924e1f656f189bc3548
           </div>
 
           <div class="form-group">
