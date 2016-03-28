@@ -17,8 +17,8 @@
         <h3> Think you can help <b>{{r.requestUser.f_name}}</b> ? </h3>
     </div>
     <div class="bottom">
-      <input class="action-button shadow animate brown" type="submit" ng-click="r.toggleResponseForm" value="Reply to {{r.requestUser.f_name}}'s request"></input>
-      <input class="action-button shadow animate brown" type="submit" ng-click="r.toggleUserInfo" value="Find out more about {{r.requestUser.f_name}}"></input>
+      <input class="btn-for-request" type="submit" ng-click="r.toggleResponseForm" value="Reply to {{r.requestUser.f_name}}'s request"></input>
+      <input class="btn-for-request" type="submit" ng-click="r.toggleUserInfo" value="Find out more about {{r.requestUser.f_name}}"></input>
     </div>
     <aside ng-show="r.isUserInfoOpen" class="requested-user-info"></aside>
 </div>
