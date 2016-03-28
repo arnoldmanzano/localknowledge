@@ -1,12 +1,16 @@
 require 'rails_helper'
+include Capybara::Angular::DSL
 
-feature 'Replying to client requests' do
+xfeature 'Replying to client requests', js:true do
 
   before do
-    signup(f_name: "Bob", l_name: "Marley", username: 'Iron_Lion_Zion', postcode: 'W12 7JQ', email: 'bob@bob.com', password: "password")
+    signup
+    expect(page).to have_css('.gm-style')
     request_tour
+    expect(page).to have_content('Request submitted')
     click_link 'Logout'
-    signup(f_name: "Jimmy", l_name: "Hendrix", username: 'hendrix_fan', postcode: 'SW1 8AP', email: 'b@aol.com', password: "password")
+    signup("Jimmy", "Hendrix", 'hendrix_fan', 'SW1 8AP', 'b@aol.com', "password")
+    expect(page).to have_css('.gm-style')
     visit('/requests')
     reply_to_request
   end
@@ -26,7 +30,7 @@ feature 'Replying to client requests' do
 
   it ('-> only a tour guide can update their own reply') do
     click_link "Logout"
-    signup(f_name: "Jim", l_name: "Morrisson", username: 'rider_of_the_storm', postcode: 'SW8 7UP', email: 'bob@aol.com', password: "password")
+    signup("Jim", "Morrisson", 'rider_of_the_storm', 'SW8 7UP', 'bob@aol.com', "password")
     visit('/requests')
     expect(page).to_not have_content('Update')
   end
@@ -40,7 +44,7 @@ feature 'Replying to client requests' do
 
   it ('-> only a tour guide can delete their own reply') do
     click_link "Logout"
-    signup(f_name: "Jimmy", l_name: "Hendrix", username: 'hendrix_fan', postcode: 'SW1 8AP', email: 'bobbybrown@aol.com', password: "password")
+    signup("Jimmy", "Hendrix", 'hendrix_fan', 'SW1 8AP', 'bobbybrown@aol.com', "password")
     expect(page).to_not have_content('Delete')
   end
 

@@ -10,9 +10,10 @@ class RepliesController < ApplicationController
 
   def create
     @request = Request.find(params[:request_id])
-    @reply = @request.build_request(reply_params, current_user)
+    @reply = @request.build_reply(reply_params, current_user)
     if @reply.save
       @request.set_expiration_date
+      @request.save
       redirect_to requests_path
     else
       if @reply.errors[:user]
@@ -21,6 +22,14 @@ class RepliesController < ApplicationController
         render :new
       end
     end
+  end
+
+  def choose
+    @request = Request.find(params[:request_id])
+    @reply = Reply.find(params[:id])
+    @reply.set_chosen
+    flash[:notice] = 'Reply chosen'
+    redirect_to requests_path
   end
 
   def edit

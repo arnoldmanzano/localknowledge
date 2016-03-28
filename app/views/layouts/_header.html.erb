@@ -29,10 +29,3 @@
       </div>
     </div>
 </nav>
-
-<div>
-  <% if !current_user %>
-    <%= render "devise/sessions/login" %>
-    <%= render "devise/registrations/signup" if controller_name != 'registrations' %>
-  <% end %>
-</div>

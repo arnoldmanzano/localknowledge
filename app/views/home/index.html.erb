@@ -1,18 +1,19 @@
-<div class="site-wrapper">
-  <div class="site-wrapper-inner">
-    <div class="cover-container">
-      <div class="inner cover">
-        <h1 class="cover-heading">Welcome</h1>
-        <p class="lead">Find a local to tour you...</p>
-        <p class="lead">
-          <a href="#" class="btn btn-lg btn-default">Learn more</a>
-        </p>
-      </div>
-      <div class="mastfoot">
-        <div class="inner">
-          <p><a href="http://github.com">Github</a></p>
-        </div>
-      </div>
+<% if user_signed_in? %>
+  <div class="container-fluid">
+    <div ng-controller="MapController as map">
+      <h1>{{map.userLocationArea.results[0].formatted_address}}</h1>
+      <section ng-controller="RequestController as r">
+          <%= render template: "requests/_modal_request.html.erb" %>
+          <aside class="request-info-box" ng-show="r.isInfoOpen" ng-click="r.closeClickedRequestInfo">
+            <%= render template: "requests/_single_request_info.html.erb" %>
+          </aside>
+          <div ng-show="r.success">
+            Request submitted
+          </div>
+        </section>
+      <div id="map"></div>
     </div>
   </div>
-</div>
+<% else %>
+  <%= render "cover" %>
+<% end %>

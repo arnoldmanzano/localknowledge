@@ -1,6 +1,7 @@
 require 'rails_helper'
+include Capybara::Angular::DSL
 
-feature 'Registration and users' do
+feature 'Registration and users', js:true do
 
   context '- signing up' do
 
@@ -16,7 +17,7 @@ feature 'Registration and users' do
     it '-> allows users to edit their profile picture after signing up' do
       signup
       click_link 'Edit Profile'
-      within(:css, '#editUser') do
+      within('#editUser') do
         attach_file 'user[avatar]', Rails.root.join('spec','fixtures', 'obama-best.png')
         fill_in :'user[current_password]', with: 'password'
         click_button 'Update'

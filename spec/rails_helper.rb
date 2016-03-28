@@ -8,11 +8,19 @@ require 'rspec/rails'
 require 'capybara/rails'
 require 'capybara/poltergeist'
 require 'factory_girl_rails'
+require 'devise'
 
 require 'support/database_cleaner'
 require 'support/factory_girl'
+require 'support/helpers/select_date_helper'
 
 require_relative 'web_helper'
+
+Capybara.register_driver :selenium do |app|
+  Capybara::Selenium::Driver.new(app, :browser => :chrome)
+end
+
+Capybara.default_max_wait_time = 15
 
 # Add additional requires below this line. Rails is not loaded until this point!
 
@@ -36,13 +44,17 @@ require_relative 'web_helper'
 ActiveRecord::Migration.maintain_test_schema!
 
 RSpec.configure do |config|
+
+  config.include Devise::TestHelpers, :type => :controller
+
+
   # Remove this line if you're not using ActiveRecord or ActiveRecord fixtures
   config.fixture_path = "#{::Rails.root}/spec/fixtures"
 
   # If you're not using ActiveRecord, or you'd prefer not to run each of your
   # examples within a transaction, remove the following line or assign false
   # instead of true.
-  config.use_transactional_fixtures = true
+  config.use_transactional_fixtures = false
   # config.include Devise::TestHelpers, :type => :controller #devise methods for factory girl sign in
 
   # RSpec Rails can automatically mix in different behaviours to your tests

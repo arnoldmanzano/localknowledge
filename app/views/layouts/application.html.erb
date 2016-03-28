@@ -1,18 +1,21 @@
 <!DOCTYPE html>
-<html>
+<html ng-app="LocalKnowledgeApp">
 <head>
   <title>LocalKnowledge</title>
   <%= stylesheet_link_tag    'application', media: 'all', 'data-turbolinks-track' => true %>
   <%= javascript_include_tag 'application', 'data-turbolinks-track' => true %>
   <%= csrf_meta_tags %>
-  <!-- <script src="https://maps.googleapis.com/maps/api/js?key=AIzaSyDEzlB7nYu2_PW8TUkQ80q3GAmdz2GW96c" async defer></script> -->
+  <script src="https://maps.googleapis.com/maps/api/js?libraries=places,geometry" async defer></script>
 </head>
-<body ng-app="LocalKnowledgeApp">
+<body>
 
-  <%= render "layouts/header" if controller_name != 'home' %>
+    <%= render "layouts/header" if user_signed_in? %>
+    <% if !current_user %>
+      <%= render "devise/sessions/login" %>
+      <%= render "devise/registrations/signup" if controller_name != 'registrations' %>
+    <% end %>
 
-  <%= flash_messages %>
-
+    <%= flash_messages %>
     <%= yield %>
 
 </body>

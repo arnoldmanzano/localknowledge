@@ -1,10 +1,10 @@
-describe('LocationController', function(){
+describe('MapController', function(){
   var ctrl, $window, $rootScope, $q, LocationService;
 
   beforeEach(function(){
     module('LocalKnowledgeApp');
     inject(function($controller, _LocationService_){
-      ctrl = $controller("LocationController");
+      ctrl = $controller("MapController");
       LocationService = _LocationService_;
       google = { maps: { Map: function(){} }};
     });
@@ -14,10 +14,10 @@ describe('LocationController', function(){
     spyOn(LocationService, "getCurrentLocation").and.callFake(function(callback){
       callback('Place');
     });
-    spyOn(ctrl, "initMap");
+    spyOn(LocationService, "initMap");
 
     ctrl.getLocation();
-    expect(ctrl.initMap).toHaveBeenCalled();
+    expect(LocationService.initMap).toHaveBeenCalled();
     expect(ctrl.userLocationArea).toEqual('Place');
   });
 
