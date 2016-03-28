@@ -8,6 +8,7 @@ RSpec.describe RequestsController, type: :controller do
 
   describe "#index" do
 
+
     it "-> populates an array of requests" do
       @myrequest = create(:request, location: "Here", budget: 20, description: "There", request_date: "23/6/2016")
       @requests = Request.where(["expiration > ?", Time.now])
@@ -17,6 +18,7 @@ RSpec.describe RequestsController, type: :controller do
 
   describe  "#create" do
 
+
     it "-> creates a new request" do
       login_user
       post :create, request: attributes_for(:request)
@@ -25,6 +27,7 @@ RSpec.describe RequestsController, type: :controller do
   end
 
   describe "#update" do
+
 
     before :each do
       @myrequest = create(:request, location: "Here", budget: 20, description: "There", request_date: "23/6/2016")
@@ -46,6 +49,7 @@ RSpec.describe RequestsController, type: :controller do
   end
 
   describe '#destroy' do
+
 
     before :each do
       login_user

@@ -1,8 +1,8 @@
 include SelectDateHelper
 
-
 def signup(f_name = "Bob", l_name = "Marley", username = 'Iron_Lion_Zion', postcode = 'W12 7JQ', email = 'bob@bob.com', password ="password" )
-  visit('/users/sign_up')
+  visit('/')
+  click_link('Sign Up')
   attach_file 'user[avatar]', Rails.root.join('spec','fixtures','marley.jpeg')
   fill_in :'user[f_name]', with: f_name
   fill_in :'user[l_name]', with: l_name

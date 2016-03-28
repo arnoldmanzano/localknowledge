@@ -22,7 +22,7 @@ Capybara.register_driver :selenium do |app|
   Capybara::Selenium::Driver.new(app, :browser => :chrome)
 end
 
-Capybara.default_max_wait_time = 7
+Capybara.default_max_wait_time = 15
 
 # Add additional requires below this line. Rails is not loaded until this point!
 
@@ -49,6 +49,7 @@ RSpec.configure do |config|
 
   config.include Devise::TestHelpers, :type => :controller
   config.include ControllerMacros, :type => :controller
+
 
   # Remove this line if you're not using ActiveRecord or ActiveRecord fixtures
   config.fixture_path = "#{::Rails.root}/spec/fixtures"

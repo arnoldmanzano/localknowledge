@@ -3,6 +3,7 @@ include Devise::TestHelpers
 
 RSpec.describe RepliesController, type: :controller do
 
+
   before(:each) do
     _user = FactoryGirl.create(:user)
     @_request = FactoryGirl.create(:request)
@@ -11,12 +12,12 @@ RSpec.describe RepliesController, type: :controller do
 
   describe "#create" do
 
+
     it "-> creates a new reply" do
       post :create, request_id: @_request.id, reply: attributes_for(:reply)
       expect(Reply.count).to eq(1)
     end
   end
-
 
   describe "#choose" do
 
@@ -27,7 +28,7 @@ RSpec.describe RepliesController, type: :controller do
     end
   end
 
-  describe "#update" do
+  describe "PUT #update" do
 
     before :each do
       @thisreply = FactoryGirl.create(:reply)
@@ -48,7 +49,7 @@ RSpec.describe RepliesController, type: :controller do
     end
   end
 
-  describe '#destroy' do
+  xdescribe '#destroy' do
 
     before :each do
       login_user

@@ -2,13 +2,13 @@ FactoryGirl.define do
   factory :request do
     location "MyString"
     description "MyText"
-    request_date "23/6/2016"
+    # request_date "23/6/2016"
     user
+    request_date Time.now
 
     #A factory to build a request with a reply.
 
     factory :request_with_replies do
-
       transient do
         replies_count 2
       end

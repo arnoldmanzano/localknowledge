@@ -1,6 +1,7 @@
 require 'rails_helper'
+include Capybara::Angular::DSL
 
-feature 'Registration and users' do
+feature 'Registration and users', js:true do
 
   context '- signing up' do
 
