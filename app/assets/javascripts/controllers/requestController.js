@@ -22,12 +22,13 @@
       if (searchInput.length < 2) {
         self.autocompleteStarted = false;
       } else {
+        console.log(searchInput);
         AutocompleteService.initPredict(searchInput);
         // AutocompleteService.initAutocomplete();
         self.autocompleteStarted = true;
 
         self.autocompleteSuggestions = AutocompleteService.makeSuggestions();
-        console.log(self.autocompleteSuggestions);
+        return self.autocompleteSuggestions;
       }
     };
 
