@@ -1,4 +1,4 @@
-<div id="myModal" class="modal fade" role="dialog">
+<div id="myModal" class="modal fade" role="dialog" ng-submit="r.update(request)">
   <div class="modal-dialog">
     <!-- Modal content-->
     <div class="modal-content" >
@@ -12,7 +12,7 @@
         <form>
           <div class="form-group">
             <label for="location"><h4>Where I'm going: {{request.location}}  </h4>*required</label>
-            <input type="text" class="form-control" name="location" id="location" ng-model="request.location" placeholder="Where do you want to go?" required>
+            <input type="text" class="form-control" name="location" id="location" ng-model="request.location" placeholder="Where do you want to go?" ng-required="true">
             <label for="location">Location</label>
           <div>
 
@@ -42,7 +42,12 @@
 
           <div class="form-group">
             <label for="request_date"><h4>When I'll be there:  </h4>*required</label>
-            <input type="date" class="form-control" name="request_date" id="request_date" ng-model="request.request_date" required>
+            <input type="date" class="form-control" name="request_date" id="request_date" ng-model="request.request_date" ng-required="true">
+          </div>
+
+          <div class="form-group">
+            <label for="group_size"> <h6> Group Size: </h6>*required</label><br>
+              <input type="integer" name="group_size" ng-model="request.group_size" class="form-control" ng-required="true"><br>
           </div>
 
           <div class="form-group">
@@ -50,13 +55,12 @@
               <!-- (could we put a currency thing in that chooses currency accoring to where you are?) -->
             <input type="range"
                     min="0" max="250" step="5"
-                    value="10"
                     class="form-control"
                     id="budget"
                     ng-model="request.budget"
-                    >
+                    ng-required="true">
             <output for="budget" id="request_budget">
-              <h4> I've got £{{request.budget}} to spend </h4>
+              <h4> I've got £{{request.budget || '100'}} to spend </h4>
             </output>
             <button type="button" class="btn btn-default" ng-click="r.toggleMoreOptions()" ng-click="r.openMoreOptions()" ng-show="r.isMoreOptions"> Fewer Options </button>
             <button type="button" class="btn btn-default" ng-click="r.toggleMoreOptions()" ng-click="r.openMoreOptions()" ng-hide="r.isMoreOptions"> More Options </button>
@@ -70,10 +74,6 @@
               <label><input class="form-control" type="checkbox" name="special_considerations" ng-model="request.airport_access" value="FlightsThatDay"> Flying on the same day </label><br>
           </div>
 
-          <div class="form-group" ng-show="r.isMoreOptions">
-            <label for="group_size"> <h6> Group Size: </h6></label><br>
-              <input type="integer" name="group_size" ng-model="request.group_size" class="form-control"><br>
-          </div>
 
           <div class="modal-header">
             <h2 class="modal-title">Timings</h2>
@@ -82,7 +82,7 @@
 
 
           <div class="form-group">
-                <input class="form-control" type="radio" name="request_time_of_day"  ng-model="request.time_of_day" value="All Day" checked> All day<br>
+                <input class="form-control" type="radio" name="request_time_of_day"  ng-model="request.time_of_day" value="All Day" ng-required="true" checked> All day<br>
                 <input class="form-control" type="radio" name="request_time_of_day"  ng-model="request.time_of_day" value="Morning" checked> Morning <br>
                 <input class="form-control" type="radio" name="request_time_of_day"  ng-model="request.time_of_day" value="Afternoon" checked> Afternoon <br>
                 <input class="form-control" type="radio" name="request_time_of_day"  ng-model="request.time_of_day" value="Evening" checked> Evening <br>
@@ -96,32 +96,32 @@
 
             <div class="form-group" ng-show=r.isMoreTimeOptions>
               <h4>When I'll be there: {{request.request_date | date:'fullDate'}}</h4><br>
-              <label for=tour_time_end> From:</label>
-              <input class="form-control" type="time" class="form-control" id="tour_time_start" ng-model="request.tour_time_start">
-                <output for="duration" id="tour_duration">
-                  <h4> I'm free for {{request.tour_duration}} hours </h4>
-                </output>
+              <label for=tour_time_start> From:</label>
+              <input  class="form-control"
+                      type="time"
+                      id="tour_time_start"
+                      ng-model="request.tour_time_start"
+                      >
           </div>
           <div class="form-group" ng-show=r.isMoreTimeOptions>
-              <label for="duration"> Duration </label>
+            <label for="duration"> Duration </label>
+            <output for="duration" id="tour_duration">
+              <h4> I'm free for {{request.tour_duration}} hours </h4>
+              <h4> From: {{request.tour_time_start | date:'HH' + ':' + 'mm'}} until: {{r.tour_time_end}}</h4>
+            </output>
               <input  type="range"
                       name="time"
-                      value="2"
                       class="form-control"
                       id="tour_duration"
                       ng-model="request.tour_duration"
-                      ng-change="r.calculateEndTime(request.tour_duration, request.tour_time_start)"
-                      min="0" max="{{r.timeLimiter}}" step="0.5"
-                      oninput="r.outputUpdate(value)">
-          </div>
-
-          <div class="form-group" ng-show=r.isMoreTimeOptions>
-            <label> or until: </label>
-                <input type="time" class="form-control" id="tour_time_end" placeholder="{{r.calculateEndTime | date:'HH:mm'}}" ng-model="request.tour_time_end">
+                      ng-change="r.calculateTimeLimiter(request.tour_time_start)"
+                      min="0" max="{{r.calculateTimeLimiter(request.tour_time_start, request.tour_duration)}}" step="1"
+                      oninput="r.outputUpdate(value)"
+                      >
           </div>
 
           <div class="form-group">
-              <button type="submit" class="btn btn-default" id="modal-submit" ng-click="r.update(request)">Submit</button>
+              <button type="submit" class="btn btn-default" id="modal-submit" >Submit</button>
           </div>
 
         </form>

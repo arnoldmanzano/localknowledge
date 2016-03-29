@@ -11,14 +11,12 @@
     var isMoreOptions = false;
     var clickedRequest = {};
     var requestUser = {};
-    var endTime;
-    var timeLimiter;
     var isMoreTimeOptions = false;
     var autocompleteStarted;
+    var tour_time_end = "00:00";
 
     self.master = {};
     var autocompleteSuggestions = [];
-    // var search = autoCompleteSearch;
 
 
     self.autoCompleteSearch = function(searchInput){
@@ -33,21 +31,32 @@
     };
 
     self.update = function(request) {
-      console.log(request);
-      LocationService.centerMapOnAddress(request.location);
-      LocationService.lookupCoords(request.location).then(function(coords) {
+
+      console.log(request.time_of_day);
+        LocationService.centerMapOnAddress(request.location);
+        LocationService.lookupCoords(request.location).then(function(coords) {
         request.lat = coords.lat;
         request.lng = coords.lng;
         self.master = angular.copy(request);
+        debugger;
         self.postRequest(self.master);
         MarkersService.placeCurrentRequestMarker(request);
+        angular.element("#myModal").modal('hide');
       });
-    };
+    // } else {
+    //   self.isMoreTimeOptions = true;
+    //    console.log("start of un-filled in bits of time in update");
+    //    request.tour_time_end = Date.parse(self.tour_time_end);
+    //    self.update(request);
+    //    console.log("end of un-filled in bits of time in update");
+    // }
+  };
 
     self.postRequest = function(data) {
       $http.post('/requests', data).success(function(data, status) {
         self.success = true;
       });
+
     };
 
     self.openClickedRequestInfo = function(requestData){
@@ -70,13 +79,21 @@
       self.openClickedRequestInfo(data);
     });
 
-    self.calculateTimeLimiter = function(requestDuration, requestStartTime){
-      // var endHours = requestStartTime.getHours() + requestDuration;
-      // var startMinutes = console.log(requestStartTime.getMinutes());
-      // var stringTime = String(endHours) + ":" + String(startMinutes);
-      self.timeLimiter = 24 - requestStartTime.getHours();
-      // self.endTime = new Date(stringTime);
+    self.calculateTimeLimiter = function(requestStartTime, requestDuration){
+      requestStartTime = requestStartTime || Date.now();
+      requestDuration = requestDuration || 2;
+      self.calculateTourEnd(requestStartTime, requestDuration);
+      return 23 - requestStartTime.getHours();
     };
+
+    self.calculateTourEnd = function(requestStartTime, requestDuration){
+      console.log("inside calculateTourEnd");
+      var hoursStr = parseInt(requestStartTime.getHours()) + (parseInt(requestDuration) || 0);
+      console.log(hoursStr);
+
+      var minutesStr = requestStartTime.getMinutes();
+      self.tour_time_end = hoursStr + ":" + minutesStr;
+  };
 
     self.toggleMoreOptions = function(){
       self.isMoreOptions = !self.isMoreOptions;

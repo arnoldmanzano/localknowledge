@@ -1,8 +1,5 @@
 $( document ).ready(function () {
-
-    $('#modal-submit').click(function() {
-    $('#myModal').modal('hide');
-  });
+  
 
     $(".btn-for-request").hover(function(){
   	$(this).stop().animate({

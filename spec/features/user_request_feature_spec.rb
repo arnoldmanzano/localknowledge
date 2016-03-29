@@ -159,5 +159,4 @@ feature 'Making a request for a tour', js:true do
     expect(page).to have_content('Meeting point: London')
   end
 
-  end
 end
