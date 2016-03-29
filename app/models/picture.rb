@@ -2,7 +2,7 @@ class Picture < ActiveRecord::Base
   belongs_to :reply
 
   has_attached_file :image,
-    :path => ":rails_root/public/images/:id/:filename",
+    :path => ":rails_root/public/images/reply_pics/:id/:filename",
     :url  => "/images/reply_pics/:id/:filename",
     :styles => { :medium => "300x300>", :thumb => "100x100#" }
 
