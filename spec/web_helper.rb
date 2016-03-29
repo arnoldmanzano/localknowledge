@@ -31,12 +31,12 @@ def reply_to_request
   click_button 'Reply'
 end
 
-def request_tour(location="London", budget=10, description="great times wanted", request_date=12122016)
+def request_tour(location="London", description="great times wanted", request_date=12122016)
   click_link 'Request a tour'
   expect(page).to have_content('Request a tour from a local')
   fill_in :location, with: location
   fill_in :request_date, with: request_date
-  fill_in :budget, with: budget
+  find(:css, ".form-control[value='All Day']").set(true)
   fill_in :description, with: description
   click_button 'Submit'
 end

@@ -3,36 +3,18 @@
     <!-- Modal content-->
     <div class="modal-content" >
 
-      <div class="modal-header">
-        <button type="button" class="close" data-dismiss="modal">&times;</button>
-        <h2 class="modal-title">Request a tour from a local</h2>
-      </div>
+        <div class="modal-header">
+          <button type="button" class="close" data-dismiss="modal">&times;</button>
+          <h2 class="modal-title">Request a tour from a local</h2>
+        </div>
 
       <div class="modal-body">
         <form>
+
           <div class="form-group">
             <label for="location"><h4>Where I'm going: {{request.location}}  </h4>*required</label>
             <input type="text" class="form-control" name="location" id="location" ng-model="request.location" placeholder="Where do you want to go?" ng-required="true">
             <label for="location">Location</label>
-          <div>
-
-            <md-autocomplete
-                md-search-text-change="r.autoCompleteSearch(searchText)"
-                md-input-name="request.location"
-                md-selected-item="selectedItem"
-                md-search-text="searchText"
-                md-items="item in r.autocompleteSearch(searchText)"
-                md-item-text="item.display"
-                md-input-minlength="0">
-              <md-item-template md-highlight-text="searchText">
-                {{item.display}}
-              </md-item-template>
-            </div>
-            </md-autocomplete>
-
-            <aside ng-show="r.autocompleteStarted" id="autocompleteSuggestions">
-              <ul ng-repeat="suggestion in r.autocompleteSuggestions track by $index"> {{suggestion}} </ul>
-            <aside>
           </div>
 
           <div class="form-group">
@@ -46,24 +28,31 @@
           </div>
 
           <div class="form-group">
-            <label for="group_size"> <h6> Group Size: </h6>*required</label><br>
-              <input type="integer" name="group_size" ng-model="request.group_size" class="form-control" ng-required="true"><br>
+            <label for="request_time_of_day"><h4>When will you be free on {{request.request_date | date:'fullDate'}}?</h4></label><br>
+                <input class="form-control" type="radio" name="request_time_of_day"  ng-model="request.time_of_day" value="All Day" ng-required="true" checked> All day<br>
+                <input class="form-control" type="radio" name="request_time_of_day"  ng-model="request.time_of_day" value="Morning" checked> Morning <br>
+                <input class="form-control" type="radio" name="request_time_of_day"  ng-model="request.time_of_day" value="Afternoon" checked> Afternoon <br>
+                <input class="form-control" type="radio" name="request_time_of_day"  ng-model="request.time_of_day" value="Evening" checked> Evening <br>
+              <h4> I'm free: {{request.time_of_day}} </h4>
+              <button type="button" class="btn btn-default" ng-click="r.toggleMoreOptions()" ng-click="r.openMoreOptions()" ng-show="r.isMoreOptions"> Fewer Options </button>
+              <button type="button" class="btn btn-default" ng-click="r.toggleMoreOptions()" ng-click="r.openMoreOptions()" ng-hide="r.isMoreOptions"> More Options </button>  
           </div>
 
-          <div class="form-group">
+          <div class="form-group" ng-show="r.isMoreOptions">
+            <label for="group_size"> <h6> Group Size: </h6></label><br>
+              <input type="integer" name="group_size" ng-model="request.group_size" class="form-control" ><br>
+          </div>
+
+          <div class="form-group" ng-show="r.isMoreOptions">
             <label for="budget"><h4> Budget: </h4></label>
-              <!-- (could we put a currency thing in that chooses currency accoring to where you are?) -->
             <input type="range"
                     min="0" max="250" step="5"
                     class="form-control"
                     id="budget"
-                    ng-model="request.budget"
-                    ng-required="true">
+                    ng-model="request.budget">
             <output for="budget" id="request_budget">
               <h4> I've got £{{request.budget || '100'}} to spend </h4>
             </output>
-            <button type="button" class="btn btn-default" ng-click="r.toggleMoreOptions()" ng-click="r.openMoreOptions()" ng-show="r.isMoreOptions"> Fewer Options </button>
-            <button type="button" class="btn btn-default" ng-click="r.toggleMoreOptions()" ng-click="r.openMoreOptions()" ng-hide="r.isMoreOptions"> More Options </button>
           </div>
 
           <div class="form-group" ng-show="r.isMoreOptions">
@@ -75,35 +64,18 @@
           </div>
 
 
-          <div class="modal-header">
-            <h2 class="modal-title">Timings</h2>
-            <label><h4>When will you be free on {{request.request_date | date:'fullDate'}}?</h4></label><br>
+
+          <div class="form-group" ng-show=r.isMoreOptions>
+            <h4>When I'll be there: {{request.request_date | date:'fullDate'}}</h4><br>
+            <label for=tour_time_start> From:</label>
+            <input  class="form-control"
+                    type="time"
+                    id="tour_time_start"
+                    ng-model="request.tour_time_start"
+                    >
           </div>
 
-
-          <div class="form-group">
-                <input class="form-control" type="radio" name="request_time_of_day"  ng-model="request.time_of_day" value="All Day" ng-required="true" checked> All day<br>
-                <input class="form-control" type="radio" name="request_time_of_day"  ng-model="request.time_of_day" value="Morning" checked> Morning <br>
-                <input class="form-control" type="radio" name="request_time_of_day"  ng-model="request.time_of_day" value="Afternoon" checked> Afternoon <br>
-                <input class="form-control" type="radio" name="request_time_of_day"  ng-model="request.time_of_day" value="Evening" checked> Evening <br>
-              <h4> When I'm free: {{request.time_of_day}} </h4>
-
-              <div>
-                  <button type="button" ng-click="r.toggleMoreTimeOptions()" class="btn btn-default" ng-hide="r.isMoreTimeOptions"> More Timings Options </button>
-                  <button type="button" ng-click="r.toggleMoreTimeOptions()" class="btn btn-default" ng-show="r.isMoreTimeOptions"> Fewer Timings Options </button>
-              </div>
-          </div>
-
-            <div class="form-group" ng-show=r.isMoreTimeOptions>
-              <h4>When I'll be there: {{request.request_date | date:'fullDate'}}</h4><br>
-              <label for=tour_time_start> From:</label>
-              <input  class="form-control"
-                      type="time"
-                      id="tour_time_start"
-                      ng-model="request.tour_time_start"
-                      >
-          </div>
-          <div class="form-group" ng-show=r.isMoreTimeOptions>
+          <div class="form-group" ng-show=r.isMoreOptions>
             <label for="duration"> Duration </label>
             <output for="duration" id="tour_duration">
               <h4> I'm free for {{request.tour_duration}} hours </h4>
