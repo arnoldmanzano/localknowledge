@@ -9,7 +9,9 @@
             <div class="col-md-8 col-sm-8">
               <div class="panel panel-default arrow left">
                 <div class='panel-body'>
-                  <h5 class='card-title'><span class="round-image-50"><%= image_tag(reply.user.avatar.url(:thumb)) %></span> <%= reply.user.username %></h5>
+                  <% @reviews.each do |review| %>
+                    <h5 class='card-title'><span class="round-image-50"><%= image_tag(reply.user.avatar.url(:thumb)) %></span> <%= reply.user.username %> <%= review.average_stars(review.rating)%></h5>
+                  <% end %>
                   <p class='card-text'>Duration: <%= reply.duration %> hours</p>
                   <p class='card-text'>Cost: £<%= reply.cost %></p>
                   <p class='card-text'>Description: <%= reply.description %></p>

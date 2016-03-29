@@ -3,6 +3,7 @@ class RepliesController < ApplicationController
   before_filter :authenticate_user!
 
   def index
+    @reviews = Review.where("user_id = ?", current_user)
   end
 
   def new
@@ -13,7 +14,6 @@ class RepliesController < ApplicationController
   def create
     @request = Request.find(params[:request_id])
     @reply = @request.build_reply(reply_params, current_user)
-
     if @reply.save
       if params[:images]
         params[:images].each do |image|
