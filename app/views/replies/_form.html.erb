@@ -20,12 +20,14 @@
       <%= f.label :description %>
       <%= f.text_area :description, class: 'form-control', placeholder: "Any extra information..." %>
     </div>
-    <div class="control-group">
-       <%= f.label :pictures, class: 'control-label' %>
-       <div class="controls">
-         <%= file_field_tag "images[]", type: :file, multiple: true %>
-       </div>
-     </div>
-    <%= f.submit 'Reply', class: 'btn btn-default' %>
+    <div class="form-group">
+      <%= f.label :pictures, class: 'form-label' %>
+      <div class="form-control">
+        <%= file_field_tag "images[]", type: :file, multiple: true %>
+      </div>
+    </div>
+    <div class="actions">
+      <%= f.submit 'Reply', class: 'btn btn-default' %>
+    </div>
   </div>
 <% end %>
