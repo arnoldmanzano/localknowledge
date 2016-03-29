@@ -24,6 +24,8 @@
                   <% end %>
                   <% if request.user == current_user && request.resolved == false %>
                       <%= link_to 'Choose', choose_request_reply_path(request, reply), method: :post %>
+                        <a href="#" data-toggle="modal" data-target="#reviewModal">Leave a review</a>
+                        <%= render 'reviews/modal_review', request: request, reply: reply %>
                   <% end %>
                 </div>
               </div>

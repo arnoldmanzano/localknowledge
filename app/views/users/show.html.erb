@@ -1,0 +1,19 @@
+<div class="container user-profiles">
+  <div class="row">
+    <div class="col-md-8 col-sm-8">
+      <div class="panel panel-default arrow left">
+        <div class='panel-body'>
+          <h5 class='card-title'><span class="round-image-50"><%= image_tag(@user.avatar.url(:thumb)) %></span> <%= @user.username %></h5>
+          <p class='card-text'>First name: <%= @user.f_name %></p>
+          <p class='card-text'>Last name: <%= @user.l_name %></p>
+          <p class='card-text'>Username: <%= @user.username %></p>
+          <p class='card-text'>Postcode: <%= @user.postcode %></p>
+          <p class='card-text'>Joined Local Host on: <%= @user.created_at.to_formatted_s(:long_ordinal) %></p>
+          <% @reviews.each do |review| %>
+              <p class='card-text'>Average rating: <%= review.rating %></p>
+          <% end %>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>

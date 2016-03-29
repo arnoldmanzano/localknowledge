@@ -11,11 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-<<<<<<< HEAD
-ActiveRecord::Schema.define(version: 20160328152900) do
-=======
 ActiveRecord::Schema.define(version: 20160328172859) do
->>>>>>> dev
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -42,10 +38,10 @@ ActiveRecord::Schema.define(version: 20160328172859) do
     t.text     "stopoffs"
     t.text     "description"
     t.integer  "request_id"
-    t.datetime "created_at",    null: false
-    t.datetime "updated_at",    null: false
+    t.datetime "created_at",                    null: false
+    t.datetime "updated_at",                    null: false
     t.integer  "user_id"
-    t.boolean  "chosen"
+    t.boolean  "chosen",        default: false
   end
 
   add_index "replies", ["request_id"], name: "index_replies_on_request_id", using: :btree
@@ -55,16 +51,12 @@ ActiveRecord::Schema.define(version: 20160328172859) do
     t.string   "location"
     t.text     "description"
     t.integer  "user_id"
-    t.datetime "created_at",   null: false
-    t.datetime "updated_at",   null: false
+    t.datetime "created_at",                   null: false
+    t.datetime "updated_at",                   null: false
     t.date     "expiration"
     t.integer  "budget"
     t.datetime "request_date"
-<<<<<<< HEAD
-    t.boolean  "resolved"
-=======
     t.boolean  "resolved",     default: false
->>>>>>> dev
     t.string   "lat"
     t.string   "lng"
   end

@@ -4,6 +4,7 @@ class RequestsController < ApplicationController
 
   def index
     @requests = Request.where("user_id = ? AND expiration > ?", current_user, Time.now)
+    @review = Review.new
   end
 
   def create

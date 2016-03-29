@@ -7,15 +7,18 @@ class ReviewsController < ApplicationController
   end
 
   def create
-    @request = Request.find(params[:id])
+    @request = Request.find(params[:request_id])
     @reply = Reply.find(params[:reply_id])
-    @review = @reply.build_review(review_params, current_user)
+    @review = Review.new(review_params)
+    @review.user = current_user
+    @review.reply = @reply
     @review.save
+    flash[:alert] = 'Review submitted'
     redirect_to requests_path
   end
 
   def review_params
-    params.require(:reply).permit(:rating, :description)
+    params.require(:review).permit(:rating, :description)
   end
 
 end
