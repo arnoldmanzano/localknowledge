@@ -22,7 +22,7 @@ def signin
 end
 
 def reply_to_request
-  click_link 'Reply'
+  # click_link 'Reply'
   fill_in :'reply[meeting_point]', with: 'London'
   fill_in :'reply[duration]', with: 2
   fill_in :'reply[cost]', with: 20
