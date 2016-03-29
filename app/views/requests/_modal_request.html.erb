@@ -14,7 +14,8 @@
             <label for="location"><h4>Where I'm going: {{request.location}}  </h4>*required</label>
             <input type="text" class="form-control" name="location" id="location" ng-model="request.location" placeholder="Where do you want to go?" required>
             <label for="location">Location</label>
-            <div>
+          <div>
+
             <md-autocomplete
                 md-search-text-change="r.autoCompleteSearch(searchText)"
                 md-input-name="request.location"
@@ -120,7 +121,7 @@
           </div>
 
           <div class="form-group">
-              <button type="submit" class="btn btn-default" ng-click="r.update(request)">Submit</button>
+              <button type="submit" class="btn btn-default" id="modal-submit" ng-click="r.update(request)">Submit</button>
           </div>
 
         </form>

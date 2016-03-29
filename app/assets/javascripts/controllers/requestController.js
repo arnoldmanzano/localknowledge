@@ -40,7 +40,6 @@
         request.lng = coords.lng;
         self.master = angular.copy(request);
         self.postRequest(self.master);
-        modal.modal('hide');
         MarkersService.placeCurrentRequestMarker(request);
       });
     };
