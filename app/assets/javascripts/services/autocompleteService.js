@@ -17,7 +17,6 @@ var suggestions = [];
 
   self.displaySuggestions = function(predictions, status) {
     if (status != google.maps.places.PlacesServiceStatus.OK) {
-      console.log(status);
       return;
     }
     predictions.forEach(function(prediction) {

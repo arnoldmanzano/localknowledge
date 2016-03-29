@@ -41,13 +41,6 @@
         self.current_user_id = MarkersService.current_user_id;
         angular.element("#myModal").modal('hide');
       });
-    // } else {
-    //   self.isMoreTimeOptions = true;
-    //    console.log("start of un-filled in bits of time in update");
-    //    request.tour_time_end = Date.parse(self.tour_time_end);
-    //    self.update(request);
-    //    console.log("end of un-filled in bits of time in update");
-    // }
   };
 
     self.postRequest = function(data) {
@@ -85,9 +78,7 @@
     };
 
     self.calculateTourEnd = function(requestStartTime, requestDuration){
-      console.log("inside calculateTourEnd");
       var hoursStr = parseInt(requestStartTime.getHours()) + (parseInt(requestDuration) || 0);
-      console.log(hoursStr);
       var minutesStr = requestStartTime.getMinutes();
       self.tour_time_end = hoursStr + ":" + minutesStr;
   };
