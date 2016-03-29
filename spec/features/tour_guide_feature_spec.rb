@@ -2,21 +2,25 @@ require 'rails_helper'
 
 feature 'Replying to client requests', js:true do
 
-  before do
+  it 'describes the whole user flow of replying to a tour' do
+    visit('/')
     signup
     expect(page).to have_css('.gm-style')
-    request_tour
+    request_tour('E1 6LT, London')
     expect(page).to have_content('Request submitted')
     click_link 'Logout'
+
     signup("Jimmy", "Hendrix", 'hendrix_fan', 'SW1 8AP', 'b@aol.com', "password")
     expect(page).to have_css('.gm-style')
-    visit('/requests')
-    reply_to_request
-  end
+    expect(page).to have_css("img[src*='spotlight-poi.png']")
+    # find("img[src*='spotlight-poi.png']").click
+    # click_button 'Reply to Bob Marley\'s request'
 
-  it '-> allows the tour guide to respond to a request' do
-    expect(current_path).to eq('/requests')
-    expect(page).to have_content('Duration: 2 hours Cost: £20 Description: A fun history tour')
+    request = Request.first
+    visit("/requests/#{request.id}/replies/new")
+    reply_to_request
+    # visit my_responses page
+    # expect(page).to have_content('Duration: 2 hours Cost: £20 Description: A fun history tour')
   end
 
   xit '-> tour guides can update their replies' do
@@ -46,6 +50,4 @@ feature 'Replying to client requests', js:true do
     signup("Jimmy", "Hendrix", 'hendrix_fan', 'SW1 8AP', 'bobbybrown@aol.com', "password")
     expect(page).to_not have_content('Delete')
   end
-
-
 end
