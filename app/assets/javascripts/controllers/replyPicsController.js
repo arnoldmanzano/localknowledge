@@ -7,14 +7,19 @@
 
     var self = this;
 
-    self.images = [
-      {thumb: 'images/thumbs/1.jpg', img: 'images/1.jpg'},
-          {thumb: 'images/thumbs/2.jpg', img: 'images/2.jpg'},
-          {thumb: 'images/thumbs/3.jpg', img: 'images/3.jpg'},
-          {thumb: 'images/thumbs/4.jpg', img: 'images/4.jpg'},
-          {thumb: 'images/thumbs/5.jpg', img: 'images/5.jpg'},
-          {thumb: 'images/thumbs/6.jpg', img: 'images/6.jpg'}
-    ];
+    self.getImages = function(reply_id) {
+      var url = 'api/reply/' + reply_id;
+      $http.get(url).then(function(response) {
+        console.log(response);
+      });
+    };
+
+    // self.images = [
+    //   {thumb: 'system/pictures/images/000/000/001/thumb/3.jpg', img: 'system/pictures/images/000/000/001/original/3.jpg'},
+    //   {thumb: 'system/pictures/images/000/000/002/thumb/4.jpg', img: 'system/pictures/images/000/000/002/original/4.jpg'},
+    //   {thumb: 'system/pictures/images/000/000/003/thumb/5.jpg', img: 'system/pictures/images/000/000/003/original/5.jpg'},
+    //   {thumb: 'system/pictures/images/000/000/004/thumb/6.jpg', img: 'system/pictures/images/000/000/004/original/6.jpg'}
+    // ];
 
   }]);
 }());
