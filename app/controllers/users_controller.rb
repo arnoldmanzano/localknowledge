@@ -13,4 +13,10 @@ class UsersController < ApplicationController
       redirect_to '/'
     end
   end
+
+  def show
+    @user = current_user
+    @reviews = Review.all
+  end
+
 end

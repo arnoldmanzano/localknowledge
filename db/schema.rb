@@ -63,6 +63,18 @@ ActiveRecord::Schema.define(version: 20160328172859) do
 
   add_index "requests", ["user_id"], name: "index_requests_on_user_id", using: :btree
 
+  create_table "reviews", force: :cascade do |t|
+    t.integer  "rating"
+    t.text     "description"
+    t.datetime "created_at",  null: false
+    t.datetime "updated_at",  null: false
+    t.integer  "reply_id"
+    t.integer  "user_id"
+  end
+
+  add_index "reviews", ["reply_id"], name: "index_reviews_on_reply_id", using: :btree
+  add_index "reviews", ["user_id"], name: "index_reviews_on_user_id", using: :btree
+
   create_table "users", force: :cascade do |t|
     t.string   "email",                  default: "", null: false
     t.string   "encrypted_password",     default: "", null: false
@@ -93,4 +105,6 @@ ActiveRecord::Schema.define(version: 20160328172859) do
   add_foreign_key "replies", "requests"
   add_foreign_key "replies", "users"
   add_foreign_key "requests", "users"
+  add_foreign_key "reviews", "replies"
+  add_foreign_key "reviews", "users"
 end

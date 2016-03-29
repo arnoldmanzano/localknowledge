@@ -1,8 +1,13 @@
 class Reply < ActiveRecord::Base
   belongs_to :request
   belongs_to :user
+  has_one :review
   has_many :pictures, dependent: :destroy
 
+  def build_review(attributes = {}, user)
+    attributes[:user] ||= user
+    review.build(attributes)
+  end
 
   def find_user(user_id)
     @username = User.find(user_id).username

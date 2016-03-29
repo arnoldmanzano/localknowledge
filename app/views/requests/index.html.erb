@@ -9,7 +9,9 @@
             <div class="col-md-8 col-sm-8">
               <div class="panel panel-default arrow left">
                 <div class='panel-body'>
-                  <h5 class='card-title'><span class="round-image-50"><%= image_tag(reply.user.avatar.url(:thumb)) %></span> <%= reply.user.username %></h5>
+                  <% @reviews.each do |review| %>
+                    <h5 class='card-title'><span class="round-image-50"><%= image_tag(reply.user.avatar.url(:thumb)) %></span> <%= reply.user.username %> <%= review.average_stars(calculate_user_average_rating(@reviews)) %></h5>
+                  <% end %>
                   <p class='card-text'>Duration: <%= reply.duration %> hours</p>
                   <p class='card-text'>Cost: £<%= reply.cost %></p>
                   <p class='card-text'>Description: <%= reply.description %></p>
@@ -24,6 +26,8 @@
                   <% end %>
                   <% if request.user == current_user && request.resolved == false %>
                       <%= link_to 'Choose', choose_request_reply_path(request, reply), method: :post %>
+                        <a href="#" data-toggle="modal" data-target="#reviewModal">Leave a review</a>
+                        <%= render 'reviews/modal_review', request: request, reply: reply %>
                   <% end %>
                 </div>
               </div>

@@ -9,6 +9,7 @@ Rails.application.routes.draw do
 
   get 'api/users' => 'users#index'
   get 'api/c_user' => 'users#c_user'
+  get "profile" => "users#show", :as => 'profile'
   # Example of regular route:
   #   get 'products/:id' => 'catalog#view'
 
@@ -19,6 +20,7 @@ Rails.application.routes.draw do
   resources :requests do
     resources :replies do
       post :choose, on: :member
+      resources :reviews
     end
   end
 
