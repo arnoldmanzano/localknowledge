@@ -19,6 +19,5 @@
 //= require angular-material
 //= require angular-messages
 //= require bootstrap-sass-official
-//= require turbolinks
 //= require_tree .
 //= require_self

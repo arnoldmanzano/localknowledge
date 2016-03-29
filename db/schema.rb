@@ -11,10 +11,28 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20160329000900) do
+# <<<<<<< HEAD
+# ActiveRecord::Schema.define(version: 20160329000900) do
+# =======
+ActiveRecord::Schema.define(version: 20160328172859) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
+
+  create_table "pictures", force: :cascade do |t|
+    t.string   "description"
+    t.string   "image"
+    t.string   "reply_token"
+    t.string   "image_file_name"
+    t.string   "image_content_type"
+    t.integer  "image_file_size"
+    t.datetime "image_updated_at"
+    t.integer  "reply_id"
+    t.datetime "created_at",         null: false
+    t.datetime "updated_at",         null: false
+  end
+
+  add_index "pictures", ["reply_id"], name: "index_pictures_on_reply_id", using: :btree
 
   create_table "replies", force: :cascade do |t|
     t.string   "meeting_point"
@@ -83,6 +101,7 @@ ActiveRecord::Schema.define(version: 20160329000900) do
   add_index "users", ["email"], name: "index_users_on_email", unique: true, using: :btree
   add_index "users", ["reset_password_token"], name: "index_users_on_reset_password_token", unique: true, using: :btree
 
+  add_foreign_key "pictures", "replies"
   add_foreign_key "replies", "requests"
   add_foreign_key "replies", "users"
   add_foreign_key "requests", "users"

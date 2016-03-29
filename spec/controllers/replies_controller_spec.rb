@@ -12,7 +12,6 @@ RSpec.describe RepliesController, type: :controller do
 
   describe "#create" do
 
-
     it "-> creates a new reply" do
       post :create, request_id: @_request.id, reply: attributes_for(:reply)
       expect(Reply.count).to eq(1)
@@ -28,7 +27,7 @@ RSpec.describe RepliesController, type: :controller do
     end
   end
 
-  xdescribe "PUT #update" do
+  describe "PUT #update" do
 
     before :each do
       @thisreply = FactoryGirl.create(:reply)
@@ -38,8 +37,8 @@ RSpec.describe RepliesController, type: :controller do
       put :update, request_id: @_request.id, id: @thisreply,
         reply: FactoryGirl.attributes_for(:reply)
       @thisreply.reload
-      @thisreply.meeting_point.should eq("MyString")
-      @thisreply.description.should eq("MyText")
+      expect(@thisreply.meeting_point).to eq("MyString")
+      expect(@thisreply.description).to eq("MyText")
     end
 
     it '-> redirects to requests path after updating reply' do
@@ -51,16 +50,16 @@ RSpec.describe RepliesController, type: :controller do
 
   describe '#destroy' do
 
-
     before :each do
-      login_user
-      @thisreply = FactoryGirl.create(:reply)
+      _user2 = FactoryGirl.create(:user)
+      sign_in _user2
+      @thisreply = FactoryGirl.create(:reply, request: @_request, user_id: _user2.id)
     end
 
     it "-> deletes the reply" do
       expect{
         delete :destroy, request_id: @_request.id, id: @thisreply
-      }.to change(Reply, :count).by(-1)
+      }.to change{Reply.count}.by(-1)
     end
 
     it "-> redirects to requests after deletion" do

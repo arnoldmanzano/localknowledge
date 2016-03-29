@@ -9,6 +9,7 @@ class RequestsController < ApplicationController
   def create
     @request = current_user.requests.new(request_params)
     flash[:notice] = 'Your request has been successfully submitted.' if @request.save
+
     # render json: @request.to_json
     respond_with(@request)
   end
