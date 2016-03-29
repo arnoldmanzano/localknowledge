@@ -8,4 +8,11 @@ class Picture < ActiveRecord::Base
 
   do_not_validate_attachment_file_type :image
 
+  def image_url
+    {
+      thumb: image.url(:thumb),
+      img: image.url(:original)
+    }
+  end
+
 end

@@ -16,9 +16,6 @@
                   <p class='card-text'>Description: <%= reply.description %></p>
                   <p class='card-text'>Meeting point: <%= reply.meeting_point %></p>
                   <p class='card-text'>Stopoffs: <%= reply.stopoffs %></p>
-                  <% reply.pictures.each do |picture| %>
-                    <%= image_tag picture.image.url(:thumb) %>
-                  <% end %>
                   <% if reply.user == current_user %>
                     <%= link_to 'Update', edit_request_reply_path(request, reply) %>
                     <%= link_to 'Delete', request_reply_path(request, reply), method: :delete %>
@@ -27,7 +24,9 @@
                       <%= link_to 'Choose', choose_request_reply_path(request, reply), method: :post %>
                   <% end %>
                     <div ng-controller="ReplyPicsController as rpCtrl" class="content">
-                      <ng-gallery images="rpCtrl.images"></ng-gallery>
+                      <div ng-init="rpCtrl.getImages(<%=reply.id%>)" ng-show="rpCtrl.showImages">
+                        <ng-gallery images="rpCtrl.images" thumbs-num="rpCtrl.images.length"></ng-gallery>
+                      </div>
                     </div>
                 </div>
               </div>

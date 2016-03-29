@@ -2,7 +2,10 @@ class RepliesController < ApplicationController
 
   before_filter :authenticate_user!
 
-  def index
+  def c_reply
+    reply = Reply.find(params[:id])
+    pics = reply.pictures.map(&:image_url)
+    render json: pics.to_json
   end
 
   def new
