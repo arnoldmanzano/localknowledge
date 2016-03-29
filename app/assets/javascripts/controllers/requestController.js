@@ -14,6 +14,7 @@
     var isMoreTimeOptions = false;
     var autocompleteStarted;
     var tour_time_end = "00:00";
+    // var presetStartTime = Date.now();
 
     self.master = {};
     var autocompleteSuggestions = [];
@@ -38,18 +39,10 @@
         request.lat = coords.lat;
         request.lng = coords.lng;
         self.master = angular.copy(request);
-        debugger;
         self.postRequest(self.master);
         MarkersService.placeCurrentRequestMarker(request);
         angular.element("#myModal").modal('hide');
       });
-    // } else {
-    //   self.isMoreTimeOptions = true;
-    //    console.log("start of un-filled in bits of time in update");
-    //    request.tour_time_end = Date.parse(self.tour_time_end);
-    //    self.update(request);
-    //    console.log("end of un-filled in bits of time in update");
-    // }
   };
 
     self.postRequest = function(data) {
@@ -60,6 +53,7 @@
     };
 
     self.openClickedRequestInfo = function(requestData){
+      console.log(requestData);
       self.isInfoOpen = true;
       self.clickedRequest = requestData.data.request;
       self.requestUser = requestData.data.user;
@@ -80,17 +74,14 @@
     });
 
     self.calculateTimeLimiter = function(requestStartTime, requestDuration){
-      requestStartTime = requestStartTime || Date.now();
-      requestDuration = requestDuration || 2;
-      self.calculateTourEnd(requestStartTime, requestDuration);
-      return 23 - requestStartTime.getHours();
+      var defaultStartTime = (requestStartTime === undefined) ? new Date() : requestStartTime;
+      var defaultRequestDuration = (requestDuration === undefined) ? 2 :requestDuration;
+      self.calculateTourEnd(defaultStartTime, defaultRequestDuration);
+      return 23 - defaultStartTime.getHours();
     };
 
     self.calculateTourEnd = function(requestStartTime, requestDuration){
-      console.log("inside calculateTourEnd");
-      var hoursStr = parseInt(requestStartTime.getHours()) + (parseInt(requestDuration) || 0);
-      console.log(hoursStr);
-
+      var hoursStr = requestStartTime.getHours() + (parseInt(requestDuration) || 0);
       var minutesStr = requestStartTime.getMinutes();
       self.tour_time_end = hoursStr + ":" + minutesStr;
   };

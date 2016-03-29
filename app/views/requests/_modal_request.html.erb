@@ -16,25 +16,6 @@
             <label for="location">Location</label>
           <div>
 
-            <md-autocomplete
-                md-search-text-change="r.autoCompleteSearch(searchText)"
-                md-input-name="request.location"
-                md-selected-item="selectedItem"
-                md-search-text="searchText"
-                md-items="item in r.autocompleteSearch(searchText)"
-                md-item-text="item.display"
-                md-input-minlength="0">
-              <md-item-template md-highlight-text="searchText">
-                {{item.display}}
-              </md-item-template>
-            </div>
-            </md-autocomplete>
-
-            <aside ng-show="r.autocompleteStarted" id="autocompleteSuggestions">
-              <ul ng-repeat="suggestion in r.autocompleteSuggestions track by $index"> {{suggestion}} </ul>
-            <aside>
-          </div>
-
           <div class="form-group">
             <label for="description"><h4>What I want to do there:  </h4></label>
             <textarea class="form-control" rows="4" name="description" id="description" ng-model="request.description" placeholder="What do you want to do?"></textarea>
