@@ -10,7 +10,7 @@
           <p class='card-text'>Postcode: <%= @user.postcode %></p>
           <p class='card-text'>Joined Local Host on: <%= @user.created_at.to_formatted_s(:long_ordinal) %></p>
           <% @reviews.each do |review| %>
-            <p class='card-text'>Average rating: <%= review.average_stars(review.rating)%></p>
+            <p class='card-text'>Average rating: <%= review.average_stars(calculate_user_average_rating(@reviews))%></p>
           <% end %>
         </div>
       </div>

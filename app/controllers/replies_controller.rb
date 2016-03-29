@@ -72,4 +72,6 @@ class RepliesController < ApplicationController
     params.require(:reply).permit(:meeting_point, :duration, :cost, :stopoffs, :description)
   end
 
+
+
 end
