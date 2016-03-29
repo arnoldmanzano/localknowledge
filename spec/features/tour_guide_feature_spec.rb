@@ -12,7 +12,7 @@ feature 'Replying to client requests', js:true do
 
     signup("Jimmy", "Hendrix", 'hendrix_fan', 'SW1 8AP', 'b@aol.com', "password")
     expect(page).to have_css('.gm-style')
-    expect(page).to have_css("img[src*='spotlight-poi.png']")
+    # expect(page).to have_css("img[src*='spotlight-poi.png']")
     # find("img[src*='spotlight-poi.png']").click
     # click_button 'Reply to Bob Marley\'s request'
 
