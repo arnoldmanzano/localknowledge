@@ -53,8 +53,8 @@
     };
 
     self.openClickedRequestInfo = function(requestData){
-      console.log(requestData);
       self.isInfoOpen = true;
+      console.log(isInfoOpen);
       self.clickedRequest = requestData.data.request;
       self.requestUser = requestData.data.user;
       $scope.$digest();
