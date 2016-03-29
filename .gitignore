@@ -16,6 +16,6 @@
 
 /vendor/assets/bower_components
 /node_modules
-/public/images/*
+/public/images/reply_pics/*
 /public/system/*
 /public/system/users/avatars

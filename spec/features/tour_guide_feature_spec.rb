@@ -1,7 +1,6 @@
 require 'rails_helper'
-include Capybara::Angular::DSL
 
-xfeature 'Replying to client requests', js:true do
+feature 'Replying to client requests', js:true do
 
   before do
     signup
@@ -20,7 +19,7 @@ xfeature 'Replying to client requests', js:true do
     expect(page).to have_content('Duration: 2 hours Cost: £20 Description: A fun history tour')
   end
 
-  it '-> tour guides can update their replies' do
+  xit '-> tour guides can update their replies' do
     visit('/requests')
     click_link 'Update'
     fill_in :reply_meeting_point, with: 'Timbuktu'
@@ -28,21 +27,21 @@ xfeature 'Replying to client requests', js:true do
     expect(page).to have_content('Meeting point: Timbuktu')
   end
 
-  it ('-> only a tour guide can update their own reply') do
+  xit ('-> only a tour guide can update their own reply') do
     click_link "Logout"
     signup("Jim", "Morrisson", 'rider_of_the_storm', 'SW8 7UP', 'bob@aol.com', "password")
     visit('/requests')
     expect(page).to_not have_content('Update')
   end
 
-  it '-> tour guides can delete their reply' do
+  xit '-> tour guides can delete their reply' do
     visit('/requests')
     click_link 'Delete'
     expect(page).to_not have_content('good times wanted')
     expect(page).to have_content('Request deleted successfully')
   end
 
-  it ('-> only a tour guide can delete their own reply') do
+  xit ('-> only a tour guide can delete their own reply') do
     click_link "Logout"
     signup("Jimmy", "Hendrix", 'hendrix_fan', 'SW1 8AP', 'bobbybrown@aol.com', "password")
     expect(page).to_not have_content('Delete')
