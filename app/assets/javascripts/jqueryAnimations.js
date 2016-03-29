@@ -1,8 +1,7 @@
 $( document ).ready(function () {
-  $(function(){
-   $('.datepicker').datepicker({
-      format: 'mm-dd-yyyy'
-    });
+
+    $('#modal-submit').click(function() {
+    $('#myModal').modal('hide');
   });
 
     $(".btn-for-request").hover(function(){

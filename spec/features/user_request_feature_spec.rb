@@ -2,6 +2,62 @@ require 'rails_helper'
 
 feature 'Making a request for a tour', js:true do
 
+# <<<<<<< HEAD
+#   context '===> accessing the form ' do
+#
+#     context '===> when not logged in' do
+#
+#       it ' -> does not allow you to request a tour when not logged in' do
+#         #CAN YOU REQUEST TOURS IF YOU HAVENT SIGNED UP?
+#         visit('/')
+#         expect(page).not_to have_content('Request a tour from a local')
+#       end
+#
+#       it ' -> does not allow you to see your requests when not logged in' do
+#         visit('/')
+#         expect(page).not_to have_content('My requests')
+#       end
+#
+#     end
+#
+#     context '===> when logged in' do
+#
+#       before(:each) do
+#         signup
+#       end
+#
+#       it '-> has a \'Request a tour link that opens a form on the INDEX page' do
+#         expect(page).to have_css('.gm-style')
+#
+#         visit('/')
+#         click_link 'Request a tour'
+#         expect(page).to have_content('Request a tour from a local')
+#       end
+#
+#       xit '-> has a \'Request a tour link that opens a form on the REQUESTS page' do
+#
+#         expect(page).to have_css('.gm-style')
+#
+#         click_link 'My requests'
+#         click_link 'Request a tour'
+#         expect(page).to have_content('Request a tour from a local')
+#       end
+#
+#       xit '-> has a \'Request a tour link that opens a form on the EDIT PROFILE page' do
+#         expect(page).to have_css('.gm-style')
+#         visit('/users/edit')
+#         click_link 'Request a tour'
+#         expect(page).to have_content('Request a tour from a local')
+#       end
+#
+#       it '-> no longer crashes when you try to access \'My requests\' when you have not made any.' do
+#         click_link 'My requests'
+#         expect(page).to have_content('You have not made any requests yet.')
+#       end
+#
+#     end
+#
+# =======
   it 'describes the whole user flow of requesting a tour' do
     visit('/')
     expect(page).not_to have_content('Request a tour from a local')
@@ -60,6 +116,7 @@ feature 'Making a request for a tour', js:true do
     # expect(page).to have_content('Reply chosen')
     # expect(page).to_not have_content('Choose')
     # # expect(page).to have_css [x]
+# >>>>>>> ab2455b4d00bfcf6b41d887fcc299dff5748a8a3
   end
 
 
@@ -73,6 +130,24 @@ feature 'Making a request for a tour', js:true do
     expect(page).to have_content('Please enter a budget to request a tour')
   end
 
+# <<<<<<< HEAD
+#   context '==> interacting with replied requests' do
+#
+#     xit '-> user can choose only one reply' do
+#       click_link "Logout"
+#       signup
+#       # cannot find them in '/requests' they are now on the map.
+#       reply_to_request
+#       click_link "Logout"
+#       signin
+#       click_link 'My requests'
+#       # visit('/requests')
+#       click_link 'Choose'
+#       expect(page).to have_content('Reply chosen')
+#       expect(page).to_not have_content('Choose')
+#       # expect(page).to have_css [x]
+#     end
+# =======
   xit '-> a user\'s request won\'t expire if it\'s been replied to' do
     click_link 'Logout'
     signup("Jimmy", "Hendrix", "hendrix_fan", "SW1 8AP", "bobbybrown@aol.com", "password")
@@ -84,4 +159,5 @@ feature 'Making a request for a tour', js:true do
     expect(page).to have_content('Meeting point: London')
   end
 
+  end
 end
