@@ -31,16 +31,14 @@
     };
 
     self.update = function(request) {
-
-      console.log(request.time_of_day);
         LocationService.centerMapOnAddress(request.location);
         LocationService.lookupCoords(request.location).then(function(coords) {
         request.lat = coords.lat;
         request.lng = coords.lng;
         self.master = angular.copy(request);
-        debugger;
         self.postRequest(self.master);
         MarkersService.placeCurrentRequestMarker(request);
+        self.current_user_id = MarkersService.current_user_id;
         angular.element("#myModal").modal('hide');
       });
     // } else {
@@ -80,8 +78,8 @@
     });
 
     self.calculateTimeLimiter = function(requestStartTime, requestDuration){
-      requestStartTime = requestStartTime || Date.now();
-      requestDuration = requestDuration || 2;
+      requestStartTime = requestStartTime === undefined ? new Date() : requestStartTime;
+      requestDuration = requestDuration === undefined ? 2 : requestDuration;
       self.calculateTourEnd(requestStartTime, requestDuration);
       return 23 - requestStartTime.getHours();
     };
@@ -90,7 +88,6 @@
       console.log("inside calculateTourEnd");
       var hoursStr = parseInt(requestStartTime.getHours()) + (parseInt(requestDuration) || 0);
       console.log(hoursStr);
-
       var minutesStr = requestStartTime.getMinutes();
       self.tour_time_end = hoursStr + ":" + minutesStr;
   };
