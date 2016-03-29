@@ -11,10 +11,8 @@
       <div class="modal-body">
         <form>
           <div class="form-group">
-<<<<<<< HEAD
             <label for="location"><h4>Where I'm going: {{request.location}}  </h4>*required</label>
             <input type="text" class="form-control" name="location" id="location" ng-model="request.location" placeholder="Where do you want to go?" required>
-=======
             <label for="location">Location</label>
             <div>
             <md-autocomplete
@@ -34,7 +32,6 @@
             <aside ng-show="r.autocompleteStarted" id="autocompleteSuggestions">
               <ul ng-repeat="suggestion in r.autocompleteSuggestions track by $index"> {{suggestion}} </ul>
             <aside>
->>>>>>> 925a0d71396dc7227982e924e1f656f189bc3548
           </div>
 
           <div class="form-group">
@@ -66,7 +63,7 @@
 
           <div class="form-group" ng-show="r.isMoreOptions">
             <label for="special_considerations"> <h6> Special Considerations: </h6></label><br>
-              <label><input class="form-control" type="checkbox" name="special_considerations" ng-model="request.disabled" value="Disabled" > Disabled access required</label><br>
+              <label><input class="form-control" type="checkbox" name="special_considerations" ng-model="request.disability_access" value="Disabled" > Disabled access required</label><br>
               <label><input class="form-control" type="checkbox" name="special_considerations"   ng-model="request.children" value="Children" > Young children in tow </label><br>
               <label><input class="form-control" type="checkbox" name="special_considerations"  ng-model="request.luggage" value="Luggage" > Heavy luggage in tow </label><br>
               <label><input class="form-control" type="checkbox" name="special_considerations" ng-model="request.airport_access" value="FlightsThatDay"> Flying on the same day </label><br>

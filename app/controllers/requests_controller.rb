@@ -1,7 +1,6 @@
 class RequestsController < ApplicationController
   respond_to :html, :json
   before_filter :authenticate_user!
-  serialize :budget
 
   def index
     @requests = Request.where("user_id = ? AND expiration > ?", current_user, Time.now)
@@ -10,8 +9,8 @@ class RequestsController < ApplicationController
   def create
     @request = current_user.requests.new(request_params)
     flash[:notice] = 'Your request has been successfully submitted.' if @request.save
-    render json: @request.to_json
-    # respond_with(@request)
+    # render json: @request.to_json
+    respond_with(@request)
   end
 
   def edit
@@ -45,10 +44,10 @@ class RequestsController < ApplicationController
   def request_params
     params.require(:request).permit(:location, :lat, :lng,
       :description, :budget,
-      :disability, :children, :luggage, :airport_access,
+      :disability_access, :children, :luggage, :airport_access,
       :request_date, :tour_duration,
       :time_of_day, :tour_time_start,
-      :tour_duration, :tour_time_end)
+      :tour_duration, :tour_time_end, :group_size)
   end
 
 end

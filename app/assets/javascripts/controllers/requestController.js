@@ -71,13 +71,12 @@
       self.openClickedRequestInfo(data);
     });
 
-    self.calculateEndTime = function(requestDuration, requestStartTime){
-      console.log(requestDuration);
-      var endHours = requestStartTime.getHours() + requestDuration;
-      var startMinutes = console.log(requestStartTime.getMinutes());
-      var stringTime = String(endHours) + ":" + String(startMinutes);
+    self.calculateTimeLimiter = function(requestDuration, requestStartTime){
+      // var endHours = requestStartTime.getHours() + requestDuration;
+      // var startMinutes = console.log(requestStartTime.getMinutes());
+      // var stringTime = String(endHours) + ":" + String(startMinutes);
       self.timeLimiter = 24 - requestStartTime.getHours();
-      self.endTime = new Date(stringTime);
+      // self.endTime = new Date(stringTime);
     };
 
     self.toggleMoreOptions = function(){
