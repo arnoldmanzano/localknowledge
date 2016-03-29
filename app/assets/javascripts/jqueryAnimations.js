@@ -17,4 +17,19 @@ $( document ).ready(function () {
   		left: 0
   	}, 100 );
   });
+
+
+  $("#menu-toggle").click(function(e) {
+      e.preventDefault();
+      $("#wrapper").toggleClass("toggled");
+
+      var value = $("#map")[0].style.width !== "100vw" ? '100vw' : '100vw';
+
+      $("#map").animate({
+      	      width: value
+          }, {step:function(){
+              google.maps.event.trigger(map,'resize');
+          },
+      });
+  });
 });
