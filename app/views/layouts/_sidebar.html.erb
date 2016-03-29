@@ -18,7 +18,11 @@
         </ul>
         <hr>
       </section>
-      <li><a href="#" data-toggle="modal" data-target="#myModal">Request a tour</a></li>
+      <% if current_page?(controller: '/home', action: 'index') %>
+        <li><a href="#" data-toggle="modal" data-target="#myModal">Request a tour</a></li>
+      <% else %>
+        <li><%= link_to 'Request a tour', root_url %></li>
+      <% end %>
       <li><%= link_to 'My requests', requests_path %></li>
     <% else %>
       <li><%= link_to 'Login', new_user_session_path %></li>

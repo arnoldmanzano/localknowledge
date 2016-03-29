@@ -1,18 +1,31 @@
-<%= form_for [@request, @reply] do |f| %>
-  <%= f.label :meeting_point, 'Meeting Point' %>
-  <%= f.text_field :meeting_point %>
-  <br></br>
-  <%= f.label :duration %>
-  <%= f.number_field :duration, min: 0 %> hrs
-  <br></br>
-  <%= f.label :cost %>
-  £<%= f.number_field :cost, min: 0 %>
-  <br></br>
-  <%= f.label :stopoffs %>
-  <%= f.text_area :stopoffs %>
-  <br></br>
-  <%= f.label :description %>
-  <%= f.text_area :description %>
-  <br></br>
-  <%= f.submit 'Reply' %>
+<%= form_for [@request, @reply], html: { class: 'form-horizontal', multipart: true } do |f| %>
+  <div class="col-md-3">
+    <div class="form-group">
+      <%= f.label :meeting_point  %>
+      <%= f.text_field :meeting_point, class: 'form-control', placeholder: 'Where do you want to meet?' %>
+    </div>
+    <div class="form-group">
+      <%= f.label :duration %>
+      <%= f.number_field :duration, min: 0, class: 'form-control',  placeholder: 'How long will the tour last?'  %>
+    </div>
+    <div class="form-group">
+      <%= f.label :cost %>
+      £<%= f.number_field :cost, min: 0, class: 'form-control', placeholder: "How much will you charge?" %>
+    </div>
+    <div class="form-group">
+      <%= f.label :stopoffs %>
+      <%= f.text_area :stopoffs, class: 'form-control', placeholder: "Which places will you visit?" %>
+    </div>
+    <div class="form-group">
+      <%= f.label :description %>
+      <%= f.text_area :description, class: 'form-control', placeholder: "Any extra information..." %>
+    </div>
+    <div class="control-group">
+       <%= f.label :pictures, class: 'control-label' %>
+       <div class="controls">
+         <%= file_field_tag "images[]", type: :file, multiple: true %>
+       </div>
+     </div>
+    <%= f.submit 'Reply', class: 'btn btn-default' %>
+  </div>
 <% end %>

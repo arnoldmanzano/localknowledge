@@ -5,14 +5,16 @@ require File.expand_path('../../config/environment', __FILE__)
 abort("The Rails environment is running in production mode!") if Rails.env.production?
 require 'spec_helper'
 require 'rspec/rails'
+require 'devise'
 require 'capybara/rails'
 require 'capybara/poltergeist'
 require 'factory_girl_rails'
-require 'devise'
+
 
 require 'support/database_cleaner'
 require 'support/factory_girl'
 require 'support/helpers/select_date_helper'
+require 'support/controller_macros'
 
 require_relative 'web_helper'
 
@@ -44,8 +46,11 @@ Capybara.default_max_wait_time = 15
 ActiveRecord::Migration.maintain_test_schema!
 
 RSpec.configure do |config|
+  config.include Capybara::Angular::DSL
+  config.include ActiveSupport::Testing::TimeHelpers
 
   config.include Devise::TestHelpers, :type => :controller
+  config.include ControllerMacros, :type => :controller
 
 
   # Remove this line if you're not using ActiveRecord or ActiveRecord fixtures
