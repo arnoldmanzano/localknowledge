@@ -1,16 +1,24 @@
 <div class="col-sm-4">
-  <div class="card">
-    <img class="card-img-top img-responsive" src="https://maps.googleapis.com/maps/api/staticmap?zoom=13&size=300x125&maptype=roadmap&center=<%=request.location%>" alt="Card image cap">
-    <div class='card-block'>
-      <h3 class='card-title'><%= request.location %></h4>
-      <h5 class='card-title'><%= request.user.username %><span class="round-image-50"> <%= image_tag(request.user.avatar.url(:thumb)) %></span></h5>
-      <p class="card-text">Details: <%= request.description %></p>
-      <p class="card-text">Budget: <%= request.budget %></p>
-      <p class="card-text">Requested date: <%= request.request_date %></p>
+  <div class="card hovercard">
+      <div class="single-cardheader">
+        <img  src="https://maps.googleapis.com/maps/api/staticmap?zoom=13&size=400x125&maptype=roadmap&center=<%=request.location%>" alt="Card image cap">
+      </div>
+      <div class="avatar">
+        <span class="round-image-50"> <%= image_tag(request.user.avatar.url(:thumb)) %></span>
+      </div>
+      <div class="info">
+          <div class="title">
+            <h1> <%= request.user.username %> </h1>
+            <h4><%= request.location %></h4>
+          </div>
+          <div class="desc">Details: <b> <%= request.description %> </b></div>
+          <div class="desc">Budget <b> <%= request.budget %></b> </div>
+          <div class="desc">Requested date: <b><%= request.request_date.to_date %></b></div>
+      </div>
       <% if request.user == current_user %>
         <%= link_to 'Delete', request_path(request), method: :delete, class: 'card-link' %>
         <%= link_to 'Update', edit_request_path(request), class: 'card-link' %>
       <% end %>
-    </div>
+      <aside ng-show="r.isUserInfoOpen" class="requested-user-info"></aside>
   </div>
 </div>

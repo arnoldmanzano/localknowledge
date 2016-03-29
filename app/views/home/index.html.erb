@@ -1,15 +1,16 @@
 <% if user_signed_in? %>
-  <div class="container-fluid">
-    <div ng-controller="MapController as map">
-      <section ng-controller="RequestController as r">
-          <%= render "requests/modal_request" %>
-          <aside class="request-info-box" ng-show="r.isInfoOpen" ng-click="r.closeClickedRequestInfo">
-            <%= render "requests/single_request_info" %>
-          </aside>
-          <div ng-show="r.success"> 
-            Request submitted
-          </div>
-        </section>
+  <div ng-controller="MapController as map">
+    <section ng-controller="RequestController as r">
+      <%= render "requests/modal_request" %>
+      <aside class="request-info-box" ng-show="r.isInfoOpen" ng-click="r.closeClickedRequestInfo">
+        <%= render "requests/single_request_info" %>
+      </aside>
+      <div ng-show="r.success">
+        Request submitted
+      </div>
+    </section>
+    <a href="#menu-toggle" class="btn btn-default" id="menu-toggle">Toggle Menu</a>
+    <div class="mapCont">
       <div id="map"></div>
     </div>
   </div>
