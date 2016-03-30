@@ -1,18 +1,23 @@
-  <div>
+  <div layout="column" ng-cloak>
+      <md-content class="md-padding">
+        <form>
             <md-autocomplete
-                md-search-text-change="r.autoCompleteSearch(searchText)"
-                md-input-name="request.location"
-                md-selected-item="selectedItem"
-                md-search-text="searchText"
-                md-items="item in r.autocompleteSearch(searchText)"
-                md-item-text="item.display"
+                md-search-text="r.searchText"
+                md-no-cache="r.noCache"
+                md-search-text-change="r.autoCompleteSearch(r.searchText)"
+                md-input-name="r.autocompleteSuggestions"
+                md-selected-item="r.selectedItem"
+                md-items="item in r.autocompleteSuggestions"
+                md-item-text="item.description"
                 md-input-minlength="0">
-              <md-item-template md-highlight-text="searchText">
-                {{item.display}}
-              </md-item-template>
-            </md-autocomplete>
-
+            <md-item-template>
+                <span md-highlight-text="r.searchText" md-highlight-flags="^i"> {{item.description}} </span>
+            </md-item-template>
+          </md-autocomplete>
+        </form>
+      </md-content>
+    </div>
+<!--
             <aside ng-show="r.autocompleteStarted" id="autocompleteSuggestions">
               <ul ng-repeat="suggestion in r.autocompleteSuggestions track by $index"> {{suggestion}} </ul>
-            <aside>
-</div>
+            <aside> -->

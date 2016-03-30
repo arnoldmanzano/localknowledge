@@ -4,7 +4,7 @@
   angular
     .module('LocalKnowledgeApp')
     .controller('RequestController', ['LocationService', 'MarkersService',
-    '$http', '$scope', '$filter', function(LocationService, MarkersService, $http, $scope, $filter) {
+    '$http', '$scope', '$filter', 'AutocompleteService', function(LocationService, MarkersService, $http, $scope, $filter, AutocompleteService) {
 
     var self = this;
     self.isInfoOpen = false;
@@ -16,19 +16,22 @@
     self.tour_time_end = "00:00";
 
     self.master = {};
-    var autocompleteSuggestions = [];
+    self.autocompleteSuggestions = {};
 
 
     self.autoCompleteSearch = function(searchInput){
-        if (searchInput.length < 2) {
-        self.autocompleteStarted = false;
-      } else {
+      //   if (searchInput.length < 2) {
+      //   self.autocompleteStarted = false;
+      // } else {
         AutocompleteService.initPredict(searchInput);
         self.autocompleteStarted = true;
         self.autocompleteSuggestions = AutocompleteService.makeSuggestions();
+        console.log(self.autocompleteSuggestions);
+
         return self.autocompleteSuggestions;
-      }
+      // }
     };
+
 
     self.update = function(request) {
         LocationService.centerMapOnAddress(request.location);

@@ -20,7 +20,7 @@ var suggestions = [];
       return;
     }
     predictions.forEach(function(prediction) {
-      suggestions.push(prediction.description);
+      suggestions.push(prediction);
     });
   };
 
