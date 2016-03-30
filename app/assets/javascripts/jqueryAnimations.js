@@ -19,7 +19,7 @@ $( document ).ready(function () {
       e.preventDefault();
       $("#wrapper").toggleClass("toggled");
 
-      var value = $("#map")[0].style.width !== "100vw" ? '100vw' : '100vw';
+      var value = $(".map")[0].style.width !== "100vw" ? '100vw' : '87vw';
 
       $("#map").animate({
       	      width: value

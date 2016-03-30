@@ -5,11 +5,14 @@
     "bootstrap-sass-official": "latest",
     "jquery": "latest",
     "angular-resource": "^1.5.0",
-    "angular-mocks": "^1.5.0",
-    "angular-route": "^1.5.0",
     "angular-aria": "latest",
     "angular-animate": "latest",
     "angular-material": "latest",
-    "angular-messages": "latest"
+    "angular-messages": "latest",
+    "ngGallery": "latest"
+  },
+  "devDependencies": {
+    "angular-mocks": "^1.5.0",
+    "angular-route": "^1.5.0"
   }
 }

@@ -1,8 +1,8 @@
-<aside id="request-info-box">
 
 <div class="card hovercard">
 
     <div class="cardheader">
+      <div class="close pull-right" ng-click="r.closeClickedRequestInfo()">&times;</div>
     </div>
 
     <div class="avatar">
@@ -71,20 +71,19 @@
         <h3> Think you can help <b>{{r.requestUser.f_name}}</b> ? </h3>
 
       </div>
+      <div class="bottom" ng-hide="r.requestUser.id == r.current_user_id">
 
+          <%= link_to "/requests/{{r.clickedRequest.id}}/replies/new" do %>
+
+            <button class="btn-for-request" type="submit" ng-click="r.toggleResponseForm">Reply to {{r.requestUser.f_name}}'s request</button>
+
+          <% end %>
+
+          <button class="btn-for-request" type="submit" ng-click="r.toggleUserInfo">Find out more about {{r.requestUser.f_name}}</button>
+
+      </div>
   </div>
 
-  <div class="bottom" ng-hide="r.requestUser.id == r.current_user_id">
 
-      <%= link_to "/requests/{{r.clickedRequest.id}}/replies/new" do %>
-
-        <button class="btn-for-request" type="submit" ng-click="r.toggleResponseForm">Reply to {{r.requestUser.f_name}}'s request</button>
-
-      <% end %>
-
-      <button class="btn-for-request" type="submit" ng-click="r.toggleUserInfo">Find out more about {{r.requestUser.f_name}}</button>
-
-  </div>
 
 </div>
-</aside>

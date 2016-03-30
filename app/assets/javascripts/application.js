@@ -18,6 +18,7 @@
 //= require angular-animate
 //= require angular-material
 //= require angular-messages
+//= require ngGallery/src/js/ngGallery
 //= require bootstrap-sass-official
 //= require_tree .
 //= require_self

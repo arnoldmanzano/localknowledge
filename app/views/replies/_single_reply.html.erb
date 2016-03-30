@@ -1,0 +1,18 @@
+<div class="paper">
+  <div class="paper-container">
+    <h1><%= reply.user.username %></h1>
+    <span class="round-image-50"><%= image_tag(reply.user.avatar.url(:thumb)) %></span>
+    <span><%= average_stars(reply.user.average_rating) %> (<%= reply.user.reviews.count %>)</span>
+    <p>Duration: <%= reply.duration %> hours</p>
+    <p>Cost: £<%= reply.cost %></p>
+    <p>Description: <%= reply.description %></p>
+    <p>Meeting point: <%= reply.meeting_point %></p>
+    <p>Stopoffs: <%= reply.stopoffs %></p>
+    <div ng-controller="ReplyPicsController as rpCtrl">
+      <div ng-init="rpCtrl.getImages(<%=reply.id%>)" ng-show="rpCtrl.showImages">
+        <ng-gallery images="rpCtrl.images" thumbs-num="{{rpCtrl.images.length}}">
+        </ng-gallery>
+      </div>
+    </div>
+  </div>
+</div>

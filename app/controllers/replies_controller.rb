@@ -2,8 +2,14 @@ class RepliesController < ApplicationController
 
   before_filter :authenticate_user!
 
+  def c_reply
+    reply = Reply.find(params[:id])
+    pics = reply.pictures.map(&:image_url)
+    render json: pics.to_json
+  end
+
   def index
-    @reviews = Review.where("user_id = ?", current_user)
+    @replies = current_user.replies.all
   end
 
   def new
@@ -71,7 +77,5 @@ class RepliesController < ApplicationController
   def reply_params
     params.require(:reply).permit(:meeting_point, :duration, :cost, :stopoffs, :description)
   end
-
-
 
 end
