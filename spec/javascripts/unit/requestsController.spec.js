@@ -28,7 +28,6 @@ describe("controller: RequestController", function(){
   });
 
     it("centers the map to the address location the tourist entered in the form", function(){
-      console.log(LocationService);
       expect(LocationService.centerMapOnAddress()).toHaveBeenCalled();
       //.toHaveBeenCalledWith(dummy_request.location);
     });
