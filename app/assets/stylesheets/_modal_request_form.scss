@@ -1,0 +1,136 @@
+.modal {
+  display: none;
+  overflow: hidden;
+  position: fixed;
+  top: 0;
+  right: 0;
+  bottom: 0;
+  left: 0;
+  z-index: $zindex-modal;
+  -webkit-overflow-scrolling: touch;
+
+  // Prevent Chrome on Windows from adding a focus outline. For details, see
+  // https://github.com/twbs/bootstrap/pull/10951.
+  outline: 0;
+
+  // When fading in the modal, animate it to slide down
+  &.fade .modal-dialog {
+    @include translate(0, -25%);
+    @include transition-transform(0.3s ease-out);
+  }
+  &.in .modal-dialog { @include translate(0, 0) }
+}
+.modal-open .modal {
+  overflow-x: hidden;
+  overflow-y: auto;
+}
+
+.modal-dialog {
+  position: relative;
+  width: 40%;
+  margin-left: 50%;
+}
+
+.modal-dialog label{
+  font-size: 9px;
+}
+.modal-header {
+  height: 10%;
+}
+
+div.form-group  {
+  display: inline-block;
+  width: 45%;
+  height: 5%;
+  margin: 2%;
+}
+
+.essential-fields-wrapper, .large-input{
+  width: 100%;
+  height: 80%;
+}
+
+.essential-fields-wrapper label {
+  font-size: 10px;
+  text-align: left;
+  padding: 1px;
+}
+
+.form-control input[type=text], input[type=date] {
+  display: inline;
+  width: 100%;
+}
+
+
+section.large-input {
+  padding: 2%;
+  display: inline-block;
+}
+
+section.large-input div#radio-time-of-day {
+  width: 100%;
+  overflow: hidden;
+  display: inline-block;
+  text-align: center;
+}
+
+div#radio-time-of-day fieldset {
+  width: 100%;
+  float: left;
+  clear: none;
+  display: inline-block;
+  font-size: 12px;
+  text-align: center;
+  padding: 1em;
+}
+
+div#radio-time-of-day label {
+  width: 25%;
+  float: right;
+  clear: none;
+  display: inline-block;
+  font-size: 12px;
+  text-align: center;
+}
+
+div#radio-time-of-day h4 {
+  width: 90%;
+  display: inline-block;
+}
+
+div#phone-notify {
+  width: 100%
+}
+
+label input[type=radio] {
+  padding: 1%;
+  display: inline-block;
+  float: left;
+  clear: none;
+  font-size: 12px;
+  margin: 2px;
+}
+
+div#description-textarea input[type=textarea], label {
+  width: 90%;
+  align-self: center;
+}
+
+div#description-textarea {
+  width: 95%;
+  display: inline-block;
+}
+
+// div#description-textarea {
+//   width: 95%;
+//   display: inline-block;
+// }
+
+div#btn-dashboard {
+  display: inline-block;
+  padding: 2%;
+}
+
+div#btn-dashboard input[type=button] {
+  width: 25%;
+}
