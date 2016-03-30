@@ -11,7 +11,7 @@
  * file per style scope.
  *
  */
-
+ @import "ngGallery/src/css/ngGallery";
  @import "bootstrap-sass-official/assets/stylesheets/bootstrap-sprockets";
  @import "bootstrap-sass-official/assets/stylesheets/bootstrap";
  @import "vars";
@@ -19,6 +19,7 @@
  @import "cards";
  @import "arrows";
  @import "sidebar";
+ @import "replies";
 
 html,
 body {
@@ -35,7 +36,7 @@ body {
   display: block;
   height:100%;
   width: 100%;
-  position: fixed;
+  // position: fixed;
   z-index: 0;
 }
 

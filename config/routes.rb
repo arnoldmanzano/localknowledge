@@ -10,6 +10,7 @@ Rails.application.routes.draw do
   get 'api/users' => 'users#index'
   get 'api/c_user' => 'users#c_user'
   get "profile" => "users#show", :as => 'profile'
+  get 'api/reply/:id' => 'replies#c_reply'
   # Example of regular route:
   #   get 'products/:id' => 'catalog#view'
 
