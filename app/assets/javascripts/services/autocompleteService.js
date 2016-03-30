@@ -7,15 +7,37 @@
 
 var self = this;
 var suggestions = [];
+self.predict = {};
+
+var autocompletebox = document.getElementById("#autocompletebox");
+
+  self.initPredict = function() {
+
+    self.predict = new google.maps.places.AutocompleteService();
+    // console.log(self.predict);
+    // var autocomplete = new google.maps.places.Autocomplete(autocompletebox);
+    // console.log('inside initpredict');
+    // console.log(autocomplete);
+    // google.maps.event.addListener(autocompletebox, 'keypress', function() {
+    //   var place = autocomplete.getPlace();
+    //   // LocationService.centerMapOnAddress(place);
+    //   console.log('Inside add listener');
+    // });
+    //
+    // self.predict.addListener(autocompletebox, 'keypress', function(){
+    //   AutocompleteService.predict.getQueryPredictions({ input: searchInput }, AutocompleteService.displaySuggestions);
+    //
+    // });
+  };
 
 
-
-  self.initPredict = function(searchInput) {
-    var predict = new google.maps.places.AutocompleteService();
-    predict.getQueryPredictions({ input: searchInput }, self.displaySuggestions);
+  //
+  self.updateSuggestions = function(searchInput){
+      self.predict.getQueryPredictions({ input: searchInput }, self.displaySuggestions);
   };
 
   self.displaySuggestions = function(predictions, status) {
+    suggestions = [];
     if (status != google.maps.places.PlacesServiceStatus.OK) {
       return;
     }

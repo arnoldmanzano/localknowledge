@@ -7,29 +7,22 @@
     '$http', '$scope', '$filter', 'AutocompleteService', function(LocationService, MarkersService, $http, $scope, $filter, AutocompleteService) {
 
     var self = this;
-    self.isInfoOpen = false;
+    var isInfoOpen = false;
     self.isMoreOptions = false;
-    self.clickedRequest = {};
-    self.requestUser = {};
+    var clickedRequest;
+    var requestUser;
     self.isMoreTimeOptions = false;
-    self.autocompleteStarted = false;
     self.tour_time_end = "00:00";
 
     self.master = {};
     self.autocompleteSuggestions = {};
 
 
-    self.autoCompleteSearch = function(searchInput){
-      //   if (searchInput.length < 2) {
-      //   self.autocompleteStarted = false;
-      // } else {
-        AutocompleteService.initPredict(searchInput);
-        self.autocompleteStarted = true;
-        self.autocompleteSuggestions = AutocompleteService.makeSuggestions();
-        console.log(self.autocompleteSuggestions);
 
-        return self.autocompleteSuggestions;
-      // }
+    self.autoCompleteSearch = function(searchInput){
+      console.log(searchInput);
+      AutocompleteService.updateSuggestions(searchInput);
+      self.autocompleteSuggestions = AutocompleteService.makeSuggestions();
     };
 
 
@@ -54,11 +47,13 @@
     };
 
     self.openClickedRequestInfo = function(requestData){
-      self.isInfoOpen = true;
-      self.clickedRequest = requestData.data.request;
-      self.requestUser = requestData.data.user;
+      console.log(requestData);
+      isInfoOpen = true;
+      console.log(isInfoOpen);
+      clickedRequest = requestData.data.request;
+      requestUser = requestData.data.user;
       $scope.$digest();
-      LocationService.centerMapOnAddress(self.clickedRequest.location);
+      LocationService.centerMapOnAddress(clickedRequest.location);
     };
 
     self.closeClickedRequestInfo = function(){
@@ -70,6 +65,7 @@
     };
 
     $scope.$on("requestMarkerClicked", function(event, data){
+      console.log(data);
       self.openClickedRequestInfo(data);
     });
 
@@ -90,9 +86,6 @@
       self.isMoreOptions = !self.isMoreOptions;
     };
 
-    self.toggleMoreTimeOptions = function(){
-      self.isMoreTimeOptions = !self.isMoreTimeOptions;
-    };
 
     self.outputUpdate = function(hours){
 	     document.querySelector('#tour_duration').value = hours;

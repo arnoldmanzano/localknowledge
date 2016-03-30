@@ -1,3 +1,5 @@
+<aside id="request-info-box" ng-show="r.isInfoOpen">
+
 <div class="card hovercard">
 
     <div class="cardheader">
@@ -33,6 +35,7 @@
         </div>
 
         <div class="desc">
+
           <h5> {{r.requestUser.f_name}}'s availability:
             <b>{{ r.clickedRequest.time_of_day === 'All day' ? 'All day' : 'in the ' + r.clickedRequest.time_of_day}}</b>
           </h5>
@@ -59,6 +62,7 @@
             {{r.requestUser.f_name}} has
             <b> to be able to get to the airport </b>
           </h5>
+
           <h5 ng-show="r.clickedRequest.disability_access">
             {{r.requestUser.f_name}} needs
             <b> disability access </b>
@@ -66,9 +70,11 @@
 
         <h3> Think you can help <b>{{r.requestUser.f_name}}</b> ? </h3>
 
-    </div>
+      </div>
 
-    <div class="bottom" ng-hide="r.requestUser.id == r.current_user_id">
+  </div>
+
+  <div class="bottom" ng-hide="r.requestUser.id == r.current_user_id">
 
       <%= link_to "/requests/{{r.clickedRequest.id}}/replies/new" do %>
 
@@ -78,6 +84,7 @@
 
       <button class="btn-for-request" type="submit" ng-click="r.toggleUserInfo">Find out more about {{r.requestUser.f_name}}</button>
 
-    </div>
+  </div>
 
 </div>
+</aside>

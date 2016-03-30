@@ -2,8 +2,9 @@
       <md-content class="md-padding">
         <form>
             <md-autocomplete
+                id="autocompletebox"
                 md-search-text="r.searchText"
-                md-no-cache="r.noCache"
+                md-no-cache="true"
                 md-search-text-change="r.autoCompleteSearch(r.searchText)"
                 md-input-name="r.autocompleteSuggestions"
                 md-selected-item="r.selectedItem"
@@ -17,7 +18,3 @@
         </form>
       </md-content>
     </div>
-<!--
-            <aside ng-show="r.autocompleteStarted" id="autocompleteSuggestions">
-              <ul ng-repeat="suggestion in r.autocompleteSuggestions track by $index"> {{suggestion}} </ul>
-            <aside> -->
