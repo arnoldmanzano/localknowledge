@@ -1,10 +1,5 @@
 $( document ).ready(function () {
-  $(function(){
-   $('.datepicker').datepicker({
-      format: 'mm-dd-yyyy'
-    });
-  });
-
+  
     $(".btn-for-request").hover(function(){
   	$(this).stop().animate({
   		top: "5",
@@ -23,7 +18,7 @@ $( document ).ready(function () {
       e.preventDefault();
       $("#wrapper").toggleClass("toggled");
 
-      var value = $(".map")[0].style.width !== "100vw" ? '100vw' : '87vw';
+      var value = $("#map")[0].style.width !== "100vw" ? '100vw' : '100vw';
 
       $("#map").animate({
       	      width: value

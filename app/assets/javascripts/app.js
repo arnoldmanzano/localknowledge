@@ -2,6 +2,6 @@
   'use strict';
 
   angular
-    .module('LocalKnowledgeApp', ['ngResource', 'jkuri.gallery']);
+    .module('LocalKnowledgeApp', ['ngResource', 'jkuri.gallery', 'ngMaterial']);
 
 }());

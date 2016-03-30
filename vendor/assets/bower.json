@@ -5,7 +5,10 @@
     "bootstrap-sass-official": "latest",
     "jquery": "latest",
     "angular-resource": "^1.5.0",
-    "ngGallery": "latest"
+    "ngGallery": "latest",
+    "angular-material": "latest",
+    "angular-animate": "latest",
+    "angular-aria": "latest"
   },
   "devDependencies": {
     "angular-mocks": "^1.5.0",

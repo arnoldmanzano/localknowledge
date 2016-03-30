@@ -11,9 +11,11 @@
  * file per style scope.
  *
  */
+ 
  @import "ngGallery/src/css/ngGallery";
  @import "bootstrap-sass-official/assets/stylesheets/bootstrap-sprockets";
  @import "bootstrap-sass-official/assets/stylesheets/bootstrap";
+ @import "modal_request_form";
  @import "vars";
  @import "cover";
  @import "cards";

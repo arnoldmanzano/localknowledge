@@ -2,7 +2,7 @@
   <div ng-controller="MapController as map">
     <section ng-controller="RequestController as r">
       <%= render "requests/modal_request" %>
-      <aside class="request-info-box" ng-show="r.isInfoOpen" ng-click="r.closeClickedRequestInfo">
+      <aside class="request-info-box" ng-show="r.isInfoOpen">
         <%= render "requests/single_request_info" %>
       </aside>
       <div ng-show="r.success">

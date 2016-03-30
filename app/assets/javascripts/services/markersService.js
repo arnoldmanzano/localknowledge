@@ -3,11 +3,11 @@
 
   angular
     .module('LocalKnowledgeApp')
-    .service('MarkersService', ['LocationService', '$http', '$rootScope', '$q', function(LocationService, $http, $rootScope, $q) {
+    .service('MarkersService', ['LocationService', '$http', '$rootScope', function(LocationService, $http, $rootScope) {
 
     var self = this;
     var map;
-
+    var users;
 
     self.placeCurrentRequestMarker = function(request){
       map = LocationService.map;
@@ -25,14 +25,14 @@
 
 
     self.retrieveAllRequests = function (callback) {
-      map = LocationService.map;
       $http.get('/api/users').then(function(response){
         self.dropAllRequestMarkers(response);
       });
     };
 
     self.dropAllRequestMarkers = function(response){
-      var users = response.data;
+      map = LocationService.map;
+      users = response.data;
       for (var i = 0; i < users.length; i++) {
         var user = users[i];
         var requests = user.requests;

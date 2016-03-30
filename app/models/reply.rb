@@ -1,4 +1,4 @@
-class Reply < ActiveRecord::Base
+ class Reply < ActiveRecord::Base
   belongs_to :request
   belongs_to :user
   has_one :review

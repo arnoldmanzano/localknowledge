@@ -15,6 +15,9 @@
 //= require angular
 //= require angular-resource
 //= require ngGallery/src/js/ngGallery
+//= require angular-material
+//= require angular-animate
+//= require angular-aria
 //= require bootstrap-sass-official
 //= require_tree .
 //= require_self

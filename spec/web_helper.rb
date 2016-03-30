@@ -37,6 +37,7 @@ def request_tour(location="London", budget=10, description="great times wanted",
   fill_in :location, with: location
   fill_in :request_date, with: request_date
   fill_in :budget, with: budget
+  find(:css, ".form-control[value='All Day']").set(true)
   fill_in :description, with: description
   click_button 'Submit'
 end
