@@ -1,4 +1,4 @@
-<div id="reviewModal" class="modal fade" role="dialog">
+<div id="reviewModal<%=reply.id%>" class="modal fade" role="dialog">
   <div class="modal-dialog">
     <!-- Modal content-->
     <div class="modal-content">
@@ -8,7 +8,6 @@
       </div>
       <div class="modal-body">
         <%= form_for [request, reply, @review] do |f| %>
-          <%= hidden_field_tag :user_id, reply.user_id %>
           <fieldset class="form-group">
             <%= f.select :rating, (1..5), autofocus: true, placeholder: 'Rating out of five stars', class: 'form-control' %>
           </fieldset>

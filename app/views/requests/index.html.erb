@@ -5,7 +5,7 @@
 
         <%= render 'single_card', request: request %>
 
-          <% request.replies.each.with_index(1) do |reply, index| %>
+          <% request.replies.each do |reply| %>
             <div class="col-md-8 col-sm-8">
               <div class="panel panel-default arrow left">
                 <div class='panel-body'>
@@ -27,7 +27,7 @@
                   <% if request.user == current_user && !request.resolved %>
                       <%= link_to 'Choose', choose_request_reply_path(request, reply), method: :post %>
                   <% elsif request.user == current_user && request.resolved %>
-                      <a href="#" data-toggle="modal" data-target="#reviewModal">Leave a review</a>
+                      <a href="#" data-toggle="modal" data-target="#reviewModal<%=reply.id%>">Leave a review</a>
                       <%= render 'reviews/modal_review', request: request, reply: reply %>
                   <% end %>
                 </div>
