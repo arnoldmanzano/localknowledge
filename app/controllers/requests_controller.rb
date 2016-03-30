@@ -5,7 +5,6 @@ class RequestsController < ApplicationController
   def index
     @requests = Request.where("user_id = ? AND expiration > ?", current_user, Time.now)
     @review = Review.new
-    # @reviews = Review.where("user_id = ?", current_user)
   end
 
   def create

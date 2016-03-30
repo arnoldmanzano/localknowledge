@@ -10,9 +10,6 @@ class User < ActiveRecord::Base
   has_many :replied_requests, through: :replies, source: :request
   has_many :reviewed_replies, through: :reviews, source: :replies
 
-  # has_many :written_reviews, class_name: 'Review', foreign_key: 'reviewer_id'
-  # has_many :received_reviews, class_name: 'Review', foreign_key: 'reviewee_id'
-  #
   validates :f_name, :l_name, :username, presence: true
 
   has_attached_file :avatar, :styles => { :medium => "300x300>", :thumb => "100x100#" }, :default_url => "/images/:style/missing.png"
@@ -25,5 +22,4 @@ class User < ActiveRecord::Base
   def average_rating
     reviews.average(:rating)
   end
-
 end

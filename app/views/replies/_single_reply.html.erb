@@ -1,0 +1,32 @@
+<div class="comment-list">
+  <div class="panel panel-default arrow left">
+    <div class="">
+      <span class="round-image-50"><%= image_tag(reply.user.avatar.url(:thumb)) %></span>
+      <span class="panel-title"></span><%= reply.user.username %></span>
+      <span><%= average_stars(reply.user.average_rating) %> (<%= reply.user.reviews.count %>)</span>
+    </div>
+    <div class='panel-body'>
+      <div class='desc'>Duration: <%= reply.duration %> hours</div>
+      <div class='desc'>Cost: £<%= reply.cost %></div>
+      <div class='desc'>Description: <%= reply.description %></div>
+      <div class='desc'>Meeting point: <%= reply.meeting_point %></div>
+      <div class='desc'>Stopoffs: <%= reply.stopoffs %></div>
+      <% if reply.user == current_user %>
+        <%= link_to 'Update', edit_request_reply_path(request, reply) %>
+        <%= link_to 'Delete', request_reply_path(request, reply), method: :delete %>
+      <% end %>
+      <% if request.user == current_user && !request.resolved %>
+          <%= link_to 'Choose', choose_request_reply_path(request, reply), method: :post %>
+      <% elsif request.user == current_user && request.resolved%>
+          <a href="#" data-toggle="modal" data-target="#reviewModal<%=reply.id%>">Leave a review</a>
+          <%= render 'reviews/modal_review', request: request, reply: reply %>
+      <% end %>
+        <div ng-controller="ReplyPicsController as rpCtrl" class="container-fluid">
+          <div ng-init="rpCtrl.getImages(<%=reply.id%>)" ng-show="rpCtrl.showImages">
+            <ng-gallery images="rpCtrl.images" thumbs-num="{{rpCtrl.images.length}}">
+            </ng-gallery>
+          </div>
+        </div>
+    </div>
+  </div>
+</div>
