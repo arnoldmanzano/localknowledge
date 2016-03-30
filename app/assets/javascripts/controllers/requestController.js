@@ -13,7 +13,7 @@
     var requestUser;
     self.isMoreTimeOptions = false;
     self.tour_time_end = "00:00";
-
+    self.autocompleteChoice;
     self.master = {};
     self.autocompleteSuggestions = {};
 
@@ -25,6 +25,10 @@
       self.autocompleteSuggestions = AutocompleteService.makeSuggestions();
     };
 
+    self.moveHere = function(locationSearch) {
+      LocationService.centerMapOnAddress(locationSearch);
+      self.autocompleteChoice = locationSearch;
+    };
 
     self.update = function(request) {
         LocationService.centerMapOnAddress(request.location);

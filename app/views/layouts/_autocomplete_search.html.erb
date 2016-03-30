@@ -8,6 +8,7 @@
                 md-search-text-change="r.autoCompleteSearch(r.searchText)"
                 md-input-name="r.autocompleteSuggestions"
                 md-selected-item="r.selectedItem"
+                md-selected-item-change="r.moveHere(r.searchText)"
                 md-items="item in r.autocompleteSuggestions"
                 md-item-text="item.description"
                 md-input-minlength="0">
