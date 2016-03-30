@@ -47,7 +47,7 @@ class RepliesController < ApplicationController
   end
 
   def edit
-    @request = Request.find(params[:request])
+    @request = Request.find(params[:request_id])
     @reply = Reply.find(params[:id])
   end
 
@@ -77,7 +77,5 @@ class RepliesController < ApplicationController
   def reply_params
     params.require(:reply).permit(:meeting_point, :duration, :cost, :stopoffs, :description)
   end
-
-
 
 end
