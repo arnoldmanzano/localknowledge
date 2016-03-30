@@ -29,7 +29,7 @@
                   <% end %>
                     <div ng-controller="ReplyPicsController as rpCtrl" class="content">
                       <div ng-init="rpCtrl.getImages(<%=reply.id%>)" ng-show="rpCtrl.showImages">
-                        <ng-gallery images="rpCtrl.images" thumbs-num="rpCtrl.images.length"></ng-gallery>
+                        <ng-gallery images="rpCtrl.images" thumbs-num="{{rpCtrl.images.length}}"></ng-gallery>
                       </div>
                     </div>
                 </div>
