@@ -27,7 +27,11 @@
 
 .sidebar-nav > .top-section{
   background-color: $ligther-green;
+  li a {
+    display: inline;
+  }
 }
+
 
 #wrapper.toggled #sidebar-wrapper {
     width: 250px;
@@ -68,7 +72,7 @@
 
 .sidebar-nav li a:hover {
     text-decoration: none;
-    color: #fff;
+    color: white;
     background: rgba(255,255,255,0.2);
 }
 
@@ -84,11 +88,11 @@
 }
 
 .sidebar-nav > .sidebar-brand a {
-    color: #999999;
+    color: white;
 }
 
 .sidebar-nav > .sidebar-brand a:hover {
-    color: #fff;
+    color: white;
     background: none;
 }
 

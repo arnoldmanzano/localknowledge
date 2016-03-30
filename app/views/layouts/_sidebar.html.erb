@@ -2,21 +2,21 @@
   <ul class="sidebar-nav">
     <li class="sidebar-brand">
       <a href="/">
-        Local Knowledge
+        LocalHost 3000
       </a>
     </li>
     <% if current_user %>
       <section class="top-section">
             <hr>
         <ul class="list-inline">
-          <li> <p><%= image_tag(current_user.avatar.url(:thumb), { class: 'img-circle'})%><p> </li>
+          <li>
+            <%= link_to edit_user_registration_path do %>
+              <p><%= image_tag(current_user.avatar.url(:thumb), { class: 'img-circle'})%><p> </li>
+            <% end %>
           <li> <h4><%= current_user.f_name %> <%= current_user.l_name %></h4> </li>
         </ul>
-        <ul class="list-inline">
-          <li> <%= link_to "Profile", profile_path %></li>
-          <li> <%= link_to 'Account Settings',edit_user_registration_path %> </li>
-          <li> <%= link_to 'Logout', destroy_user_session_path, method: :delete %> </li>
-        </ul>
+        <li> <%= link_to 'Logout', destroy_user_session_path, method: :delete %> </li>
+        <li> <%= link_to "Profile", profile_path %></li>
         <hr>
       </section>
       <% if current_page?(controller: '/home', action: 'index') %>
