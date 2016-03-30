@@ -14,6 +14,7 @@ FactoryGirl.define do
     f_name  "Factory"
     l_name  "User"
     password "password"
+    phone '+447791621716'
     username "factoryUser"
     # user_with_requests will create request data after the user has been created
     factory :user_with_requests do

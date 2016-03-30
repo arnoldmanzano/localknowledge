@@ -24,6 +24,14 @@ class RepliesController < ApplicationController
       end
       @request.set_expiration_date
       @request.save
+      account_sid = ENV['ACCOUNT_SID']
+      auth_token = ENV['AUTH_TOKEN']
+      @client = Twilio::REST::Client.new account_sid, auth_token
+      @client.account.messages.create({
+      	:from => ENV['TWILIO_PHONE'],
+      	:to => @request.user.phone,
+      	:body => 'Your request has been replied to, please visit LocalHost.com',
+      })
       redirect_to '/'
     else
       if @reply.errors[:user]
@@ -38,7 +46,15 @@ class RepliesController < ApplicationController
     @request = Request.find(params[:request_id])
     @reply = Reply.find(params[:id])
     @reply.set_chosen
-    flash[:notice] = 'Reply chosen'
+    flash[:notice] = 'Reply chosen. Your tourguide will receive a text message notification.'
+    account_sid = ENV['ACCOUNT_SID']
+    auth_token = ENV['AUTH_TOKEN']
+    @client = Twilio::REST::Client.new account_sid, auth_token
+    @client.account.messages.create({
+      :from => ENV['TWILIO_PHONE'],
+      :to => @reply.user.phone,
+      :body => 'A user has accepted your tour request, please go online to check details.',
+    })
     redirect_to requests_path
   end
 
@@ -73,7 +89,6 @@ class RepliesController < ApplicationController
   def reply_params
     params.require(:reply).permit(:meeting_point, :duration, :cost, :stopoffs, :description)
   end
-
 
 
 end
