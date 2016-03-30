@@ -56,15 +56,14 @@
 
         <div class="form-group" id="phone-notify">
           <label for="phone-notify"><h4>Send me a text when I get a reply </h4></label>
-          <label><input class="form-control" type="checkbox" name="phone-notify" ng-model="request.phone_notify" value="Notify"></label><br>
-
-          <div class="form-group" ng-show="{{request.phone_notify}}">
-            <label for="phone-notify"><h4>Send me a text when I get a reply </h4></label>
-            <input class="form-control" type="text" placeholder="Text me on..." ng-model="request.phone_number"></input>
-          </div>
+          <label><input class="form-control" type="radio" name="phone-notify" ng-model="request.phone_notify" value="PhoneChecked"></label><br>
         </div>
 
+        <div class="form-group" ng-show="request.phone_notify">
+          <label for="phone-number"><h4>Send me a text when I get a reply </h4></label>
+          <input class="form-control" type="text" placeholder="Text me on..." ng-model="request.phone_number" ng-required="request.phone_notify" ></input>
         </div>
+
 
           <div class="form-group" ng-show="r.isMoreOptions">
             <label for="group_size"> <h6> Group Size: </h6></label><br>
