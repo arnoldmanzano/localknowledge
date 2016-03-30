@@ -3,7 +3,7 @@
 
   angular
     .module('LocalKnowledgeApp')
-    .service('LocationService', ['$resource', '$window', 'MapsStylesService', function($resource, $window, MapsStylesService) {
+    .service('LocationService', ['$resource', '$window', 'MapsStylesService', 'AutocompleteService', function($resource, $window, MapsStylesService, AutocompleteService) {
 
     var self = this;
     var geolocation = $window.navigator.geolocation;
@@ -31,6 +31,7 @@
       MapsStylesService.createStyledMap();
       map.mapTypes.set('map_style', MapsStylesService.madColorsMapStyle);
       map.setMapTypeId('map_style');
+      AutocompleteService.initPredict();
     };
 
     self.lookupCoords = function(location) {

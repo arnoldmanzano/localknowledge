@@ -73,6 +73,7 @@ feature 'Making a request for a tour', js:true do
     expect(page).to have_content('Please enter a budget to request a tour')
   end
 
+
   xit '-> a user\'s request won\'t expire if it\'s been replied to' do
     click_link 'Logout'
     signup("Jimmy", "Hendrix", "hendrix_fan", "SW1 8AP", "bobbybrown@aol.com", "password")

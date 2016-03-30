@@ -3,38 +3,61 @@
 
   angular
     .module('LocalKnowledgeApp')
-    .controller('RequestController', ['LocationService', 'MarkersService', '$http', '$scope', function(LocationService, MarkersService, $http, $scope) {
+    .controller('RequestController', ['LocationService', 'MarkersService',
+    '$http', '$scope', '$filter', 'AutocompleteService', function(LocationService, MarkersService, $http, $scope, $filter, AutocompleteService) {
 
     var self = this;
     var isInfoOpen = false;
-    var clickedRequest = {};
-    var requestUser = {};
-
+    self.isMoreOptions = false;
+    var clickedRequest;
+    var requestUser;
+    self.isMoreTimeOptions = false;
+    self.tour_time_end = "00:00";
+    self.autocompleteChoice;
     self.master = {};
+    self.autocompleteSuggestions = {};
+
+
+
+    self.autoCompleteSearch = function(searchInput){
+      console.log(searchInput);
+      AutocompleteService.updateSuggestions(searchInput);
+      self.autocompleteSuggestions = AutocompleteService.makeSuggestions();
+    };
+
+    self.moveHere = function(locationSearch) {
+      LocationService.centerMapOnAddress(locationSearch);
+      self.autocompleteChoice = locationSearch;
+    };
 
     self.update = function(request) {
-      LocationService.centerMapOnAddress(request.location);
-      LocationService.lookupCoords(request.location).then(function(coords) {
+        LocationService.centerMapOnAddress(request.location);
+        LocationService.lookupCoords(request.location).then(function(coords) {
         request.lat = coords.lat;
         request.lng = coords.lng;
         self.master = angular.copy(request);
         self.postRequest(self.master);
         MarkersService.placeCurrentRequestMarker(request);
+        self.current_user_id = MarkersService.current_user_id;
+        angular.element("#myModal").modal('hide');
       });
-    };
+  };
 
     self.postRequest = function(data) {
       $http.post('/requests', data).success(function(data, status) {
         self.success = true;
       });
+
     };
 
     self.openClickedRequestInfo = function(requestData){
-      self.isInfoOpen = true;
-      self.clickedRequest = requestData.data.request;
-      self.requestUser = requestData.data.user;
+      console.log(requestData);
+      isInfoOpen = true;
+      console.log(isInfoOpen);
+      clickedRequest = requestData.data.request;
+      requestUser = requestData.data.user;
       $scope.$digest();
-      LocationService.centerMapOnAddress(self.clickedRequest.location);
+      LocationService.centerMapOnAddress(clickedRequest.location);
     };
 
     self.closeClickedRequestInfo = function(){
@@ -46,9 +69,31 @@
     };
 
     $scope.$on("requestMarkerClicked", function(event, data){
+      console.log(data);
       self.openClickedRequestInfo(data);
     });
 
+    self.calculateTimeLimiter = function(requestStartTime, requestDuration){
+      requestStartTime = requestStartTime === undefined ? new Date() : requestStartTime;
+      requestDuration = requestDuration === undefined ? 2 : requestDuration;
+      self.calculateTourEnd(requestStartTime, requestDuration);
+      return 23 - requestStartTime.getHours();
+    };
+
+    self.calculateTourEnd = function(requestStartTime, requestDuration){
+      var hoursStr = parseInt(requestStartTime.getHours()) + (parseInt(requestDuration) || 0);
+      var minutesStr = requestStartTime.getMinutes();
+      self.tour_time_end = hoursStr + ":" + minutesStr;
+  };
+
+    self.toggleMoreOptions = function(){
+      self.isMoreOptions = !self.isMoreOptions;
+    };
+
+
+    self.outputUpdate = function(hours){
+	     document.querySelector('#tour_duration').value = hours;
+     };
 
   }]);
 

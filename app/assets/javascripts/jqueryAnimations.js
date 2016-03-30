@@ -1,11 +1,7 @@
 $( document ).ready(function () {
-  $(function(){
-   $('.datepicker').datepicker({
-      format: 'mm-dd-yyyy'
-    });
-  });
 
-    $(".btn-for-request").hover(function(){
+
+  $(".btn-for-request").hover(function(){
   	$(this).stop().animate({
   		top: "5",
   		left: "5"

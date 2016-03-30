@@ -11,6 +11,7 @@ class RequestsController < ApplicationController
     @request = current_user.requests.new(request_params)
     flash[:notice] = 'Your request has been successfully submitted.' if @request.save
     render json: @request.to_json
+    # respond_with(@request)
   end
 
   def edit
@@ -42,7 +43,12 @@ class RequestsController < ApplicationController
   private
 
   def request_params
-    params.require(:request).permit(:location, :description, :budget, :request_date, :lat, :lng)
+    params.require(:request).permit(:location, :lat, :lng,
+      :description, :budget,
+      :disability_access, :children, :luggage, :airport_access,
+      :request_date, :tour_duration,
+      :time_of_day, :tour_time_start,
+      :tour_duration, :tour_time_end, :group_size)
   end
 
 end

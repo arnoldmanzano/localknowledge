@@ -1,0 +1,21 @@
+  <div layout="column" ng-cloak>
+      <md-content class="md-padding">
+        <form>
+            <md-autocomplete
+                id="autocompletebox"
+                md-search-text="r.searchText"
+                md-no-cache="true"
+                md-search-text-change="r.autoCompleteSearch(r.searchText)"
+                md-input-name="r.autocompleteSuggestions"
+                md-selected-item="r.selectedItem"
+                md-selected-item-change="r.moveHere(r.searchText)"
+                md-items="item in r.autocompleteSuggestions"
+                md-item-text="item.description"
+                md-input-minlength="0">
+            <md-item-template>
+                <span md-highlight-text="r.searchText" md-highlight-flags="^i"> {{item.description}} </span>
+            </md-item-template>
+          </md-autocomplete>
+        </form>
+      </md-content>
+    </div>
