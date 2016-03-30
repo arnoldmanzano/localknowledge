@@ -11,6 +11,7 @@ Rails.application.routes.draw do
   get 'api/c_user' => 'users#c_user'
   get "profile" => "users#show", :as => 'profile'
   get 'api/reply/:id' => 'replies#c_reply'
+  get 'replies' => 'replies#index'
   # Example of regular route:
   #   get 'products/:id' => 'catalog#view'
 
@@ -24,8 +25,6 @@ Rails.application.routes.draw do
       resources :reviews
     end
   end
-
-
   # Example resource route with options:
   #   resources :products do
   #     member do

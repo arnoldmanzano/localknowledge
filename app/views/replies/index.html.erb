@@ -1,0 +1,14 @@
+<% if @replies.any? %>
+  <div class="container comment-list">
+    <% @replies.each do |reply| %>
+      <div class="row">
+        <div class="col-md-6 col-sm-6">
+          <%= render 'single_reply', reply: reply %>
+        </div>
+        <%= render 'requests/single_card', request: reply.request %>
+      </div>
+    <% end %>
+  </div>
+<% else %>
+  <p> You have not made any replies </p>
+<% end %>

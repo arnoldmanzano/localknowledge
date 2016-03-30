@@ -8,6 +8,10 @@ class RepliesController < ApplicationController
     render json: pics.to_json
   end
 
+  def index
+    @replies = current_user.replies.all
+  end
+
   def new
     @request = Request.find(params[:request_id])
     @reply = Reply.new
@@ -43,7 +47,7 @@ class RepliesController < ApplicationController
   end
 
   def edit
-    @request = Request.find(params[:request_id])
+    @request = Request.find(params[:request])
     @reply = Reply.find(params[:id])
   end
 
