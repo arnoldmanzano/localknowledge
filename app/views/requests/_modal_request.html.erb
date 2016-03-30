@@ -12,6 +12,7 @@
         <form>
 
         <div class="essential-fields-wrapper">
+
           <div class="form-group" id="location_box">
             <label for="location"><h4>Where I'm going: {{request.location}}  </h4>*required</label>
             <input type="text" class="form-control" name="location" id="location" ng-model="request.location" placeholder="Where do you want to go?" ng-required="true">
@@ -53,6 +54,15 @@
 
         </section>
 
+        <div class="form-group" id="phone-notify">
+          <label for="phone-notify"><h4>Send me a text when I get a reply </h4></label>
+          <label><input class="form-control" type="checkbox" name="phone-notify" ng-model="request.phone_notify" value="Notify"></label><br>
+
+          <div class="form-group" ng-show="{{request.phone_notify}}">
+            <label for="phone-notify"><h4>Send me a text when I get a reply </h4></label>
+            <input class="form-control" type="text" placeholder="Text me on..." ng-model="request.phone_number"></input>
+          </div>
+        </div>
 
         </div>
 
