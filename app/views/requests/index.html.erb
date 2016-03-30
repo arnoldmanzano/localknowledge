@@ -8,6 +8,12 @@
           <div class="col-md-6 col-sm-6">
             <% request.replies.each do |reply| %>
               <%= render 'replies/single_reply', request: request, reply: reply %>
+              <% if request.user == current_user && !request.resolved %>
+                <%= link_to 'Choose', choose_request_reply_path(request, reply), method: :post %>
+              <% elsif request.user == current_user && request.resolved%>
+                <a href="#" data-toggle="modal" data-target="#reviewModal<%=reply.id%>">Leave a review</a>
+                <%= render 'reviews/modal_review', request: request, reply: reply %>
+              <% end %>
             <% end %>
           </div>
         </div>
