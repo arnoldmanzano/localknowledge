@@ -5,11 +5,13 @@
 
         <%= render 'single_card', request: request %>
 
-          <% request.replies.each.with_index(1) do |reply, index| %>
+          <% request.replies.each do |reply| %>
             <div class="col-md-8 col-sm-8">
               <div class="panel panel-default arrow left">
                 <div class='panel-body'>
                   <h5 class='card-title'><span class="round-image-50"><%= image_tag(reply.user.avatar.url(:thumb)) %></span> <%= reply.user.username %></h5>
+                    <%= average_stars(reply.user.average_rating) %> (<%= reply.user.reviews.count %>)
+
                   <p class='card-text'>Duration: <%= reply.duration %> hours</p>
                   <p class='card-text'>Cost: £<%= reply.cost %></p>
                   <p class='card-text'>Description: <%= reply.description %></p>
@@ -22,8 +24,11 @@
                     <%= link_to 'Update', edit_request_reply_path(request, reply) %>
                     <%= link_to 'Delete', request_reply_path(request, reply), method: :delete %>
                   <% end %>
-                  <% if request.user == current_user && request.resolved == false %>
+                  <% if request.user == current_user && !request.resolved %>
                       <%= link_to 'Choose', choose_request_reply_path(request, reply), method: :post %>
+                  <% elsif request.user == current_user && request.resolved %>
+                      <a href="#" data-toggle="modal" data-target="#reviewModal<%=reply.id%>">Leave a review</a>
+                      <%= render 'reviews/modal_review', request: request, reply: reply %>
                   <% end %>
                 </div>
               </div>

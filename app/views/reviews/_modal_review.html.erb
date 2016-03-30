@@ -1,0 +1,27 @@
+<div id="reviewModal<%=reply.id%>" class="modal fade" role="dialog">
+  <div class="modal-dialog">
+    <!-- Modal content-->
+    <div class="modal-content">
+      <div class="modal-header">
+        <button type="button" class="close" data-dismiss="modal">&times;</button>
+        <h4 class="modal-title">Leave a review of your tour </h4>
+      </div>
+      <div class="modal-body">
+        <%= form_for [request, reply, @review] do |f| %>
+          <fieldset class="form-group">
+            <%= f.select :rating, (1..5), autofocus: true, placeholder: 'Rating out of five stars', class: 'form-control' %>
+          </fieldset>
+          <fieldset class="form-group">
+            <%= f.text_area :description, autocomplete: "off", placeholder: 'How was it for you?', class: 'form-control' %>
+          </fieldset>
+          <fieldset class="actions">
+            <%= f.submit "Submit review", class: 'btn btn-primary' %>
+          </fieldset>
+        <% end %>
+      </div>
+      <div class="modal-footer">
+        <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
+      </div>
+    </div>
+  </div>
+</div>

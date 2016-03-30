@@ -28,4 +28,10 @@ module ApplicationHelper
     nil
   end
 
+  def average_stars(rating)
+    rating = 0 if rating.nil?
+    remainder = (5 - rating.round )
+    '★' * rating.round + "☆" * remainder
+  end
+
 end

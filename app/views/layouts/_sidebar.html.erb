@@ -13,7 +13,8 @@
           <li> <h4><%= current_user.f_name %> <%= current_user.l_name %></h4> </li>
         </ul>
         <ul class="list-inline">
-          <li> <%= link_to 'Edit Profile',edit_user_registration_path %> </li>
+          <li> <%= link_to "Profile", profile_path %></li>
+          <li> <%= link_to 'Account Settings',edit_user_registration_path %> </li>
           <li> <%= link_to 'Logout', destroy_user_session_path, method: :delete %> </li>
         </ul>
         <hr>
