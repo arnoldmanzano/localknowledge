@@ -3,16 +3,15 @@
     <!-- Modal content-->
     <div class="modal-content" >
 
-      <div class="modal-header">
-        <button type="button" class="close" data-dismiss="modal">&times;</button>
-        <h3 class="modal-title">Request a tour from a local</h3>
-      </div>
+        <div class="modal-header">
+          <button type="button" class="close" data-dismiss="modal">&times;</button>
+          <h3 class="modal-title">Request a tour from a local</h3>
+        </div>
 
-    <form>
       <div class="modal-body">
+        <form>
 
-
-      <div class="essential-fields-wrapper">
+        <div class="essential-fields-wrapper">
 
           <div class="form-group" id="location_box">
             <label for="location"><h4>Where I'm going: {{request.location}}  </h4>*required</label>
@@ -25,13 +24,9 @@
           </div>
 
         <section class="large-input">
-
             <div class="form-group" id="radio-time-of-day">
                 <h4> I'm free {{request.time_of_day || '... ' }} {{(request.request_date | date:'fullDate') || ' ' }}? </h4>
                 <fieldset for="request_time_of_day">
-                  <label> All day
-                    <input class="form-control" type="radio" name="request_time_of_day"  ng-model="request.time_of_day" value="All Day" ng-required="true" checked>
-                  </label>
 
                   <label>Morning
                     <input class="form-control" type="radio" name="request_time_of_day"  ng-model="request.time_of_day" value="Morning" checked>
@@ -44,86 +39,88 @@
                   <label> Evening
                     <input class="form-control" type="radio" name="request_time_of_day"  ng-model="request.time_of_day" value="Evening" checked>
                   </label>
+
+                  <label> All day
+                    <input class="form-control" type="radio" name="request_time_of_day"  ng-model="request.time_of_day" value="All Day" ng-required="true" checked>
+                  </label>
+
                 </fieldset>
 
             </div>
 
 
-            <div class="form-group" id="description-textarea">
-              <label for="description"><h4>What I want to do there:  </h4></label>
-              <textarea class="form-control" rows="4" name="description" id="description" ng-model="request.description" placeholder="What do you want to do?"></textarea>
-            </div>
+          <div class="form-group" id="description-textarea">
+            <label for="description"><h4>What I want to do there:  </h4></label>
+            <textarea class="form-control" rows="4" name="description" id="description" ng-model="request.description" placeholder="What do you want to do?"></textarea>
+          </div>
 
         </section>
-      </div>
-
-            <div class="form-group" ng-show="r.isMoreOptions">
-              <label for="group_size"> <h6> Group Size: </h6></label><br>
-                <input type="integer" name="group_size" ng-model="request.group_size" class="form-control" ><br>
-            </div>
-
-            <div class="form-group" ng-show="r.isMoreOptions">
-              <label for="budget"><h4> Budget: </h4></label>
-              <input type="range"
-                      min="0" max="250" step="5"
-                      class="form-control"
-                      id="budget"
-                      ng-model="request.budget">
-              <output for="budget" id="request_budget">
-                <h4> I've got £{{request.budget || '100'}} to spend </h4>
-              </output>
-            </div>
-
-            <div class="form-group" ng-show="r.isMoreOptions">
-              <label for="special_considerations"> <h6> Special Considerations: </h6></label><br>
-                <label><input class="form-control" type="checkbox" name="special_considerations" ng-model="request.disability_access" value="Disabled" > Disabled access required</label><br>
-                <label><input class="form-control" type="checkbox" name="special_considerations"   ng-model="request.children" value="Children" > Young children in tow </label><br>
-                <label><input class="form-control" type="checkbox" name="special_considerations"  ng-model="request.luggage" value="Luggage" > Heavy luggage in tow </label><br>
-                <label><input class="form-control" type="checkbox" name="special_considerations" ng-model="request.airport_access" value="FlightsThatDay"> Flying on the same day </label><br>
-            </div>
 
 
-
-            <div class="form-group" ng-show=r.isMoreOptions>
-              <h4>When I'll be there: {{request.request_date | date:'fullDate'}}</h4><br>
-              <label for=tour_time_start> From:</label>
-              <input  class="form-control"
-                      type="time"
-                      id="tour_time_start"
-                      ng-model="request.tour_time_start"
-                      >
-            </div>
-
-            <div class="form-group" ng-show=r.isMoreOptions>
-              <label for="duration"> Duration </label>
-              <output for="duration" id="tour_duration">
-                <h4> I'm free for {{request.tour_duration}} hours </h4>
-                <h4> From: {{request.tour_time_start | date:'HH' + ':' + 'mm'}} until: {{r.tour_time_end}}</h4>
-              </output>
-                <input  type="range"
-                        name="time"
-                        class="form-control"
-                        value ="2"
-                        id="tour_duration"
-                        ng-model="request.tour_duration"
-                        ng-change="r.calculateTimeLimiter(request.tour_time_start)"
-                        min="0" max="{{r.calculateTimeLimiter(request.tour_time_start, request.tour_duration) || 12}}" step="1"
-                        oninput="r.outputUpdate(value)">
-            </div>
-
-            <div class="form-group" id="btn-dashboard">
-                <button type="button" class="btn btn-default" ng-click="r.toggleMoreOptions()" ng-click="r.openMoreOptions()" ng-hide="r.isMoreOptions"> More Options </button>
-                <button type="button" class="btn btn-default" ng-click="r.toggleMoreOptions()" ng-click="r.openMoreOptions()" ng-show="r.isMoreOptions"> Fewer Options </button>
-                <button type="submit" class="btn btn-default" id="modal-submit" >Submit</button>
-            </div>
-
-
-
+          <div class="form-group" ng-show="r.isMoreOptions">
+            <label for="group_size"> <h6> Group Size: </h6></label><br>
+              <input type="integer" name="group_size" ng-model="request.group_size" class="form-control" ><br>
           </div>
+
+          <div class="form-group" ng-show="r.isMoreOptions">
+            <label for="budget"><h4> Budget: </h4></label>
+            <input type="range"
+                    min="0" max="250" step="5"
+                    class="form-control"
+                    id="budget"
+                    ng-model="request.budget">
+            <output for="budget" id="request_budget">
+              <h4> I've got £{{request.budget || '100'}} to spend </h4>
+            </output>
+          </div>
+
+          <div class="form-group" ng-show="r.isMoreOptions">
+            <label for="special_considerations"> <h6> Special Considerations: </h6></label><br>
+              <label><input class="form-control" type="checkbox" name="special_considerations" ng-model="request.disability_access" value="Disabled" > Disabled access required</label><br>
+              <label><input class="form-control" type="checkbox" name="special_considerations"   ng-model="request.children" value="Children" > Young children in tow </label><br>
+              <label><input class="form-control" type="checkbox" name="special_considerations"  ng-model="request.luggage" value="Luggage" > Heavy luggage in tow </label><br>
+              <label><input class="form-control" type="checkbox" name="special_considerations" ng-model="request.airport_access" value="FlightsThatDay"> Flying on the same day </label><br>
+          </div>
+
+
+
+          <div class="form-group" ng-show=r.isMoreOptions>
+            <h4>When I'll be there: {{request.request_date | date:'fullDate'}}</h4><br>
+            <label for=tour_time_start> From:</label>
+            <input  class="form-control"
+                    type="time"
+                    id="tour_time_start"
+                    ng-model="request.tour_time_start"
+                    >
+          </div>
+
+          <div class="form-group" ng-show=r.isMoreOptions>
+            <label for="duration"> Duration </label>
+            <output for="duration" id="tour_duration">
+              <h4> I'm free for {{request.tour_duration}} hours </h4>
+              <h4> From: {{request.tour_time_start | date:'HH' + ':' + 'mm'}} until: {{r.tour_time_end}}</h4>
+            </output>
+              <input  type="range"
+                      name="time"
+                      class="form-control"
+                      value ="2"
+                      id="tour_duration"
+                      ng-model="request.tour_duration"
+                      ng-change="r.calculateTimeLimiter(request.tour_time_start)"
+                      min="0" max="{{r.calculateTimeLimiter(request.tour_time_start, request.tour_duration) || 12}}" step="1"
+                      oninput="r.outputUpdate(value)"
+                      >
+          </div>
+
+          <div class="form-group" id="btn-dashboard">
+              <button type="button" class="btn btn-default" ng-click="r.toggleMoreOptions()" ng-click="r.openMoreOptions()" ng-hide="r.isMoreOptions"> More Options </button>
+              <button type="button" class="btn btn-default" ng-click="r.toggleMoreOptions()" ng-click="r.openMoreOptions()" ng-show="r.isMoreOptions"> Fewer Options </button>
+              <button type="submit" class="btn btn-default" id="modal-submit" >Submit</button>
+          </div>
+
         </form>
 
-        <!-- </div>
-      </div> -->
+      </div>
     </div>
   </div>
 </div>

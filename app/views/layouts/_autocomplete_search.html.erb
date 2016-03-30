@@ -12,6 +12,7 @@
                 md-items="item in r.autocompleteSuggestions"
                 md-item-text="item.description"
                 md-input-minlength="0">
+
             <md-item-template>
                 <span md-highlight-text="r.searchText" md-highlight-flags="^i"> {{item.description}} </span>
             </md-item-template>

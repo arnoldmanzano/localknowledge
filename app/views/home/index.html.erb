@@ -3,8 +3,7 @@
     <section ng-controller="RequestController as r">
       <%= render "layouts/autocomplete_search" %>
       <%= render "requests/modal_request" %>
-      <aside class="request-info-box" ng-show="r.isInfoOpen">
-
+    <aside class="request-info-box" ng-show="r.isInfoOpen">
       <%= render "requests/single_request_info" %>
     </aside>
       <div ng-show="r.success">

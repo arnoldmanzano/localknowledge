@@ -11,9 +11,7 @@
     self.isMoreOptions = false;
     var clickedRequest;
     var requestUser;
-    self.isMoreTimeOptions = false;
-    self.tour_time_end = "00:00";
-    self.autocompleteChoice;
+    self.autocompleteChoice = '';
     self.master = {};
     self.autocompleteSuggestions = {};
 
@@ -38,8 +36,8 @@
         self.master = angular.copy(request);
         self.postRequest(self.master);
         MarkersService.placeCurrentRequestMarker(request);
-        self.current_user_id = MarkersService.current_user_id;
-        angular.element("#myModal").modal('hide');
+        // self.current_user_id = MarkersService.current_user_id;
+        // angular.element("#myModal").modal('hide');
       });
   };
 
@@ -51,9 +49,7 @@
     };
 
     self.openClickedRequestInfo = function(requestData){
-      console.log(requestData);
       isInfoOpen = true;
-      console.log(isInfoOpen);
       clickedRequest = requestData.data.request;
       requestUser = requestData.data.user;
       $scope.$digest();
@@ -64,9 +60,6 @@
       self.isInfoOpen = false;
     };
 
-    self.toggleUserInfo = function(){
-      self.isUserInfoOpen = !self.isUserInfoOpen;
-    };
 
     $scope.$on("requestMarkerClicked", function(event, data){
       console.log(data);
@@ -81,6 +74,7 @@
     };
 
     self.calculateTourEnd = function(requestStartTime, requestDuration){
+      console.log(requestStartTime);
       var hoursStr = parseInt(requestStartTime.getHours()) + (parseInt(requestDuration) || 0);
       var minutesStr = requestStartTime.getMinutes();
       self.tour_time_end = hoursStr + ":" + minutesStr;
