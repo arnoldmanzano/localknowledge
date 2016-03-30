@@ -23,7 +23,6 @@ $(document).ready(function() {
     reader.readAsDataURL(input.files[0]);
     }
   }
-  
   $("#replyPicsInp").change(function() {
     readURLReplypics(this);
   });

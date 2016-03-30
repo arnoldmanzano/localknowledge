@@ -1,5 +1,7 @@
-/*font Awesome http://fontawesome.io*/
-@import url(//maxcdn.bootstrapcdn.com/font-awesome/4.2.0/css/font-awesome.min.css);
+.panel {
+  border-color: $dark-green;
+}
+
 /*Comment List styles*/
 .comment-list .row {
   margin-bottom: 0px;
@@ -44,7 +46,7 @@
     left: 0px;
     top: 30px;
     /*Use boarder color of panel*/
-    border-right-color: inherit;
+    border-right-color: $dark-green;
     border-width: 16px;
   }
   /*Background color effect*/
@@ -61,7 +63,7 @@
     right: -16px;
     top: 30px;
     /*Use boarder color of panel*/
-    border-left-color: inherit;
+    border-left-color: $dark-green;
     border-width: 16px;
   }
   /*Background color effect*/

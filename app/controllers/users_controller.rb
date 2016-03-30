@@ -16,7 +16,6 @@ class UsersController < ApplicationController
 
   def show
     @user = current_user
-    @reviews = Review.all
   end
 
 end

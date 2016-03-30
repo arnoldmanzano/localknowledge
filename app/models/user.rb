@@ -19,4 +19,7 @@ class User < ActiveRecord::Base
     avatar.url(:thumb)
   end
 
+  def average_rating
+    reviews.average(:rating)
+  end
 end

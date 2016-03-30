@@ -14,9 +14,9 @@ def signup(f_name = "Bob", l_name = "Marley", username = 'Iron_Lion_Zion', postc
   click_button 'Sign up'
 end
 
-def signin
+def signin(email='bob@bob.com')
   click_link 'Login'
-  fill_in :'user[email]', with: 'bob@bob.com'
+  fill_in :'user[email]', with: email
   fill_in :'user[password]', with: 'password'
   click_button 'Log in'
 end

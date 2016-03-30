@@ -28,10 +28,10 @@ module ApplicationHelper
     nil
   end
 
-  def calculate_user_average_rating(reviews_array)
-    total = 0
-    reviews_array.each do |review| total += review.rating end
-    total / reviews_array.length
+  def average_stars(rating)
+    rating = 0 if rating.nil?
+    remainder = (5 - rating.round )
+    '★' * rating.round + "☆" * remainder
   end
 
 end
