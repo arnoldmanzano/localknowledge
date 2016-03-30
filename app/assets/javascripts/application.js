@@ -14,6 +14,7 @@
 //= require jquery_ujs
 //= require angular
 //= require angular-resource
+//= require ngGallery/src/js/ngGallery
 //= require bootstrap-sass-official
 //= require_tree .
 //= require_self

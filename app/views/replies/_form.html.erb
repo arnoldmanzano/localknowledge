@@ -23,11 +23,17 @@
     <div class="form-group">
       <%= f.label :pictures, class: 'form-label' %>
       <div class="form-control">
-        <%= file_field_tag "images[]", type: :file, multiple: true %>
+        <%= file_field_tag "images[]", type: :file, multiple: true, id: 'replyPicsInp' %>
       </div>
     </div>
+    <div>
+      <img id="replyPicsOut1" src="" class="hidden" alt="your image" />
+    </div>
+    <div>
+      <img id="replyPicsOut2" src="" class="hidden" alt="your image" />
+    </div>
     <div class="actions">
-      <%= f.submit 'Reply', class: 'btn btn-default' %>
+      <%= f.submit 'Reply', class: 'btn btn-primary' %>
     </div>
   </div>
 <% end %>
