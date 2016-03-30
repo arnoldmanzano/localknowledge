@@ -9,7 +9,7 @@ RSpec.describe ReviewsController, type: :controller do
       @_request = FactoryGirl.create(:request)
       @_reply = FactoryGirl.create(:reply)
       sign_in user
-      post :create, request_id: @_request.id, reply_id: @_reply.id, review: attributes_for(:review)
+      post :create, request_id: @_request.id, reply_id: @_reply.id, review: attributes_for(:review), user_id: user.id
       expect(Review.count).to eq(1)
     end
   end

@@ -8,6 +8,7 @@
       </div>
       <div class="modal-body">
         <%= form_for [request, reply, @review] do |f| %>
+          <%= hidden_field_tag :user_id, reply.user_id %>
           <fieldset class="form-group">
             <%= f.select :rating, (1..5), autofocus: true, placeholder: 'Rating out of five stars', class: 'form-control' %>
           </fieldset>
