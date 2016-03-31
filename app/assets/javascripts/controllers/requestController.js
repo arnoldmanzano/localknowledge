@@ -26,16 +26,18 @@
     self.moveHere = function(locationSearch) {
       LocationService.centerMapOnAddress(locationSearch);
       self.autocompleteChoice = locationSearch;
+      self.request_location = self.autocompleteChoice;
     };
 
-    self.update = function(request) {
+    self.update = function(request, location) {
+        request.location = location;
         LocationService.centerMapOnAddress(request.location);
         LocationService.lookupCoords(request.location).then(function(coords) {
         request.lat = coords.lat;
         request.lng = coords.lng;
         self.master = angular.copy(request);
         self.postRequest(self.master);
-        console.log(request);
+        // console.log(request);
         MarkersService.placeCurrentRequestMarker(request);
         // self.current_user_id = MarkersService.current_user_id;
         angular.element("#myModal").modal('hide');
@@ -76,7 +78,7 @@
     self.calculateTourEnd = function(requestStartTime, requestDuration){
       var hoursStr = parseInt(requestStartTime.getHours()) + (parseInt(requestDuration) || 0);
       var minutesStr = requestStartTime.getMinutes();
-      console.log(minutesStr);
+      // console.log(minutesStr);
       self.tour_time_end = hoursStr + ":" + minutesStr;
   };
 
