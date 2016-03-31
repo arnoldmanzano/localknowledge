@@ -19,7 +19,7 @@
               </div>
               <section class="large-input">
                 <div class="form-group" id="radio-time-of-day">
-                  <h4> I'm free {{request.time_of_day || '... ' }} {{(request.request_date | date:'fullDate') || ' ' }}? </h4>
+                  <h4> I'm free {{request.time_of_day ? request.time_of_day + ', ' : '... ' }} {{(request.request_date | date:'fullDate') || ' ' }}? </h4>
                   <fieldset for="request_time_of_day">
                     <label> All day
                       <input class="form-control" type="radio" name="request_time_of_day"  ng-model="request.time_of_day" value="All Day" ng-required="true" checked>
@@ -40,6 +40,8 @@
                   <textarea class="form-control" rows="4" name="description" id="description" ng-model="request.description" placeholder="What do you want to do?"></textarea>
                 </div>
               </section>
+            </div>
+
               <section class="optional-inputs" ng-show="form.isMoreOptions">
                 <div class="form-group">
                   <label for="group_size"> <h6> Group Size: </h6></label><br>
@@ -84,7 +86,7 @@
                           value ="2"
                           id="tour_duration"
                           ng-model="request.tour_duration"
-                          ng-change="form.calculateTimeLimiter(request.tour_time_start)"
+                          ng-change="form.calculateTimeLimiter(request.tour_time_start, request.tour_duration)"
                           min="0" max="{{form.calculateTimeLimiter(request.tour_time_start, request.tour_duration) || 12}}" step="1"
                           oninput="form.outputUpdate(value)"
                           >
@@ -96,7 +98,7 @@
                 <button type="submit" class="btn btn-default" id="modal-submit" >Submit</button>
               </div>
             </form>
-          </div>
+          <!-- </div> -->
         </div>
       </div>
     </div>

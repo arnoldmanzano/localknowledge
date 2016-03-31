@@ -13,7 +13,6 @@
     self.master = {};
     self.autocompleteSuggestions = {};
     self.tour_time_end = "00:00";
-    // self.request_location = undefined;
 
     self.autoCompleteSearch = function(searchInput){
       AutocompleteService.updateSuggestions(searchInput);
@@ -39,7 +38,6 @@
      self.calculateTourEnd = function(requestStartTime, requestDuration){
        var hoursStr = parseInt(requestStartTime.getHours()) + (parseInt(requestDuration) || 0);
        var minutesStr = requestStartTime.getMinutes();
-       // console.log(minutesStr);
        self.tour_time_end = hoursStr + ":" + minutesStr;
      };
 
@@ -58,9 +56,7 @@
          request.lng = coords.lng;
          self.master = angular.copy(request);
          self.postRequest(self.master);
-         // console.log(request);
          MarkersService.placeCurrentRequestMarker(request);
-         // self.current_user_id = MarkersService.current_user_id;
          angular.element("#myModal").modal('hide');
        });
      };
