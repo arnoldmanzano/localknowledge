@@ -9,7 +9,7 @@
           <p class='card-text'>Last name: <%= @user.l_name %></p>
           <p class='card-text'>Username: <%= @user.username %></p>
           <p class='card-text'>Postcode: <%= @user.postcode %></p>
-          <p class='card-text'>Joined LocalHost3000 on: <%= @user.created_at.to_formatted_s(:long_ordinal) %></p>
+          <p class='card-text'>Joined LocalHost: on: <%= @user.created_at.to_formatted_s(:long_ordinal) %></p>
           <%= average_stars(@user.average_rating) %> (<%= @user.reviews.count %>)
         </div>
       </div>

@@ -1,3 +1,6 @@
+h4.username {
+  color: white;
+}
 #wrapper {
     padding-left: 0;
     -webkit-transition: all 0.5s ease;
@@ -11,6 +14,7 @@
 }
 
 #sidebar-wrapper {
+    border-right: 5px solid $ligther-green;
     z-index: 1000;
     position: fixed;
     left: 250px;
@@ -66,13 +70,13 @@
 .sidebar-nav li a {
     display: block;
     text-decoration: none;
-    color: white;
+    color: $text-color;
     font-size: 1.3em;
 }
 
 .sidebar-nav li a:hover {
     text-decoration: none;
-    color: white;
+    color: $text-color;
     background: rgba(255,255,255,0.2);
 }
 
@@ -82,17 +86,20 @@
 }
 
 .sidebar-nav > .sidebar-brand {
+    padding-top: 4px;
     height: 65px;
-    font-size: 18px;
+    font-size: 24px;
     line-height: 60px;
+    font-family: 'Codystar';
+    font-weight: bolder;
 }
 
 .sidebar-nav > .sidebar-brand a {
-    color: white;
+    color: $text-color;
 }
 
 .sidebar-nav > .sidebar-brand a:hover {
-    color: white;
+    color: $text-color;
     background: none;
 }
 
