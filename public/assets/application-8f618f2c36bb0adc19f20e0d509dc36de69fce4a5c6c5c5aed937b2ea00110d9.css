@@ -13,6 +13,7 @@
  *
  */
 @import url(angular-material/angular-material.css);
+@import url(https://fonts.googleapis.com/css?family=Codystar%7CGlegoo%7C);
 /* line 1, /Users/arnold/Projects/local-knowledge/vendor/assets/bower_components/ngGallery/src/css/ngGallery.css */
 .ng-gallery {
   width: 100%;
@@ -12462,7 +12463,7 @@ button.close {
 .site-wrapper {
   text-align: center;
   display: table;
-  background: url("/cover.jpeg") no-repeat scroll 0px 100%/cover transparent;
+  background: url("http://www.greenland.com/media/1993/meet-the-locals-03.jpg?width=1920&height=1280&mode=crop&format=jpg&quality=95") no-repeat scroll 0px 100%/cover transparent;
   width: 100%;
   height: 100%;
   /* For at least Firefox */
@@ -12471,13 +12472,13 @@ button.close {
   box-shadow: inset 0 0 100px rgba(0, 0, 0, 0.5);
 }
 
-/* line 22, /Users/arnold/Projects/local-knowledge/app/assets/stylesheets/cover.scss */
+/* line 23, /Users/arnold/Projects/local-knowledge/app/assets/stylesheets/cover.scss */
 .site-wrapper-inner {
   display: table-cell;
   vertical-align: top;
 }
 
-/* line 26, /Users/arnold/Projects/local-knowledge/app/assets/stylesheets/cover.scss */
+/* line 27, /Users/arnold/Projects/local-knowledge/app/assets/stylesheets/cover.scss */
 .cover-container {
   color: black;
   margin-right: auto;
@@ -12485,7 +12486,7 @@ button.close {
 }
 
 /* Padding for spacing */
-/* line 33, /Users/arnold/Projects/local-knowledge/app/assets/stylesheets/cover.scss */
+/* line 34, /Users/arnold/Projects/local-knowledge/app/assets/stylesheets/cover.scss */
 .inner {
   padding: 30px;
 }
@@ -12493,32 +12494,39 @@ button.close {
 /*
  * Header
  */
-/* line 40, /Users/arnold/Projects/local-knowledge/app/assets/stylesheets/cover.scss */
+/* line 41, /Users/arnold/Projects/local-knowledge/app/assets/stylesheets/cover.scss */
 .masthead-brand {
   margin-top: 10px;
   margin-bottom: 10px;
 }
 
-/* line 45, /Users/arnold/Projects/local-knowledge/app/assets/stylesheets/cover.scss */
+/* line 46, /Users/arnold/Projects/local-knowledge/app/assets/stylesheets/cover.scss */
 .cover-heading {
-  font-size: 6em;
+  font-size: 10em;
   font-weight: bolder;
   color: white;
-  text-shadow: 5px 5px 5px grey;
-  font-family: Robotica, Arial;
+  font-family: 'Codystar', Arial;
+  text-shadow: 5px 5px skyblue, 1px -1px skyblue, -1px 1px skyblue, 1px 1px skyblue;
 }
 
-/* line 53, /Users/arnold/Projects/local-knowledge/app/assets/stylesheets/cover.scss */
+/* line 58, /Users/arnold/Projects/local-knowledge/app/assets/stylesheets/cover.scss */
+.lead {
+  color: white;
+  font-size: 4em;
+  text-shadow: 2px 2px black;
+}
+
+/* line 64, /Users/arnold/Projects/local-knowledge/app/assets/stylesheets/cover.scss */
 .masthead-nav > li {
   display: inline-block;
 }
 
-/* line 56, /Users/arnold/Projects/local-knowledge/app/assets/stylesheets/cover.scss */
+/* line 67, /Users/arnold/Projects/local-knowledge/app/assets/stylesheets/cover.scss */
 .masthead-nav > li + li {
   margin-left: 20px;
 }
 
-/* line 59, /Users/arnold/Projects/local-knowledge/app/assets/stylesheets/cover.scss */
+/* line 70, /Users/arnold/Projects/local-knowledge/app/assets/stylesheets/cover.scss */
 .masthead-nav > li > a {
   padding-right: 0;
   padding-left: 0;
@@ -12530,7 +12538,7 @@ button.close {
   border-bottom: 2px solid transparent;
 }
 
-/* line 68, /Users/arnold/Projects/local-knowledge/app/assets/stylesheets/cover.scss */
+/* line 79, /Users/arnold/Projects/local-knowledge/app/assets/stylesheets/cover.scss */
 .masthead-nav > li > a:hover,
 .masthead-nav > li > a:focus {
   background-color: transparent;
@@ -12538,7 +12546,7 @@ button.close {
   border-bottom-color: rgba(255, 255, 255, 0.25);
 }
 
-/* line 74, /Users/arnold/Projects/local-knowledge/app/assets/stylesheets/cover.scss */
+/* line 85, /Users/arnold/Projects/local-knowledge/app/assets/stylesheets/cover.scss */
 .masthead-nav > .active > a,
 .masthead-nav > .active > a:hover,
 .masthead-nav > .active > a:focus {
@@ -12547,12 +12555,12 @@ button.close {
 }
 
 @media (min-width: 768px) {
-  /* line 82, /Users/arnold/Projects/local-knowledge/app/assets/stylesheets/cover.scss */
+  /* line 93, /Users/arnold/Projects/local-knowledge/app/assets/stylesheets/cover.scss */
   .masthead-brand {
     float: left;
   }
 
-  /* line 85, /Users/arnold/Projects/local-knowledge/app/assets/stylesheets/cover.scss */
+  /* line 96, /Users/arnold/Projects/local-knowledge/app/assets/stylesheets/cover.scss */
   .masthead-nav {
     float: right;
   }
@@ -12560,12 +12568,12 @@ button.close {
 /*
  * Cover
  */
-/* line 95, /Users/arnold/Projects/local-knowledge/app/assets/stylesheets/cover.scss */
+/* line 106, /Users/arnold/Projects/local-knowledge/app/assets/stylesheets/cover.scss */
 .cover {
   padding: 0 20px;
 }
 
-/* line 98, /Users/arnold/Projects/local-knowledge/app/assets/stylesheets/cover.scss */
+/* line 109, /Users/arnold/Projects/local-knowledge/app/assets/stylesheets/cover.scss */
 .cover .btn-lg, .cover .btn-group-lg > .btn {
   padding: 10px 20px;
   font-weight: bold;
@@ -12574,11 +12582,20 @@ button.close {
 /*
  * Footer
  */
-/* line 108, /Users/arnold/Projects/local-knowledge/app/assets/stylesheets/cover.scss */
+/* line 119, /Users/arnold/Projects/local-knowledge/app/assets/stylesheets/cover.scss */
 .mastfoot {
   color: #999;
   /* IE8 proofing */
   color: rgba(255, 255, 255, 0.5);
+  font-weight: bold;
+}
+/* line 123, /Users/arnold/Projects/local-knowledge/app/assets/stylesheets/cover.scss */
+.mastfoot p {
+  color: white;
+}
+/* line 126, /Users/arnold/Projects/local-knowledge/app/assets/stylesheets/cover.scss */
+.mastfoot a {
+  color: skyblue;
 }
 
 /*
@@ -12586,39 +12603,31 @@ button.close {
  */
 @media (min-width: 768px) {
   /* Pull out the header and footer */
-  /* line 120, /Users/arnold/Projects/local-knowledge/app/assets/stylesheets/cover.scss */
+  /* line 138, /Users/arnold/Projects/local-knowledge/app/assets/stylesheets/cover.scss */
   .masthead {
     position: fixed;
     top: 0;
   }
 
-  /* line 124, /Users/arnold/Projects/local-knowledge/app/assets/stylesheets/cover.scss */
+  /* line 142, /Users/arnold/Projects/local-knowledge/app/assets/stylesheets/cover.scss */
   .mastfoot {
     position: fixed;
     bottom: 0;
   }
 
   /* Start the vertical centering */
-  /* line 129, /Users/arnold/Projects/local-knowledge/app/assets/stylesheets/cover.scss */
+  /* line 147, /Users/arnold/Projects/local-knowledge/app/assets/stylesheets/cover.scss */
   .site-wrapper-inner {
     vertical-align: middle;
   }
 
   /* Handle the widths */
-  /* line 133, /Users/arnold/Projects/local-knowledge/app/assets/stylesheets/cover.scss */
+  /* line 151, /Users/arnold/Projects/local-knowledge/app/assets/stylesheets/cover.scss */
   .masthead,
   .mastfoot,
   .cover-container {
     width: 100%;
     /* Must be percentage or pixels for horizontal alignment */
-  }
-}
-@media (min-width: 992px) {
-  /* line 141, /Users/arnold/Projects/local-knowledge/app/assets/stylesheets/cover.scss */
-  .masthead,
-  .mastfoot,
-  .cover-container {
-    width: 700px;
   }
 }
 /* line 1, /Users/arnold/Projects/local-knowledge/app/assets/stylesheets/_cards.scss */
@@ -13054,6 +13063,11 @@ button.close {
 }
 
 /* line 1, /Users/arnold/Projects/local-knowledge/app/assets/stylesheets/sidebar.scss */
+h4.username {
+  color: white;
+}
+
+/* line 4, /Users/arnold/Projects/local-knowledge/app/assets/stylesheets/sidebar.scss */
 #wrapper {
   padding-left: 0;
   -webkit-transition: all 0.5s ease;
@@ -13062,13 +13076,14 @@ button.close {
   transition: all 0.5s ease;
 }
 
-/* line 9, /Users/arnold/Projects/local-knowledge/app/assets/stylesheets/sidebar.scss */
+/* line 12, /Users/arnold/Projects/local-knowledge/app/assets/stylesheets/sidebar.scss */
 #wrapper.toggled {
   padding-left: 250px;
 }
 
-/* line 13, /Users/arnold/Projects/local-knowledge/app/assets/stylesheets/sidebar.scss */
+/* line 16, /Users/arnold/Projects/local-knowledge/app/assets/stylesheets/sidebar.scss */
 #sidebar-wrapper {
+  border-right: 5px solid #79a295;
   z-index: 1000;
   position: fixed;
   left: 250px;
@@ -13076,41 +13091,41 @@ button.close {
   height: 100%;
   margin-left: -250px;
   overflow-y: auto;
-  background: #1d2120;
+  background: #dcd8c8;
   -webkit-transition: all 0.5s ease;
   -moz-transition: all 0.5s ease;
   -o-transition: all 0.5s ease;
   transition: all 0.5s ease;
 }
 
-/* line 28, /Users/arnold/Projects/local-knowledge/app/assets/stylesheets/sidebar.scss */
+/* line 32, /Users/arnold/Projects/local-knowledge/app/assets/stylesheets/sidebar.scss */
 .sidebar-nav > .top-section {
-  background-color: #729f98;
+  background-color: #79a295;
 }
-/* line 30, /Users/arnold/Projects/local-knowledge/app/assets/stylesheets/sidebar.scss */
+/* line 34, /Users/arnold/Projects/local-knowledge/app/assets/stylesheets/sidebar.scss */
 .sidebar-nav > .top-section li a {
   display: inline;
 }
 
-/* line 36, /Users/arnold/Projects/local-knowledge/app/assets/stylesheets/sidebar.scss */
+/* line 40, /Users/arnold/Projects/local-knowledge/app/assets/stylesheets/sidebar.scss */
 #wrapper.toggled #sidebar-wrapper {
   width: 250px;
 }
 
-/* line 40, /Users/arnold/Projects/local-knowledge/app/assets/stylesheets/sidebar.scss */
+/* line 44, /Users/arnold/Projects/local-knowledge/app/assets/stylesheets/sidebar.scss */
 #page-content-wrapper {
   width: 100%;
   position: absolute;
 }
 
-/* line 45, /Users/arnold/Projects/local-knowledge/app/assets/stylesheets/sidebar.scss */
+/* line 49, /Users/arnold/Projects/local-knowledge/app/assets/stylesheets/sidebar.scss */
 #wrapper.toggled #page-content-wrapper {
   position: absolute;
   margin-right: -250px;
 }
 
 /* Sidebar Styles */
-/* line 52, /Users/arnold/Projects/local-knowledge/app/assets/stylesheets/sidebar.scss */
+/* line 56, /Users/arnold/Projects/local-knowledge/app/assets/stylesheets/sidebar.scss */
 .sidebar-nav {
   position: absolute;
   top: 0;
@@ -13120,78 +13135,81 @@ button.close {
   list-style: none;
 }
 
-/* line 61, /Users/arnold/Projects/local-knowledge/app/assets/stylesheets/sidebar.scss */
+/* line 65, /Users/arnold/Projects/local-knowledge/app/assets/stylesheets/sidebar.scss */
 .sidebar-nav li {
   text-indent: 20px;
   line-height: 40px;
 }
 
-/* line 66, /Users/arnold/Projects/local-knowledge/app/assets/stylesheets/sidebar.scss */
+/* line 70, /Users/arnold/Projects/local-knowledge/app/assets/stylesheets/sidebar.scss */
 .sidebar-nav li a {
   display: block;
   text-decoration: none;
-  color: white;
+  color: #5c390a;
   font-size: 1.3em;
 }
 
-/* line 73, /Users/arnold/Projects/local-knowledge/app/assets/stylesheets/sidebar.scss */
+/* line 77, /Users/arnold/Projects/local-knowledge/app/assets/stylesheets/sidebar.scss */
 .sidebar-nav li a:hover {
   text-decoration: none;
-  color: white;
+  color: #5c390a;
   background: rgba(255, 255, 255, 0.2);
 }
 
-/* line 79, /Users/arnold/Projects/local-knowledge/app/assets/stylesheets/sidebar.scss */
+/* line 83, /Users/arnold/Projects/local-knowledge/app/assets/stylesheets/sidebar.scss */
 .sidebar-nav li a:active,
 .sidebar-nav li a:focus {
   text-decoration: none;
 }
 
-/* line 84, /Users/arnold/Projects/local-knowledge/app/assets/stylesheets/sidebar.scss */
+/* line 88, /Users/arnold/Projects/local-knowledge/app/assets/stylesheets/sidebar.scss */
 .sidebar-nav > .sidebar-brand {
+  padding-top: 4px;
   height: 65px;
-  font-size: 18px;
+  font-size: 24px;
   line-height: 60px;
+  font-family: 'Codystar';
+  font-weight: bolder;
 }
 
-/* line 90, /Users/arnold/Projects/local-knowledge/app/assets/stylesheets/sidebar.scss */
+/* line 97, /Users/arnold/Projects/local-knowledge/app/assets/stylesheets/sidebar.scss */
 .sidebar-nav > .sidebar-brand a {
-  color: white;
+  color: #5c390a;
 }
 
-/* line 94, /Users/arnold/Projects/local-knowledge/app/assets/stylesheets/sidebar.scss */
+/* line 101, /Users/arnold/Projects/local-knowledge/app/assets/stylesheets/sidebar.scss */
 .sidebar-nav > .sidebar-brand a:hover {
-  color: white;
+  color: #5c390a;
   background: none;
 }
 
 @media (min-width: 768px) {
-  /* line 100, /Users/arnold/Projects/local-knowledge/app/assets/stylesheets/sidebar.scss */
+  /* line 107, /Users/arnold/Projects/local-knowledge/app/assets/stylesheets/sidebar.scss */
   #wrapper {
     padding-left: 250px;
   }
 
-  /* line 104, /Users/arnold/Projects/local-knowledge/app/assets/stylesheets/sidebar.scss */
+  /* line 111, /Users/arnold/Projects/local-knowledge/app/assets/stylesheets/sidebar.scss */
   #wrapper.toggled {
     padding-left: 0;
   }
 
-  /* line 108, /Users/arnold/Projects/local-knowledge/app/assets/stylesheets/sidebar.scss */
+  /* line 115, /Users/arnold/Projects/local-knowledge/app/assets/stylesheets/sidebar.scss */
   #sidebar-wrapper {
     width: 250px;
   }
 
-  /* line 112, /Users/arnold/Projects/local-knowledge/app/assets/stylesheets/sidebar.scss */
+  /* line 119, /Users/arnold/Projects/local-knowledge/app/assets/stylesheets/sidebar.scss */
   #wrapper.toggled #sidebar-wrapper {
     width: 0;
   }
 
-  /* line 116, /Users/arnold/Projects/local-knowledge/app/assets/stylesheets/sidebar.scss */
+  /* line 123, /Users/arnold/Projects/local-knowledge/app/assets/stylesheets/sidebar.scss */
   #page-content-wrapper {
     position: relative;
   }
 
-  /* line 120, /Users/arnold/Projects/local-knowledge/app/assets/stylesheets/sidebar.scss */
+  /* line 127, /Users/arnold/Projects/local-knowledge/app/assets/stylesheets/sidebar.scss */
   #wrapper.toggled #page-content-wrapper {
     position: relative;
     margin-right: 0;
@@ -13301,21 +13319,27 @@ img.ng-thumb {
   height: 100px;
 }
 
-/* line 30, /Users/arnold/Projects/local-knowledge/app/assets/stylesheets/application.scss */
+/* line 1, /Users/arnold/Projects/local-knowledge/app/assets/stylesheets/_autocomplete.scss */
+md-content.md-padding {
+  background-color: #dcd8c8;
+}
+
+/* line 31, /Users/arnold/Projects/local-knowledge/app/assets/stylesheets/application.scss */
 html,
 body {
   height: 100%;
   background: url(/bg.png);
+  font-family: 'Glegoo', sans-serif;
 }
 
-/* line 37, /Users/arnold/Projects/local-knowledge/app/assets/stylesheets/application.scss */
+/* line 39, /Users/arnold/Projects/local-knowledge/app/assets/stylesheets/application.scss */
 #map {
   width: 100%;
   height: 100vh;
   margin: 0px auto;
 }
 
-/* line 43, /Users/arnold/Projects/local-knowledge/app/assets/stylesheets/application.scss */
+/* line 45, /Users/arnold/Projects/local-knowledge/app/assets/stylesheets/application.scss */
 .mapCont {
   display: block;
   height: 100%;
@@ -13323,19 +13347,19 @@ body {
   z-index: 0;
 }
 
-/* line 51, /Users/arnold/Projects/local-knowledge/app/assets/stylesheets/application.scss */
+/* line 53, /Users/arnold/Projects/local-knowledge/app/assets/stylesheets/application.scss */
 .round-image-50 img {
   width: 50px;
   height: 50px;
   border-radius: 100%;
 }
 
-/* line 58, /Users/arnold/Projects/local-knowledge/app/assets/stylesheets/application.scss */
+/* line 60, /Users/arnold/Projects/local-knowledge/app/assets/stylesheets/application.scss */
 .alert {
   margin-bottom: 0;
 }
 
-/* line 62, /Users/arnold/Projects/local-knowledge/app/assets/stylesheets/application.scss */
+/* line 64, /Users/arnold/Projects/local-knowledge/app/assets/stylesheets/application.scss */
 .controls {
   margin-top: 10px;
   border: 1px solid transparent;
@@ -13347,7 +13371,7 @@ body {
   box-shadow: 0 2px 6px rgba(0, 0, 0, 0.3);
 }
 
-/* line 73, /Users/arnold/Projects/local-knowledge/app/assets/stylesheets/application.scss */
+/* line 75, /Users/arnold/Projects/local-knowledge/app/assets/stylesheets/application.scss */
 #menu-toggle {
   position: fixed;
   top: 7%;
