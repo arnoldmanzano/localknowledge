@@ -11,7 +11,7 @@
           <div class="essential-fields-wrapper">
             <div class="form-group" id="location_box">
               <label for="location"><h4>Where I'm going: {{request.location}}  </h4>*required</label>
-              <input type="text" class="form-control" name="location" id="location" ng-model="request.location" placeholder="(r.autocompleteChoice || Where do you want to go?)" ng-required="true">
+              <input type="text" class="form-control" name="location" id="location" ng-model="request.location" placeholder="{{r.autocompleteChoice || 'Where do you want to go?'}}" ng-required="true">
             </div>
             <div class="form-group" id="request_date">
               <label for="request_date"><h4>When I'll be there:  </h4>*required</label>
@@ -40,62 +40,56 @@
                 <textarea class="form-control" rows="4" name="description" id="description" ng-model="request.description" placeholder="What do you want to do?"></textarea>
               </div>
             </section>
-            <div class="form-group" id="phone-notify">
-              <label for="phone-notify"><h4>Send me a text when I get a reply </h4></label>
-              <label><input class="form-control" type="radio" name="phone-notify" ng-model="request.phone_notify" value="PhoneChecked"></label><br>
-            </div>
-            <div class="form-group" ng-show="request.phone_notify">
-              <label for="phone-number"><h4>Send me a text when I get a reply </h4></label>
-              <input class="form-control" type="text" placeholder="Text me on..." ng-model="request.phone_number" ng-required="request.phone_notify" ></input>
-            </div>
-            <div class="form-group" ng-show="r.isMoreOptions">
-              <label for="group_size"> <h6> Group Size: </h6></label><br>
-                <input type="integer" name="group_size" ng-model="request.group_size" class="form-control" ><br>
-            </div>
-            <div class="form-group" ng-show="r.isMoreOptions">
-              <label for="budget"><h4> Budget: </h4></label>
-              <input type="range"
-                      min="0" max="250" step="5"
-                      class="form-control"
-                      id="budget"
-                      ng-model="request.budget">
-              <output for="budget" id="request_budget">
-              <h4> I've got £{{request.budget || '100'}} to spend </h4>
-              </output>
-            </div>
-            <div class="form-group" ng-show="r.isMoreOptions">
-              <label for="special_considerations"> <h6> Special Considerations: </h6></label><br>
-                <label><input class="form-control" type="checkbox" name="special_considerations" ng-model="request.disability_access" value="Disabled" > Disabled access required</label><br>
-                <label><input class="form-control" type="checkbox" name="special_considerations"   ng-model="request.children" value="Children" > Young children in tow </label><br>
-                <label><input class="form-control" type="checkbox" name="special_considerations"  ng-model="request.luggage" value="Luggage" > Heavy luggage in tow </label><br>
-                <label><input class="form-control" type="checkbox" name="special_considerations" ng-model="request.airport_access" value="FlightsThatDay"> Flying on the same day </label><br>
-            </div>
-            <div class="form-group" ng-show=r.isMoreOptions>
-              <h4>When I'll be there: {{request.request_date | date:'fullDate'}}</h4><br>
-              <label for=tour_time_start> From:</label>
-              <input  class="form-control"
-                      type="time"
-                      id="tour_time_start"
-                      ng-model="request.tour_time_start"
-                      >
-            </div>
-            <div class="form-group" ng-show=r.isMoreOptions>
-              <label for="duration"> Duration </label>
-              <output for="duration" id="tour_duration">
-                <h4> I'm free for {{request.tour_duration}} hours </h4>
-                <h4> From: {{request.tour_time_start | date:'HH' + ':' + 'mm'}} until: {{r.tour_time_end}}</h4>
-              </output>
-              <input  type="range"
-                      name="time"
-                      class="form-control"
-                      value ="2"
-                      id="tour_duration"
-                      ng-model="request.tour_duration"
-                      ng-change="r.calculateTimeLimiter(request.tour_time_start)"
-                      min="0" max="{{r.calculateTimeLimiter(request.tour_time_start, request.tour_duration) || 12}}" step="1"
-                      oninput="r.outputUpdate(value)"
-                      >
-            </div>
+            <section class="optional-inputs" ng-show="r.isMoreOptions">
+              <div class="form-group">
+                <label for="group_size"> <h6> Group Size: </h6></label><br>
+                  <input type="integer" name="group_size" ng-model="request.group_size" class="form-control" ><br>
+              </div>
+              <div class="form-group">
+                <label for="budget"><h4> Budget: </h4></label>
+                <input type="range"
+                        min="0" max="250" step="5"
+                        class="form-control"
+                        id="budget"
+                        ng-model="request.budget">
+                <output for="budget" id="request_budget">
+                <h4> I've got £{{request.budget || '100'}} to spend </h4>
+                </output>
+              </div>
+              <div class="form-group">
+                <label for="special_considerations"> <h6> Special Considerations: </h6></label><br>
+                  <label><input class="form-control" type="checkbox" name="special_considerations" ng-model="request.disability_access" value="Disabled" > Disabled access required</label><br>
+                  <label><input class="form-control" type="checkbox" name="special_considerations"   ng-model="request.children" value="Children" > Young children in tow </label><br>
+                  <label><input class="form-control" type="checkbox" name="special_considerations"  ng-model="request.luggage" value="Luggage" > Heavy luggage in tow </label><br>
+                  <label><input class="form-control" type="checkbox" name="special_considerations" ng-model="request.airport_access" value="FlightsThatDay"> Flying on the same day </label><br>
+              </div>
+              <div class="form-group">
+                <h4>When I'll be there: {{request.request_date | date:'fullDate'}}</h4><br>
+                <label for=tour_time_start> From:</label>
+                <input  class="form-control"
+                        type="time"
+                        id="tour_time_start"
+                        ng-model="request.tour_time_start"
+                        >
+              </div>
+              <div class="form-group">
+                <label for="duration"> Duration </label>
+                <output for="duration" id="tour_duration">
+                  <h4> I'm free for {{request.tour_duration}} hours </h4>
+                  <h4> From: {{request.tour_time_start | date:'HH' + ':' + 'mm'}} until: {{r.tour_time_end}}</h4>
+                </output>
+                <input  type="range"
+                        name="time"
+                        class="form-control"
+                        value ="2"
+                        id="tour_duration"
+                        ng-model="request.tour_duration"
+                        ng-change="r.calculateTimeLimiter(request.tour_time_start)"
+                        min="0" max="{{r.calculateTimeLimiter(request.tour_time_start, request.tour_duration) || 12}}" step="1"
+                        oninput="r.outputUpdate(value)"
+                        >
+              </div>
+            </section>
             <div class="form-group" id="btn-dashboard">
               <button type="button" class="btn btn-default" ng-click="r.toggleMoreOptions()" ng-click="r.openMoreOptions()" ng-hide="r.isMoreOptions"> More Options </button>
               <button type="button" class="btn btn-default" ng-click="r.toggleMoreOptions()" ng-click="r.openMoreOptions()" ng-show="r.isMoreOptions"> Fewer Options </button>
