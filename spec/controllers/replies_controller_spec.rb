@@ -24,7 +24,7 @@ RSpec.describe RepliesController, type: :controller do
     it "sends a text message to the phone number of user that made the request" do
       post 'create', request_id: @_request.id, user_id: @_user.id, reply: attributes_for(:reply)
       open_last_text_message_for phone_number
-      current_text_message.should have_body "Your request has been replied to, please visit LocalHost.com"
+      expect(current_text_message).to have_body "Your request has been replied to, please visit LocalHost.com"
     end
   end
 
@@ -40,7 +40,7 @@ RSpec.describe RepliesController, type: :controller do
       @myreply = FactoryGirl.create(:reply)
       post :choose, request_id: @_request.id, user_id: @_user.id, id: @myreply
       2.times {open_last_text_message_for phone_number}
-      current_text_message.should have_body "A user has accepted your tour request, please go online to check details."
+      expect(current_text_message).to have_body "A user has accepted your tour request, please go online to check details."
     end
   end
 
