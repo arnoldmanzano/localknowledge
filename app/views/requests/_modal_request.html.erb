@@ -11,7 +11,7 @@
           <div class="essential-fields-wrapper">
             <div class="form-group" id="location_box">
               <label for="location"><h4>Where I'm going: {{request.location}}  </h4>*required</label>
-              <input type="text" class="form-control" name="location" id="location" ng-model="request.location" placeholder="Where do you want to go?" ng-required="true">
+              <input type="text" class="form-control" name="location" id="location" ng-model="request.location" placeholder="(r.autocompleteChoice || Where do you want to go?)" ng-required="true">
             </div>
             <div class="form-group" id="request_date">
               <label for="request_date"><h4>When I'll be there:  </h4>*required</label>

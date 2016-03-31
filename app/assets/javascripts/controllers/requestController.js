@@ -7,7 +7,7 @@
     '$http', '$scope', '$filter', 'AutocompleteService', function(LocationService, MarkersService, $http, $scope, $filter, AutocompleteService) {
 
     var self = this;
-    var isInfoOpen = false;
+    self.isInfoOpen = false;
     self.isMoreOptions = false;
     var clickedRequest;
     var requestUser;
@@ -36,7 +36,7 @@
         self.master = angular.copy(request);
         self.postRequest(self.master);
         MarkersService.placeCurrentRequestMarker(request);
-        // self.current_user_id = MarkersService.current_user_id;
+        self.current_user_id = MarkersService.current_user_id;
         // angular.element("#myModal").modal('hide');
       });
   };
@@ -49,7 +49,7 @@
     };
 
     self.openClickedRequestInfo = function(requestData){
-      isInfoOpen = true;
+      self.isInfoOpen = true;
       clickedRequest = requestData.data.request;
       requestUser = requestData.data.user;
       $scope.$digest();
