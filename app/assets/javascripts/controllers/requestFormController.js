@@ -7,7 +7,6 @@
     '$http', '$scope', '$filter', 'AutocompleteService', function(LocationService, MarkersService, $http, $scope, $filter, AutocompleteService) {
 
     var self = this;
-    self.isInfoOpen = false;
     self.isMoreOptions = false;
     self.autocompleteChoice = '';
     self.master = {};

@@ -1,5 +1,10 @@
-<%= form_for [@request, @reply], html: { class: 'form-horizontal', multipart: true } do |f| %>
-  <div class="col-sm-4 col-md-4">
+  <div class="col-sm-5 col-md-5">
+    <%= form_for [@request, @reply], html: { class: 'form-horizontal', multipart: true } do |f| %>
+
+    <div class="modal-content">
+      <div class="modal-header">
+        <div class="modal-body">
+
     <div class="form-group">
       <%= f.label :meeting_point  %>
       <%= f.text_field :meeting_point, class: 'form-control', placeholder: 'Where do you want to meet?' %>
@@ -31,8 +36,15 @@
         <img id="replyPicsOut1" src="" class="hidden" alt="your image" />
       </div>
     </div>
+    <div class="modal-footer">
     <div class="actions">
       <%= f.submit 'Reply', class: 'btn btn-primary' %>
     </div>
   </div>
-<% end %>
+  </div>
+</div>
+</div>
+
+
+    <% end %>
+  </div>

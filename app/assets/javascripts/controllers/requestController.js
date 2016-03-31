@@ -11,9 +11,10 @@
     self.requestUser = {};
 
     self.openClickedRequestInfo = function(requestData){
-      self.isInfoOpen = true;
       self.clickedRequest = requestData.data.request;
       self.requestUser = requestData.data.user;
+      $scope.$digest();
+      self.isInfoOpen = true;
       $scope.$digest();
       LocationService.centerMapOnAddress(self.clickedRequest.location);
     };

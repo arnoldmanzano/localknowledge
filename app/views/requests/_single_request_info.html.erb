@@ -69,7 +69,7 @@
 
     </div>
 
-    <div class="bottom" ng-hide="r.requestUser.id === map.current_user.id">
+    <div class="bottom" ng-show="r.requestUser.id !== map.current_user.id">
       <a ng-href="/requests/{{r.clickedRequest.id}}/replies/new"><button class="btn-for-request">Reply to {{r.requestUser.f_name}}'s request</button></a>
       <a ng-href="/profile/{{r.requestUser.id}}"><button class="btn-for-request">Find out more about {{r.requestUser.f_name}}</button></a>
     </div>

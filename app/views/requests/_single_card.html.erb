@@ -1,7 +1,7 @@
 <div class="col-md-4 col-sm-4">
   <div class="card hovercard">
       <div class="single-cardheader">
-        <img  src="https://maps.googleapis.com/maps/api/staticmap?zoom=13&size=400x125&maptype=roadmap&center=<%=request.location%>" alt="Card image cap">
+        <img src="https://maps.googleapis.com/maps/api/staticmap?zoom=13&size=400x125&maptype=roadmap&center=<%=request.location%>" alt="Card image cap">
       </div>
       <div class="avatar">
         <span class="round-image-50"> <%= image_tag(request.user.avatar.url(:thumb)) %></span>
@@ -19,6 +19,5 @@
         <%= link_to 'Delete', request_path(request), method: :delete, class: 'card-link' %>
         <%= link_to 'Update', edit_request_path(request), class: 'card-link' %>
       <% end %>
-      <aside ng-show="r.isUserInfoOpen" class="requested-user-info"></aside>
   </div>
 </div>
