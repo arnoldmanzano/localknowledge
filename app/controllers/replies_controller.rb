@@ -28,6 +28,7 @@ class RepliesController < ApplicationController
       end
       @request.set_expiration_date
       @request.save
+      SmsHandler.new.send_you_have_reply(@request.user)
       redirect_to '/'
     else
       if @reply.errors[:user]
@@ -42,7 +43,8 @@ class RepliesController < ApplicationController
     @request = Request.find(params[:request_id])
     @reply = Reply.find(params[:id])
     @reply.set_chosen
-    flash[:notice] = 'Reply chosen'
+    flash[:notice] = 'Reply chosen. Your tourguide will receive a text message notification.'
+    SmsHandler.new.send_tour_accepted(@reply.user)
     redirect_to requests_path
   end
 
@@ -77,5 +79,7 @@ class RepliesController < ApplicationController
   def reply_params
     params.require(:reply).permit(:meeting_point, :duration, :cost, :stopoffs, :description)
   end
+
+
 
 end
