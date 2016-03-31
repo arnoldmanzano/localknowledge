@@ -74731,8 +74731,9 @@ var autocompletebox = document.getElementById("#autocompletebox");
           ]
       }
   ];
-}
-;
+
+}]);
+}());
 (function() {
   'use strict';
 
