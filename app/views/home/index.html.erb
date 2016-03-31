@@ -1,15 +1,18 @@
 <% if user_signed_in? %>
   <div ng-controller="MapController as map">
-    <section ng-controller="RequestController as r">
+
+    <section ng-controller="RequestFormController as form">
       <%= render "layouts/autocomplete_search" %>
       <%= render "requests/modal_request" %>
+      <div ng-show="form.success"> Request submitted </div>
+    </section>
+
+    <section ng-controller="RequestController as r">
       <aside class="request-info-box" ng-show="r.isInfoOpen">
         <%= render "requests/single_request_info" %>
       </aside>
-      <div ng-show="r.success">
-        Request submitted
-      </div>
     </section>
+
     <a href="#menu-toggle" class="btn btn-default" id="menu-toggle">Toggle Menu</a>
     <div class="mapCont">
       <div id="map"></div>

@@ -3,18 +3,18 @@
         <form>
             <md-autocomplete
                 id="autocompletebox"
-                md-search-text="r.searchText"
+                md-search-text="form.searchText"
                 md-no-cache="true"
-                md-search-text-change="r.autoCompleteSearch(r.searchText)"
-                md-input-name="r.autocompleteSuggestions"
-                md-selected-item="r.selectedItem"
-                md-selected-item-change="r.moveHere(r.searchText)"
-                md-items="item in r.autocompleteSuggestions"
+                md-search-text-change="form.autoCompleteSearch(form.searchText)"
+                md-input-name="form.autocompleteSuggestions"
+                md-selected-item="form.selectedItem"
+                md-selected-item-change="form.moveHere(form.searchText)"
+                md-items="item in form.autocompleteSuggestions"
                 md-item-text="item.description"
                 md-input-minlength="0">
 
             <md-item-template>
-                <span md-highlight-text="r.searchText" md-highlight-flags="^i"> {{item.description}} </span>
+                <span md-highlight-text="form.searchText" md-highlight-flags="^i"> {{item.description}} </span>
             </md-item-template>
           </md-autocomplete>
         </form>
