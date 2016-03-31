@@ -9,7 +9,7 @@
       <div class="modal-body">
         <%= form_for [request, reply, @review] do |f| %>
           <fieldset class="form-group">
-            <%= f.select :rating, (1..5), autofocus: true, placeholder: 'Rating out of five stars', class: 'form-control' %>
+            <%= f.select(:rating, options_for_select([1,2,3,4,5]), {}, {class: "form-control"}) %>
           </fieldset>
           <fieldset class="form-group">
             <%= f.text_area :description, autocomplete: "off", placeholder: 'How was it for you?', class: 'form-control' %>

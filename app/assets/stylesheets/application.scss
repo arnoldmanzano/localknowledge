@@ -20,7 +20,7 @@
  @import "vars";
  @import "cover";
  @import "cards";
- @import "arrows";
+ @import "paper";
  @import "sidebar";
  @import "modal_request_form";
  @import "replies";
@@ -35,6 +35,14 @@ body {
   font-family: 'Glegoo', sans-serif;
 }
 
+.btn-primary {
+  background-color: $ligther-green;
+  border-color: $ligther-green;
+}
+
+.btn-default {
+  background-color: $dark-green;
+}
 
 #map {
   width: 100%;

@@ -27,6 +27,16 @@
 .paper-container {
   position: relative;
   left: 10%;
+  padding-right: 55px;
+  padding-top: 20px;
+  display: flex;
+  justify-content: space-between;
+  .left-side {
+
+  }
+  .right-side {
+
+  }
 }
 
 .paper:first-line {
