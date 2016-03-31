@@ -17,6 +17,9 @@
 
 require 'devise'
 require 'factory_girl_rails'
+require 'sms_spec'
+
+
 
 #
 # See http://rubydoc.info/gems/rspec-core/RSpec/Core/Configuration
@@ -95,5 +98,8 @@ RSpec.configure do |config|
   # test failures related to randomization by passing the same `--seed` value
   # as the one that triggered the failure.
   Kernel.srand config.seed
+
 =end
+
+
 end

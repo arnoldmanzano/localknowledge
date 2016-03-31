@@ -46,6 +46,8 @@ Capybara.default_max_wait_time = 15
 # If you are not using ActiveRecord, you can remove this line.
 ActiveRecord::Migration.maintain_test_schema!
 
+SmsSpec.driver = :"twilio-ruby"
+
 RSpec.configure do |config|
   config.include Capybara::Angular::DSL
   config.include ActiveSupport::Testing::TimeHelpers
@@ -82,4 +84,5 @@ RSpec.configure do |config|
   config.filter_rails_from_backtrace!
   # arbitrary gems may also be filtered via:
   # config.filter_gems_from_backtrace("gem name")
+
 end

@@ -15,4 +15,8 @@ class Reply < ActiveRecord::Base
     self.request.save
   end
 
+  def message
+    message = "Your tour has been chosen, please visit /replies"
+  end
+
 end
