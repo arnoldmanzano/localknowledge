@@ -76,6 +76,7 @@
     self.calculateTourEnd = function(requestStartTime, requestDuration){
       var hoursStr = parseInt(requestStartTime.getHours()) + (parseInt(requestDuration) || 0);
       var minutesStr = requestStartTime.getMinutes();
+      console.log(minutesStr);
       self.tour_time_end = hoursStr + ":" + minutesStr;
   };
 
