@@ -1,11 +1,22 @@
 Rails.application.configure do
+
+  config.paperclip_defaults = {
+    storage: :s3,
+    url: ':s3_domain_url',
+    path: '/:class/:attachment/:id_partition/:style/:filename',
+    :s3_credentials => {
+      :bucket => ENV['S3_BUCKET_NAME'],
+      :access_key_id => ENV['AWS_ACCESS_KEY_ID'],
+      :secret_access_key => ENV['AWS_SECRET_ACCESS_KEY']
+    }
+  }
   # Settings specified here will take precedence over those in config/application.rb.
 
   # In the development environment your application's code is reloaded on
   # every request. This slows down response time but is perfect for development
   # since you don't have to restart the web server when you make code changes.
   config.action_mailer.default_url_options = { host: 'localhost', port: 3000 }
-  
+
   config.cache_classes = false
 
   # Do not eager load code on boot.
