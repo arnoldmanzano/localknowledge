@@ -28,7 +28,7 @@ class RepliesController < ApplicationController
       end
       @request.set_expiration_date
       @request.save
-      redirect_to '/'
+      redirect_to replies_path
     else
       if @reply.errors[:user]
         redirect_to requests_path
@@ -59,7 +59,7 @@ class RepliesController < ApplicationController
     else
       flash[:notice] = 'Only owner can update replies'
     end
-    redirect_to requests_path
+    redirect_to replies_path
   end
 
   def destroy
@@ -71,7 +71,7 @@ class RepliesController < ApplicationController
     else
       flash[:alert] = 'Only owner can delete request'
     end
-    redirect_to requests_path
+    redirect_to replies_path
   end
 
   def reply_params

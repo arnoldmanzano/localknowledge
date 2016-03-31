@@ -7,7 +7,8 @@
     <p>Cost: £<%= reply.cost %></p>
     <p>Description: <%= reply.description %></p>
     <p>Meeting point: <%= reply.meeting_point %></p>
-    <p>Stopoffs: <%= reply.stopoffs %></p>
+    <p>Stopoffs: <%= build_stopoff_links(reply).html_safe %></p>
+    <a href="<%= build_map_link(reply) %>" target="_blank" class='btn btn-primary'>Print my map</a>
     <div ng-controller="ReplyPicsController as rpCtrl">
       <div ng-init="rpCtrl.getImages(<%=reply.id%>)" ng-show="rpCtrl.showImages">
         <ng-gallery images="rpCtrl.images" thumbs-num="{{rpCtrl.images.length}}">

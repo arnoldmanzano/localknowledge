@@ -34,4 +34,20 @@ module ApplicationHelper
     '★' * rating.round + "☆" * remainder
   end
 
+  def build_map_link(reply)
+    city = reply.request.location.split(',').last
+    "https://maps.googleapis.com/maps/api/staticmap?size=800x600&scale=2" +
+    "&center" + reply.meeting_point + ",#{city}" +
+    "&zoom=14" +
+    "&markers=color:green|label:M|" + reply.meeting_point + ",#{city}" +
+    "&markers=color:red|" + reply.stopoffs.gsub(',',",#{city}|") + (",#{city}") +
+    "&key="
+  end
+
+  def build_stopoff_links(reply)
+    stops = reply.stopoffs.split(',')
+    stops.map{|s| "<a href='http://google.com/?q=#{s}' target='_blank'>#{s}</a>"}.join(',')
+  end
+
+# http://lmgtfy.com/?q=london
 end
