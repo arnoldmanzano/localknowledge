@@ -51,14 +51,23 @@ ActiveRecord::Schema.define(version: 20160330135217) do
     t.string   "location"
     t.text     "description"
     t.integer  "user_id"
-    t.datetime "created_at",                   null: false
-    t.datetime "updated_at",                   null: false
+    t.datetime "created_at",                        null: false
+    t.datetime "updated_at",                        null: false
     t.date     "expiration"
-    t.integer  "budget"
+    t.text     "budget"
     t.datetime "request_date"
-    t.boolean  "resolved",     default: false
+    t.boolean  "resolved",          default: false
     t.string   "lat"
     t.string   "lng"
+    t.time     "tour_time_start"
+    t.time     "tour_time_end"
+    t.decimal  "tour_duration"
+    t.integer  "group_size"
+    t.string   "time_of_day"
+    t.boolean  "luggage"
+    t.boolean  "children"
+    t.boolean  "airport_access"
+    t.boolean  "disability_access"
   end
 
   add_index "requests", ["user_id"], name: "index_requests_on_user_id", using: :btree

@@ -9,8 +9,7 @@
     var madColorsMapStyle;
 
     self.createStyledMap = function(){
-      console.log("hello from inside createStyledMap");
-      self.madColorsMapStyle = new google.maps.StyledMapType(light, {
+      self.madColorsMapStyle = new google.maps.StyledMapType(vintageDaaaarling, {
 
                       name: 'Something A Bit Different?'
     });

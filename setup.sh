@@ -2,8 +2,8 @@ bundle
 rake db:drop
 rake db:create
 rake db:migrate; rake db:migrate RAILS_ENV=test
-rake bower:install
-rake bower:install:development
+bower install
+
 
 # npm install
 
