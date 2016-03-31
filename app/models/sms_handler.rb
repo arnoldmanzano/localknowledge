@@ -11,7 +11,7 @@ class SmsHandler
     @client.account.messages.create({
       :from => @twilio_phone,
       :to => user.phone,
-      :body => 'Your request has been replied to, please visit LocalHost.com',
+      :body => 'Your request has been replied to, please visit LocalHost.com'
     })
   end
 
@@ -20,7 +20,7 @@ class SmsHandler
     @client.account.messages.create({
       :from => @twilio_phone,
       :to => user.phone,
-      :body => 'A user has accepted your tour request, please go online to check details.',
+      :body => 'A user has accepted your tour request, please go online to check details.'
     })
   end
 end
