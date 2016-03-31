@@ -41,10 +41,10 @@ RSpec.describe RepliesController, type: :controller do
       expect(@thisreply.description).to eq("MyText")
     end
 
-    it '-> redirects to requests path after updating reply' do
+    it '-> redirects to replies path after updating reply' do
       login_user
       put :update, request_id: @_request.id, id: @thisreply
-      expect(response).to redirect_to requests_path
+      expect(response).to redirect_to replies_path
     end
   end
 
@@ -64,7 +64,7 @@ RSpec.describe RepliesController, type: :controller do
 
     it "-> redirects to requests after deletion" do
       delete :destroy, request_id: @_request.id, id: @thisreply
-      expect(response).to redirect_to requests_path
+      expect(response).to redirect_to replies_path
     end
   end
 end

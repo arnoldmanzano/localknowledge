@@ -40,7 +40,7 @@ module ApplicationHelper
     "&center" + reply.meeting_point + ",#{city}" +
     "&zoom=14" +
     "&markers=color:green|label:M|" + reply.meeting_point + ",#{city}" +
-    "&markers=color:red|" + reply.stopoffs.gsub(',',",#{city}|") + (",#{city}") +
+    "&markers=color:red|label:S|" + reply.stopoffs.gsub(',',",#{city}|") + (",#{city}") +
     "&key="
   end
 
