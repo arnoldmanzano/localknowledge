@@ -1,93 +1,92 @@
+#myModal {
+  .form-group  {
+    display: inline-block;
+    width: 45%;
+    height: 5%;
+    margin: 2%;
+  }
 
-div.form-group  {
-  display: inline-block;
-  width: 45%;
-  height: 5%;
-  margin: 2%;
-}
+  .essential-fields-wrapper, .large-input{
+    width: 100%;
+    height: 80%;
+  }
 
-.essential-fields-wrapper, .large-input{
-  width: 100%;
-  height: 80%;
-}
+  .essential-fields-wrapper label {
+    font-size: 10px;
+    text-align: left;
+    padding: 1px;
+  }
 
-.essential-fields-wrapper label {
-  font-size: 10px;
-  text-align: left;
-  padding: 1px;
-}
+  .form-control input[type=text], input[type=date] {
+    display: inline;
+    width: 100%;
+  }
 
-.form-control input[type=text], input[type=date] {
-  display: inline;
-  width: 100%;
-}
+  .large-input {
+    padding: 2%;
+    display: inline-block;
+  }
+  .large-input #radio-time-of-day {
+    width: 100%;
+    overflow: hidden;
+    display: inline-block;
+    text-align: center;
+  }
 
+  #radio-time-of-day fieldset {
+    width: 100%;
+    float: left;
+    clear: none;
+    display: inline-block;
+    font-size: 12px;
+    text-align: center;
+    padding: 1em;
+  }
 
-section.large-input {
-  padding: 2%;
-  display: inline-block;
-}
+  #radio-time-of-day label {
+    width: 25%;
+    float: right;
+    clear: none;
+    display: inline-block;
+    font-size: 12px;
+    text-align: center;
+  }
 
-section.large-input div#radio-time-of-day {
-  width: 100%;
-  overflow: hidden;
-  display: inline-block;
-  text-align: center;
-}
+  #radio-time-of-day h4 {
+    width: 90%;
+    display: inline-block;
+  }
 
-div#radio-time-of-day fieldset {
-  width: 100%;
-  float: left;
-  clear: none;
-  display: inline-block;
-  font-size: 12px;
-  text-align: center;
-  padding: 1em;
-}
+  #phone-notify {
+    width: 100%
+  }
 
-div#radio-time-of-day label {
-  width: 25%;
-  float: right;
-  clear: none;
-  display: inline-block;
-  font-size: 12px;
-  text-align: center;
-}
+  label input[type=radio] {
+    padding: 1%;
+    display: inline-block;
+    float: left;
+    clear: none;
+    font-size: 12px;
+    margin: 2px;
+  }
 
-div#radio-time-of-day h4 {
-  width: 90%;
-  display: inline-block;
-}
+  #description-textarea input[type=textarea], label {
+    width: 90%;
+    align-self: center;
+  }
 
-div#phone-notify {
-  width: 100%
-}
-
-label input[type=radio] {
-  padding: 1%;
-  display: inline-block;
-  float: left;
-  clear: none;
-  font-size: 12px;
-  margin: 2px;
-}
-
-div#description-textarea input[type=textarea], label {
-  width: 90%;
-  align-self: center;
-}
-
-div#description-textarea {
-  width: 95%;
-  display: inline-block;
-}
+  #description-textarea {
+    width: 95%;
+    display: inline-block;
+  }
 
 
-div#btn-dashboard {
-  display: inline-block;
-  padding: 2%;
-}
+  #btn-dashboard {
+    display: inline-block;
+    padding: 2%;
+  }
 
-div#btn-dashboard input[type=button] {
-  width: 25%;
+  #btn-dashboard input[type=button] {
+    width: 25%;
+  }
 }

@@ -19,6 +19,9 @@ gem 'coffee-rails', '~> 4.1.0'
 # See https://github.com/rails/execjs#readme for more supported runtimes
 # gem 'therubyracer', platforms: :ruby
 
+# Amazon web services
+gem 'aws-sdk'
+
 
 
 # Deletes expired posts through time-scheduled rake tasks
@@ -45,8 +48,12 @@ gem 'sdoc', '~> 0.4.0', group: :doc
 # gem 'capistrano-rails', group: :development
 
 # gem 'sass', '3.2.19'
-gem 'bower-rails'
+# gem 'bower-rails'
+  gem 'bower'
 # gem 'angular-rails-templates'
+
+# icons
+gem 'font-awesome-sass'
 
 group :development, :test do
   # Call 'byebug' anywhere in the code to stop execution and get a debugger console

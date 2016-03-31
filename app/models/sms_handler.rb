@@ -25,6 +25,6 @@ class SmsHandler
         :to => user.phone,
         :body => 'A user has accepted your tour request, please go online to check details.',
       })
-    end 
+    end
   end
 end
