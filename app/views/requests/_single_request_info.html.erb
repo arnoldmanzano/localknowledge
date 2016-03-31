@@ -29,7 +29,7 @@
 
         <h4> Other details to bear in mind: </h4>
 
-        <div class="desc" ng-show="r.clickedRequest.budget">>
+        <div class="desc" ng-show="r.clickedRequest.budget">
           {{r.requestUser.f_name}} has <b> £{{r.clickedRequest.budget}}</b> to spend
         </div>
 
@@ -71,7 +71,7 @@
 
     <div class="bottom" ng-hide="r.requestUser.id === map.current_user.id">
       <a ng-href="/requests/{{r.clickedRequest.id}}/replies/new"><button class="btn-for-request">Reply to {{r.requestUser.f_name}}'s request</button></a>
-      <button class="btn-for-request">Find out more about {{r.requestUser.f_name}}</button>
+      <a ng-href="/profile/{{r.requestUser.id}}"><button class="btn-for-request">Find out more about {{r.requestUser.f_name}}</button></a>
     </div>
 
 </div>

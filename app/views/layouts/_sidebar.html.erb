@@ -10,9 +10,9 @@
             <hr>
         <ul class="list-inline">
           <li>
-            <%= link_to profile_path do %>
+            <a href="/profile/<%=current_user.id%>">
               <p><%= image_tag(current_user.avatar.url(:thumb), { class: 'img-circle'})%><p> </li>
-            <% end %>
+            </a>
           <li> <h4 class="username"><%= current_user.f_name %> <%= current_user.l_name %></h4> </li>
         </ul>
         <li> <%= link_to 'Logout', destroy_user_session_path, method: :delete %> </li>
