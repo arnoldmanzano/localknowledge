@@ -25,6 +25,7 @@
  @import "modal_request_form";
  @import "replies";
  @import "autocomplete";
+ @import "animations";
  @import url(https://fonts.googleapis.com/css?family=Codystar%7CGlegoo%7C);
 
 html,
@@ -73,7 +74,7 @@ body {
 
  #menu-toggle {
    position: fixed;
-   top: 7%;
+   bottom: 7%;
    margin-left: 10px;
    z-index: 1;
  }
