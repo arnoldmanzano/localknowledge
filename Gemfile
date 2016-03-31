@@ -1,5 +1,9 @@
 source 'https://rubygems.org'
 
+# hide our private details in env variables
+gem 'dotenv-rails', :require => 'dotenv/rails-now'
+# Twilio gem for text message sending
+gem 'twilio-ruby', '~> 4.11.1'
 # devise for user sign in and sign out etc.
 gem 'devise'
 # Bundle edge Rails instead: gem 'rails', github: 'rails/rails'
@@ -14,6 +18,8 @@ gem 'uglifier', '>= 1.3.0'
 gem 'coffee-rails', '~> 4.1.0'
 # See https://github.com/rails/execjs#readme for more supported runtimes
 # gem 'therubyracer', platforms: :ruby
+
+
 
 # Deletes expired posts through time-scheduled rake tasks
 gem 'whenever', :require => false
@@ -79,4 +85,5 @@ group :test do
   gem 'shoulda'
   gem 'shoulda-callback-matchers', '~> 1.1.1'
   gem 'timecop'
+  gem 'sms-spec'
 end
