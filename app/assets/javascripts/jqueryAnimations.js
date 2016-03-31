@@ -1,5 +1,11 @@
 $( document ).ready(function () {
 
+  $(function(){
+   $('.datepicker').datepicker({
+      format: 'mm-dd-yyyy'
+    });
+  });
+
 
   $(".btn-for-request").hover(function(){
   	$(this).stop().animate({
