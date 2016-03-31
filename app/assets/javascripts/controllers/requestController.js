@@ -37,7 +37,7 @@
         self.postRequest(self.master);
         console.log(request);
         MarkersService.placeCurrentRequestMarker(request);
-        self.current_user_id = MarkersService.current_user_id;
+        // self.current_user_id = MarkersService.current_user_id;
         angular.element("#myModal").modal('hide');
       });
   };

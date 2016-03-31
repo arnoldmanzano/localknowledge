@@ -14,7 +14,7 @@
       // var currentUserId = UserSessionService.currentUser;
       // console.log(currentUserId);
       $http.get('/api/c_user').then(function(response){
-        current_user = response.data;
+        var current_user = response.data;
         console.log("hello from inside place current request marker");
         // self.current_user_id = current_user.id;
         var marker = new google.maps.Marker({
