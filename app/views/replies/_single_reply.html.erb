@@ -14,5 +14,17 @@
         </ng-gallery>
       </div>
     </div>
+
+    <% if reply.user == current_user %>
+       <%= link_to 'Update', edit_request_reply_path(request, reply) %>
+       <%= link_to 'Delete', request_reply_path(request, reply), method: :delete %>
+     <% end %>
+     <% if request.user == current_user && !request.resolved %>
+         <%= link_to 'Choose', choose_request_reply_path(request, reply), method: :post %>
+     <% elsif request.user == current_user && request.resolved%>
+         <a href="#" data-toggle="modal" data-target="#reviewModal<%=reply.id%>">Leave a review</a>
+         <%= render 'reviews/modal_review', request: request, reply: reply %>
+     <% end %>
+
   </div>
 </div>

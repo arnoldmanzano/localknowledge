@@ -1,11 +1,5 @@
 $( document ).ready(function () {
-  $(function(){
-   $('.datepicker').datepicker({
-      format: 'mm-dd-yyyy'
-    });
-  });
-
-    $(".btn-for-request").hover(function(){
+  $(".btn-for-request").hover(function(){
   	$(this).stop().animate({
   		top: "5",
   		left: "5"
@@ -17,7 +11,6 @@ $( document ).ready(function () {
   		left: 0
   	}, 100 );
   });
-
 
   $("#menu-toggle").click(function(e) {
       e.preventDefault();
@@ -32,4 +25,8 @@ $( document ).ready(function () {
           },
       });
   });
+
+  setTimeout(function(){
+    $('.alert').fadeOut();
+  }, 3000);
 });
