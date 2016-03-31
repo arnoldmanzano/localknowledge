@@ -9,16 +9,16 @@
     var self = this;
     self.isInfoOpen = false;
     self.isMoreOptions = false;
-    var clickedRequest;
-    var requestUser;
+    self.clickedRequest = {};
+    self.requestUser = {};
     self.autocompleteChoice = '';
     self.master = {};
     self.autocompleteSuggestions = {};
+    self.tour_time_end = "00:00";
 
 
 
     self.autoCompleteSearch = function(searchInput){
-      console.log(searchInput);
       AutocompleteService.updateSuggestions(searchInput);
       self.autocompleteSuggestions = AutocompleteService.makeSuggestions();
     };
@@ -35,9 +35,10 @@
         request.lng = coords.lng;
         self.master = angular.copy(request);
         self.postRequest(self.master);
+        console.log(request);
         MarkersService.placeCurrentRequestMarker(request);
         self.current_user_id = MarkersService.current_user_id;
-        // angular.element("#myModal").modal('hide');
+        angular.element("#myModal").modal('hide');
       });
   };
 
@@ -50,10 +51,10 @@
 
     self.openClickedRequestInfo = function(requestData){
       self.isInfoOpen = true;
-      clickedRequest = requestData.data.request;
-      requestUser = requestData.data.user;
+      self.clickedRequest = requestData.data.request;
+      self.requestUser = requestData.data.user;
       $scope.$digest();
-      LocationService.centerMapOnAddress(clickedRequest.location);
+      LocationService.centerMapOnAddress(self.clickedRequest.location);
     };
 
     self.closeClickedRequestInfo = function(){
@@ -62,19 +63,17 @@
 
 
     $scope.$on("requestMarkerClicked", function(event, data){
-      console.log(data);
       self.openClickedRequestInfo(data);
     });
 
     self.calculateTimeLimiter = function(requestStartTime, requestDuration){
-      requestStartTime = requestStartTime === undefined ? new Date() : requestStartTime;
-      requestDuration = requestDuration === undefined ? 2 : requestDuration;
-      self.calculateTourEnd(requestStartTime, requestDuration);
-      return 23 - requestStartTime.getHours();
+      var chosenStartTime = (requestStartTime === undefined || requestStartTime === null) ? new Date() : requestStartTime;
+      var chosenDuration = (requestDuration === undefined || requestDuration === null) ? 2 : requestDuration;
+      self.calculateTourEnd(chosenStartTime, chosenDuration);
+      return 23 - chosenStartTime.getHours();
     };
 
     self.calculateTourEnd = function(requestStartTime, requestDuration){
-      console.log(requestStartTime);
       var hoursStr = parseInt(requestStartTime.getHours()) + (parseInt(requestDuration) || 0);
       var minutesStr = requestStartTime.getMinutes();
       self.tour_time_end = hoursStr + ":" + minutesStr;

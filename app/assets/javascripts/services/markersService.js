@@ -11,17 +11,18 @@
 
     self.placeCurrentRequestMarker = function(request){
       map = LocationService.map;
-      var currentUserId = UserSessionService.currentUser;
-      console.log(currentUserId);
+      // var currentUserId = UserSessionService.currentUser;
+      // console.log(currentUserId);
       $http.get('/api/c_user').then(function(response){
         current_user = response.data;
-        self.current_user_id = current_user.id;
+        console.log("hello from inside place current request marker");
+        // self.current_user_id = current_user.id;
         var marker = new google.maps.Marker({
           position: {lat: parseFloat(request.lat), lng: parseFloat(request.lng)},
           map: map,
           animation: google.maps.Animation.DROP
         });
-        self.addRequestMarkerInfo(map, marker, request, currentUserId);
+        self.addRequestMarkerInfo(map, marker, request, current_user);
     });
   };
 
@@ -34,7 +35,7 @@
     self.dropAllRequestMarkers = function(response){
       map = LocationService.map;
       users = response.data;
-      console.log(users);
+      // console.log(users);
       // console.log("Hello from inside drop all request markers");
       // console.log(users);
       for (var i = 0; i < users.length; i++) {
