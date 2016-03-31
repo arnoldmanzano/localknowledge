@@ -3,12 +3,12 @@
     <% @replies.each do |reply| %>
       <div class="row">
         <div class="col-md-6 col-sm-6">
-          <%= render 'single_reply', reply: reply %>
+          <%= render 'single_reply', reply: reply, request: reply.request %>
         </div>
         <%= render 'requests/single_card', request: reply.request %>
       </div>
     <% end %>
   </div>
 <% else %>
-  <p> You have not made any replies </p>
+  <p> You have not made any replies yet. </p>
 <% end %>

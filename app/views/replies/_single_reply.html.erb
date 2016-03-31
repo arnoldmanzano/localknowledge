@@ -7,12 +7,25 @@
     <p>Cost: £<%= reply.cost %></p>
     <p>Description: <%= reply.description %></p>
     <p>Meeting point: <%= reply.meeting_point %></p>
-    <p>Stopoffs: <%= reply.stopoffs %></p>
+    <p>Stopoffs: <%= build_stopoff_links(reply).html_safe %></p>
+    <a href="<%= build_map_link(reply) %>" target="_blank" class='btn btn-primary'>Print my map</a>
     <div ng-controller="ReplyPicsController as rpCtrl">
       <div ng-init="rpCtrl.getImages(<%=reply.id%>)" ng-show="rpCtrl.showImages">
         <ng-gallery images="rpCtrl.images" thumbs-num="{{rpCtrl.images.length}}">
         </ng-gallery>
       </div>
     </div>
+
+    <% if reply.user == current_user %>
+       <%= link_to 'Update', edit_request_reply_path(request, reply) %>
+       <%= link_to 'Delete', request_reply_path(request, reply), method: :delete %>
+     <% end %>
+     <% if request.user == current_user && !request.resolved %>
+         <%= link_to 'Choose', choose_request_reply_path(request, reply), method: :post %>
+     <% elsif request.user == current_user && request.resolved%>
+         <a href="#" data-toggle="modal" data-target="#reviewModal<%=reply.id%>">Leave a review</a>
+         <%= render 'reviews/modal_review', request: request, reply: reply %>
+     <% end %>
+
   </div>
 </div>

@@ -28,8 +28,8 @@ class RepliesController < ApplicationController
       end
       @request.set_expiration_date
       @request.save
-      SmsHandler.new.send_you_have_reply(@request.user)
-      redirect_to '/'
+      # SmsHandler.new.send_you_have_reply(@request.user)
+      redirect_to replies_path
     else
       if @reply.errors[:user]
         redirect_to requests_path
@@ -44,7 +44,7 @@ class RepliesController < ApplicationController
     @reply = Reply.find(params[:id])
     @reply.set_chosen
     flash[:notice] = 'Reply chosen. Your tourguide will receive a text message notification.'
-    SmsHandler.new.send_tour_accepted(@reply.user)
+    # SmsHandler.new.send_tour_accepted(@reply.user)
     redirect_to requests_path
   end
 
@@ -61,7 +61,7 @@ class RepliesController < ApplicationController
     else
       flash[:notice] = 'Only owner can update replies'
     end
-    redirect_to requests_path
+    redirect_to replies_path
   end
 
   def destroy
@@ -73,13 +73,11 @@ class RepliesController < ApplicationController
     else
       flash[:alert] = 'Only owner can delete request'
     end
-    redirect_to requests_path
+    redirect_to replies_path
   end
 
   def reply_params
     params.require(:reply).permit(:meeting_point, :duration, :cost, :stopoffs, :description)
   end
-
-
 
 end
