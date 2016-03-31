@@ -7,6 +7,7 @@ feature 'Registration and users', js:true do
       expect(current_path).to eq('/')
       expect(page).to have_css("img[src*='marley.jpeg']")
       find("img.img-circle").click
+      click_link 'Edit Profile'
       attach_file 'user[avatar]', Rails.root.join('spec','fixtures', 'obama-best.png')
       fill_in :'user[current_password]', with: 'password'
       click_button 'Update'
