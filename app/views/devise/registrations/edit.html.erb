@@ -7,66 +7,112 @@
   <%= devise_error_messages! %>
 
   <div class="form-group">
-    <%= f.label :avatar, class: 'col-sm-2 control-label'  %>
-    <div class="col-sm-6">
-      <%= f.file_field :avatar %>
-    </div>
+    <%= f.label :avatar, class: 'col-sm-2 control-label' %>
+    <%= f.file_field :avatar %>
   </div>
 
-  <div class="field">
-    <%= f.label :First_name %><br />
-    <%= f.text_field :f_name, autofocus: true %>
+  <div class="form-group">
+    <%= f.label :First_name %>
+    <%= f.text_field :f_name, autofocus: true, class: 'form-control' %>
   </div>
 
-  <div class="field">
+  <div class="form-group">
     <%= f.label :Last_name %><br />
-    <%= f.text_field :l_name %>
+    <%= f.text_field :l_name, class: 'form-control' %>
   </div>
 
-  <div class="field">
+  <div class="form-group">
     <%= f.label :username %><br />
-    <%= f.text_field :username %>
+    <%= f.text_field :username, class: 'form-control' %>
   </div>
 
-  <div class="field">
+  <div class="form-group">
     <%= f.label :postcode, 'Postcode' %><br />
-    <%= f.text_field :postcode %>
+    <%= f.text_field :postcode, class: 'form-control' %>
   </div>
 
-  <div class="field">
+  <div class="form-group">
     <%= f.label :email %><br />
-    <%= f.email_field :email, autofocus: true %>
+    <%= f.email_field :email, autofocus: true, class: 'form-control' %>
   </div>
 
   <% if devise_mapping.confirmable? && resource.pending_reconfirmation? %>
     <div>Currently waiting confirmation for: <%= resource.unconfirmed_email %></div>
   <% end %>
 
-  <div class="field">
+  <div class="form-group">
     <%= f.label :password %> <i>(leave blank if you don't want to change it)</i><br />
-    <%= f.password_field :password, autocomplete: "off" %>
+    <%= f.password_field :password, autocomplete: "off", class: 'form-control' %>
   </div>
 
-  <div class="field">
+  <div class="form-group">
     <%= f.label :password_confirmation %><br />
-    <%= f.password_field :password_confirmation, autocomplete: "off" %>
+    <%= f.password_field :password_confirmation, autocomplete: "off", class: 'form-control' %>
   </div>
 
-  <div class="field">
+  <div class="form-group">
     <%= f.label :current_password %> <i>(we need your current password to confirm your changes)</i><br />
-    <%= f.password_field :current_password, autocomplete: "off" %>
+    <%= f.password_field :current_password, autocomplete: "off", class: 'form-control' %>
   </div>
 
   <div class="actions">
-    <%= f.submit "Update" %>
+    <%= f.submit "Update", class: 'btn btn-primary' %>
   </div>
 <% end %>
 
 <h3>Cancel my account</h3>
 
-<p>Unhappy? <%= button_to "Cancel my account", registration_path(resource_name), data: { confirm: "Are you sure?" }, method: :delete %></p>
+<p>Unhappy? <%= button_to "Cancel my account", registration_path(resource_name), data: { confirm: "Are you sure?" }, class: 'btn btn-default', method: :delete %></p>
 
 <%= link_to "Back", :back %>
 </div>
 
 <div class="col-md-3"></div>
+
+
+
+<!--
+
+
+<%= form_for(resource, as: resource_name, url: registration_path(resource_name)) do |f| %>
+  <%= devise_error_messages! %>
+
+  <div class="round-image-50">
+    <img id="signUpAvatar" src="images/thumb/missing.png" alt="" />
+  </div>
+
+  <fieldset class="form-group">
+    <%= f.file_field :avatar, id: 'imgInp' %>
+  </fieldset>
+
+  <fieldset class="form-group">
+    <%= f.text_field :f_name, autofocus: true, class: 'form-control', placeholder: 'First name' %>
+  </fieldset>
+
+  <fieldset class="form-group">
+    <%= f.text_field :l_name, class: 'form-control', placeholder: 'Last name' %>
+  </fieldset>
+
+  <fieldset class="form-group">
+    <%= f.text_field :username, class: 'form-control', placeholder: 'Username' %>
+  </fieldset>
+
+  <fieldset class="form-group">
+    <%= f.text_field :postcode, class: 'form-control', placeholder: 'Postcode' %>
+  </fieldset>
+
+  <fieldset class="form-group">
+    <%= f.email_field :email, class: 'form-control', placeholder: 'Email address' %>
+  </fieldset>
+  <fieldset class="form-group">
+    <%= f.password_field :password, autocomplete: "off", class: 'form-control', placeholder: 'Password' %>
+  </fieldset>
+
+  <fieldset class="form-group">
+    <%= f.password_field :password_confirmation, autocomplete: "off", class: 'form-control', placeholder: 'Confirm Password' %>
+  </fieldset>
+
+  <div class="actions">
+    <%= f.submit "Sign up", class: 'btn btn-primary' %>
+  </div>
+<% end %> -->
