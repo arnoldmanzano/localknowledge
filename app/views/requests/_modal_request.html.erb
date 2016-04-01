@@ -94,7 +94,7 @@
               </div>
               <div class="request-form" id="duration">
                 <label for="time" id="tour_duration">
-                  <h6> I've got {{request.tour_duration ? 'a few' + request.tour_duration + ' hours' : ' this much time spare'}}</h6>
+                  <h6> I've got {{request.tour_duration ? request.tour_duration + ' hours spare' : ' a bit of time spare'}}</h6>
                 </label>
                 <input  type="range"
                         name="time"

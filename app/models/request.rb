@@ -9,9 +9,9 @@ class Request < ActiveRecord::Base
 
   def set_expiration_date
     if self.replies.any?
-      self.expiration =  Date.today + 1000.days
+      self.expiration =  self.request_date + 1000.days
     else
-      self.expiration =  Date.today + 5.days
+      self.expiration =  self.request_date + 5.days
     end
   end
 
