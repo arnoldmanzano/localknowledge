@@ -3,7 +3,7 @@
     <section class="left-side">
       <h5><span class="round-image-50"><%= image_tag(reply.user.avatar.url(:thumb)) %></span>
       <span><%= average_stars(reply.user.average_rating) %> (<%= reply.user.reviews.count %>)</span></h5>
-      <h2><%= reply.user.username %></h2>
+      <h2><a href="/profile/<%=reply.user_id%>"><%= reply.user.username %></a></h2>
       <table>
         <tr>
           <td>Duration:</td>
@@ -26,17 +26,20 @@
           <td><%= build_stopoff_links(reply).html_safe %></td>
         </tr>
       </table>
-      <a href="<%= build_map_link(reply) %>" target="_blank" class='btn btn-primary'>Show in map</a>
+      <br /><a href="<%= build_map_link(reply) %>" target="_blank" class='btn btn-primary'>Show in map</a><br />
       <% if reply.user == current_user %>
-         <%= link_to 'Update', edit_request_reply_path(request, reply) %>
-         <%= link_to 'Delete', request_reply_path(request, reply), method: :delete %>
-       <% end %>
-       <% if request.user == current_user && !request.resolved %>
-           <%= link_to 'Choose', choose_request_reply_path(request, reply), method: :post, class: 'btn btn-default' %>
-       <% elsif request.user == current_user && request.resolved && reply.chosen %>
-           <a href="#" data-toggle="modal" data-target="#reviewModal<%=reply.id%>" class='btn btn-default'>Leave a review</a>
-           <%= render 'reviews/modal_review', request: request, reply: reply %>
-       <% end %>
+        <%= link_to 'Update', edit_request_reply_path(request, reply) %>
+        <%= link_to 'Delete', request_reply_path(request, reply), method: :delete %>
+      <% end %>
+      <% if request.user == current_user && !request.resolved %>
+        <%= link_to 'Choose', choose_request_reply_path(request, reply), method: :post, class: 'btn btn-default' %>
+      <% elsif request.user == current_user && request.resolved && reply.chosen %>
+        <a href="#" data-toggle="modal" data-target="#reviewModal<%=reply.id%>" class='btn btn-default'>Leave a review</a>
+        <%= render 'reviews/modal_review', request: request, reply: reply %>
+        <br /><i class="fa fa-check"></i>
+      <% elsif request.user == current_user && request.resolved && !reply.chosen %>
+        <br /><i class="fa fa-times"></i>
+      <% end %>
     </section>
      <section class="right-side">
        <div class="img-thumbnail" ng-controller="ReplyPicsController as rpCtrl">
@@ -46,5 +49,5 @@
          </div>
        </div>
      </section>
-  </div>
+   </div>
 </div>

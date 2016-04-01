@@ -32,10 +32,11 @@
   display: flex;
   justify-content: space-between;
   .left-side {
-
+    .fa {
+      font-size: 5em;
+    }
   }
   .right-side {
-
   }
 }
 
