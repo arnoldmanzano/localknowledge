@@ -8,12 +8,62 @@
       </div>
       <div class="info">
           <div class="title">
-            <h1> <%= request.user.username %> </h1>
-            <h4><%= request.location %></h4>
+            <h1> <%= request.user.username %>  </h1>
+              <h4> is looking for somebody to take them </h4>
+                <% if request.group_size > 1 %>
+              <h4>and <b><%= request.group_size %></b> others </h4>
+                <% else request.group_size == 1 %>
+              <h4>and <b><%= request.group_size %></b> other </h4>
+              <% end %>
+              <h4> around <%= request.location %></h4>
+            <h1>On <b><%= request.request_date.strftime("%B #{request.request_date.day.ordinalize}, %Y")  %></b></h1>
           </div>
-          <div class="desc">Details: <b> <%= request.description %> </b></div>
-          <div class="desc">Budget <b> <%= request.budget %></b> </div>
-          <div class="desc">Requested date: <b><%= request.request_date.to_date %></b></div>
+
+          <div class="desc"> Other points to consider when tailoring your tour for
+            <b><%= request.user.f_name %></b></br>
+          </div>
+
+          <div class="title"><h4> In their own words...</h4></br>
+            <b> <%= request.description %> </b></br>
+          </div>
+
+          <div class="extra-desc"> They're free <b><%= request.time_of_day == 'All Day' ? request.time_of_day : 'in the ' + request.time_of_day %></b></div>
+
+          <% if request.tour_time_start %>
+          <div class="extra-desc"> from <b><%= request.tour_time_start.to_formatted_s(:time) %></b></div>
+          <% end %>
+
+          <% if request.tour_duration %>
+          <div class="extra-desc"> for <b><%= request.tour_duration.to_i %> hours </b></div>
+          <% end %>
+
+          <% if request.budget %>
+          <div class="extra-desc">They have <b> £<%= request.budget %> to spend</b> </div>
+          <% end %>
+
+          <div class="title"> Extra brownie points for... </div>
+
+            <% if request.luggage %>
+            <p class="desc">You find somewhere to store their luggage</p>
+            <% end %>
+
+            <% if request.children %>
+            <p class="desc">You find a way to entertain their children </p>
+            <% end %>
+
+            <% if request.airport_access %>
+            <p class="desc">You can get them back to the airport for their flight that day </p>
+            <% end %>
+
+            <% if request.disability_access %>
+            <p class="desc">You check if all the stop-offs on your tour have disabled access</p>
+            <% end %>
+
+          <% if request.expiration %>
+          <p class="desc">this request will expire <%= distance_of_time_in_words(Time.now, request.expiration) %> from now </p>
+          <% end %>
+        </p>
+        </div>
       </div>
       <% if request.user == current_user %>
         <%= link_to 'Delete', request_path(request), method: :delete, class: 'card-link' %>

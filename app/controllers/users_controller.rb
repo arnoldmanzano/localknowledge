@@ -16,6 +16,8 @@ class UsersController < ApplicationController
 
   def profile
     @user = User.find(params[:id])
+    # @replies = Replies.find(@user.id)
+    # @reviewee = Reviews.find()
   end
 
 end
