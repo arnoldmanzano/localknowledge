@@ -35,7 +35,12 @@ module ApplicationHelper
   end
 
   def build_map_link(reply)
-    city = reply.request.location.split(',').last
+    places = reply.request.location.split(',')
+    if places.length > 2
+      city = places[-2] + "," + places[-1]
+    else
+      city = places[-1]
+    end
     "https://maps.googleapis.com/maps/api/staticmap?size=800x600&scale=2" +
     "&zoom=12" +
     "&markers=color:green|label:M|" + reply.meeting_point + ",#{city}" +
