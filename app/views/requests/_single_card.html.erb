@@ -8,8 +8,8 @@
       </div>
       <div class="info">
           <div class="title">
-            <h1> <%= request.user.username %>  </h1>
-              <h4> is looking for somebody to take them </h4>
+            <h1> <%= request.user.username %> </h1>
+            <div class="stars"><%= average_stars(request.user.average_rating) %> (<%= request.user.reviews.count %>)</div>
                 <% if request.group_size > 1 %>
               <h4>and <b><%= request.group_size %></b> others </h4>
                 <% else request.group_size == 1 %>
@@ -19,7 +19,7 @@
             <h1>On <b><%= request.request_date.strftime("%B #{request.request_date.day.ordinalize}, %Y")  %></b></h1>
           </div>
 
-          <div class="desc"> Other points to consider when tailoring your tour for
+          <div class="desc"> Other points to consider for
             <b><%= request.user.f_name %></b></br>
           </div>
 
@@ -40,8 +40,6 @@
           <% if request.budget %>
           <div class="extra-desc">They have <b> £<%= request.budget %> to spend</b> </div>
           <% end %>
-
-          <div class="title"> Extra brownie points for... </div>
 
             <% if request.luggage %>
             <div class="extra-desc">You find somewhere to store their luggage</div>

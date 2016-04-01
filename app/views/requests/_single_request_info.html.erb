@@ -17,7 +17,7 @@
         </div>
 
         <div class="desc">
-          Is looking to do something in<b> {{ r.clickedRequest.location }} </b>
+          in<b> {{ r.clickedRequest.location }} </b>
         </div>
 
         <div class="desc">
@@ -35,7 +35,7 @@
 
         <div class="desc">
           <h5> {{r.requestUser.f_name}}'s availability:
-            <b>{{ r.clickedRequest.time_of_day === 'All day' ? 'All day' : 'in the ' + r.clickedRequest.time_of_day}}</b>
+            <b>{{ r.clickedRequest.time_of_day === 'All Day' ? 'All Day' : 'in the ' + r.clickedRequest.time_of_day}}</b>
           </h5>
 
           <h5 ng-show="r.clickedRequest.duration">and is available for
@@ -71,7 +71,7 @@
 
     <div class="bottom" ng-show="r.requestUser.id !== map.current_user.id">
       <a ng-href="/requests/{{r.clickedRequest.id}}/replies/new"><button class="btn-for-request">Reply to {{r.requestUser.f_name}}'s request</button></a>
-      <a ng-href="/profile/{{r.requestUser.id}}"><button class="btn-for-request">Find out more about {{r.requestUser.f_name}}</button></a>
+      <a ng-href="/profile/{{r.requestUser.id}}" target="_blank"><button class="btn-for-request">Find out more about {{r.requestUser.f_name}}</button></a>
     </div>
 
 </div>
