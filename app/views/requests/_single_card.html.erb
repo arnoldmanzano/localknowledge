@@ -23,8 +23,8 @@
             <b><%= request.user.f_name %></b></br>
           </div>
 
-          <div class="title"><h4> In their own words...</h4></br>
-            <b> <%= request.description %> </b></br>
+          <div class="title"><h4> In their own words...</h4>
+            <p><b> <%= request.description %> </b></p></br>
           </div>
 
           <div class="extra-desc"> They're free <b><%= request.time_of_day == 'All Day' ? request.time_of_day : 'in the ' + request.time_of_day %></b></div>
@@ -44,19 +44,19 @@
           <div class="title"> Extra brownie points for... </div>
 
             <% if request.luggage %>
-            <p class="desc">You find somewhere to store their luggage</p>
+            <div class="extra-desc">You find somewhere to store their luggage</div>
             <% end %>
 
             <% if request.children %>
-            <p class="desc">You find a way to entertain their children </p>
+            <div class="extra-desc">You find a way to entertain their children </div>
             <% end %>
 
             <% if request.airport_access %>
-            <p class="desc">You can get them back to the airport for their flight that day </p>
+            <div class="extra-desc">You can get them back to the airport for their flight that day </div>
             <% end %>
 
             <% if request.disability_access %>
-            <p class="desc">You check if all the stop-offs on your tour have disabled access</p>
+            <div class="extra-desc">You check if all the stop-offs on your tour have disabled access</div>
             <% end %>
 
           <% if request.expiration %>

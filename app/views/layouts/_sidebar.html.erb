@@ -10,7 +10,7 @@
             <hr>
         <ul class="list-inline">
           <li>
-            <a href="/profile">
+            <a href="/profile/<%=current_user.id%>">
               <p><%= image_tag(current_user.avatar.url(:thumb), { class: 'img-circle'})%><p> </li>
             </a>
           <li> <h4 class="username"><%= current_user.f_name %> <%= current_user.l_name %></h4> </li>
