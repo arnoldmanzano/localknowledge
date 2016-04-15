@@ -83,7 +83,7 @@ Request.create(
 
 Reply.create(
   request: marcus_request,
-  user: arnold,
+  user: alex,
   meeting_point: "Regent's Park",
   duration: "3",
   cost: "10",

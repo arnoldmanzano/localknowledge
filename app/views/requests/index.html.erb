@@ -5,7 +5,7 @@
 
         <%= render 'single_card', request: request %>
 
-          <div class="col-md-6 col-sm-6">
+          <div class="col-md-7 col-sm-7">
             <% request.replies.each do |reply| %>
               <%= render 'replies/single_reply', request: request, reply: reply %>
             <% end %>

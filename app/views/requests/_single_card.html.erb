@@ -10,10 +10,8 @@
           <div class="title">
             <h1> <%= request.user.username %> </h1>
             <div class="stars"><%= average_stars(request.user.average_rating) %> (<%= request.user.reviews.count %>)</div>
-                <% if request.group_size > 1 %>
-              <h4>and <b><%= request.group_size %></b> others </h4>
-                <% else request.group_size == 1 %>
-              <h4>and <b><%= request.group_size %></b> other </h4>
+              <% if request.group_size %>
+              <h4>and <b><%= pluralize(request.group_size, "other") %>
               <% end %>
               <h4> around <%= request.location %></h4>
             <h1>On <b><%= request.request_date.strftime("%B #{request.request_date.day.ordinalize}, %Y")  %></b></h1>
@@ -60,9 +58,7 @@
           <% if request.expiration %>
           <p class="desc">this request will expire <%= distance_of_time_in_words(Time.now, request.expiration) %> from now </p>
           <% end %>
-        </p>
         </div>
-      </div>
       <% if request.user == current_user %>
         <%= link_to 'Delete', request_path(request), method: :delete, class: 'card-link' %>
         <%= link_to 'Update', edit_request_path(request), class: 'card-link' %>
